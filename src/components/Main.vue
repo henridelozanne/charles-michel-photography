@@ -52,8 +52,10 @@
         for (let m = 0; m < Math.ceil(itemsElems.length / columns); m++) {
           for (let n = 0; n < columns; n++) {
             let item = itemsElems[m * columns + n];
-            columnsElements[n].appendChild(item);
-            item.classList.add('masonry-item');
+            if (item) {
+              columnsElements[n].appendChild(item);
+              item.classList.add('masonry-item');
+            }
           }
         }
       },
