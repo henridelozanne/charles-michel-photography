@@ -33,7 +33,7 @@
 
 <script>
   export default {
-    name: 'Main',
+    name: 'Galeries',
     mounted() {
       this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'), 3);
     },
@@ -62,7 +62,3 @@
     },
   }
 </script>
-
-<style scoped>
-  
-</style>

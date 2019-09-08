@@ -5,9 +5,9 @@
     </div>
     <div class="menu-outter-ctn">
       <div class="menu-inner-ctn desktop-view">
-        <div>Galeries</div>
-        <div>Contact</div>
-        <div>Bio</div>
+        <div @click="goToPage('galeries')">Galeries</div>
+        <div @click="goToPage('contact')">Contact</div>
+        <div @click="goToPage('bio')">Bio</div>
       </div>
       <div class="menu-inner-ctn smartphone-view">
         <i class="el-icon-menu"></i>
@@ -19,6 +19,11 @@
 <script>
   export default {
     name: 'Menu',
+    methods: {
+      goToPage(page) {
+        this.$router.push(page);
+      },
+    },
   }
 </script>
 

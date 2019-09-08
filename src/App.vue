@@ -3,7 +3,7 @@
       <div class="menu-ctn-ctn">
         <app-menu class="menu"/>
       </div>
-      <app-main class="main"/>
+      <router-view class="main"/>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   </div>
@@ -12,13 +12,15 @@
 <script>
 
 import Menu from './components/Menu.vue';
-import Main from './components/Main.vue';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);
 
 export default {
   name: 'app',
   components: {
     'app-menu': Menu,
-    'app-main': Main,
   },
 }
 </script>
