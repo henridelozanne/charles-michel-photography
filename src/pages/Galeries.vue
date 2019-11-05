@@ -1,23 +1,30 @@
 <template>
   <div>
-    <div id="gallery" class="gallery">
-      <div v-for="image in imageList" :key="image" @click="showImgFull" class="gallery-item">
-        <img :src="image" alt="">
-      </div>
+    <div v-show="isLoading" class="loader-ctn">
+      <div class="loader" />
     </div>
-    <!-- <img v-for="image in imageList" :key="image" src="../photos/black-and-white/1.jpg" alt="marche pas"> -->
-    <!-- <el-dialog top="13px" :visible.sync="dialogIsVisible">
-      <app-picture-detail :imgUrl="currentPictureUrl" />
-    </el-dialog> -->
-    <div class="img-ctn" v-if="fullImgIsVisible">
-      <div class="img-ctn-inner">
-        <i class="arrow el-icon-arrow-left" @click="goLeft"></i>
-        <img class="detail-img" :src="currentPictureUrl" alt="no-img" @click="hideImgFull">
-        <!-- <span class="arrow">A</span> -->
-        <i class="arrow el-icon-arrow-right" @click="goRight"></i>
+    <transition name="fade">
+      <div v-show="!isLoading">
+        <div id="gallery" class="gallery">
+          <div v-for="image in imageList" :key="image" @click="showImgFull" class="gallery-item">
+            <img :src="image" alt="">
+          </div>
+        </div>
+        <!-- <img v-for="image in imageList" :key="image" src="../photos/black-and-white/1.jpg" alt="marche pas"> -->
+        <!-- <el-dialog top="13px" :visible.sync="dialogIsVisible">
+          <app-picture-detail :imgUrl="currentPictureUrl" />
+        </el-dialog> -->
+        <div class="img-ctn" v-if="fullImgIsVisible">
+          <div class="img-ctn-inner">
+            <i class="arrow el-icon-arrow-left" @click="goLeft"></i>
+            <img class="detail-img" :src="currentPictureUrl" alt="no-img" @click="hideImgFull">
+            <!-- <span class="arrow">A</span> -->
+            <i class="arrow el-icon-arrow-right" @click="goRight"></i>
+          </div>
+          <!-- <i class="fas fa-chevron-right"></i> -->
+        </div>
       </div>
-      <!-- <i class="fas fa-chevron-right"></i> -->
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -60,6 +67,7 @@
         currentPictureUrl: undefined,
         columnQuantity: undefined,
         fullImgIsVisible: false,
+        isLoading: true,
         imageList: [
           picture_1,
           picture_2,
@@ -92,6 +100,11 @@
           picture_29
         ],
       };
+    },
+    created() {
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2300);
     },
     mounted() {
       this.setColumnsAndLaunchMasonry()
@@ -234,5 +247,40 @@
 .arrow:hover {
   color: rgb(222, 222, 222);
   cursor: pointer;
+}
+
+.loader-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loader {
+  border: 5px solid rgb(194, 194, 194);
+  border-radius: 50%;
+  border-top: 5px solid #525252;
+  width: 34px;
+  height: 34px;
+  -webkit-animation: spin 1.7s linear infinite; /* Safari */
+  animation: spin 1.7s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
