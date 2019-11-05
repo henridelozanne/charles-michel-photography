@@ -3,6 +3,9 @@
       <div class="menu-ctn-ctn">
         <app-menu class="menu"/>
       </div>
+      <div class="menu-side-bar">
+        <div></div>
+      </div>
       <router-view class="main"/>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
@@ -29,7 +32,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 body {
   margin: 0;
   background: rgb(18, 18, 18);
@@ -42,6 +45,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
+  height: 100vh;
 }
 
 .menu {
@@ -54,6 +58,8 @@ body {
   width: 18%;
   min-width: 240px;
   height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .main {
@@ -93,6 +99,19 @@ body {
   width: 100%;
 }
 }
+
+
+  .menu-side-bar {
+    height: 100%;
+    margin-right: 10px;
+  }
+
+  .menu-side-bar div {
+    height: 100%;
+    width: 1px;
+    background: radial-gradient(#464646, rgb(18, 18, 18));
+    position: fixed;
+  }
 </style>
 
 <style lang="scss">

@@ -1,8 +1,9 @@
 <template>
   <div class="container">
     <div class="page-title">
-      <div><span class="bold">CHARLES MICHEL</span><br>PHOTOGRAPHY</div>
+      <div><span class="bold">CHARLES MICHEL</span><br><span class="photography">PHOTOGRAPHY</span></div>
     </div>
+    <div class="horizontal-bar"></div>
     <div class="menu-outter-ctn">
       <div class="menu-inner-ctn desktop-view">
         <div @click="goToPage('galeries')">Galeries</div>
@@ -39,6 +40,13 @@
     color: rgb(240, 240, 240);
   }
 
+  .horizontal-bar {
+    /* border-bottom: 1px solid #393838; */
+    width: 100%;
+    height: 1px;
+    background: radial-gradient(#464646, rgb(18, 18, 18));
+  }
+
   .menu-outter-ctn {
     flex-grow: 1;
     display: flex;
@@ -62,7 +70,7 @@
 
   .menu-inner-ctn div:hover {
     cursor: pointer;
-    background: rgb(215, 214, 214);
+    background: rgb(205, 205, 205);
     color: rgb(24, 24, 24);
   }
 
@@ -83,6 +91,10 @@
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
+  }
+
+  .photography {
+    font-size: 0.8em;
   }
 
   @media screen and (max-width:768px) {
