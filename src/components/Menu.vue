@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div class="page-title">
-      <div>Charles Michel Photography</div>
+      <div><span class="bold">CHARLES MICHEL</span><br>PHOTOGRAPHY</div>
     </div>
     <div class="menu-outter-ctn">
       <div class="menu-inner-ctn desktop-view">
         <div @click="goToPage('galeries')">Galeries</div>
-        <div @click="goToPage('contact')">Contact</div>
         <div @click="goToPage('bio')">Bio</div>
+        <div @click="goToPage('contact')">Contact</div>
       </div>
       <div class="menu-inner-ctn smartphone-view">
         <i class="el-icon-menu"></i>
@@ -35,6 +35,8 @@
 
   .page-title {
     flex-basis: 180px;
+    text-align: center;
+    color: rgb(240, 240, 240);
   }
 
   .menu-outter-ctn {
@@ -112,6 +114,10 @@
     .page-title {
       font-size: 0.7em;
     }
+  }
+
+  .bold {
+    font-size: 1.2em;
   }
 </style>
 

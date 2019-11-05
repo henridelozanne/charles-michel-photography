@@ -6,6 +6,8 @@
       <router-view class="main"/>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Modak|Palanquin&display=swap" rel="stylesheet">
+
   </div>
 </template>
 
@@ -30,13 +32,13 @@ export default {
 <style>
 body {
   margin: 0;
-  background: rgb(24, 24, 24);
+  background: rgb(18, 18, 18);
   color: rgb(222, 222, 222);
+  scroll-behavior: smooth;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Palanquin', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -56,6 +58,7 @@ body {
 
 .main {
   width: 82%;
+  padding-right: 10px;
 }
 
 @media screen and (min-width: 769px) {
