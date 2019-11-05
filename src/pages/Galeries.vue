@@ -1,8 +1,11 @@
 <template>
   <div>
     <div id="gallery" class="gallery">
-      <div v-for="image in imageList" :key="image" @click="showImgFull" class="gallery-item"><img :src="image" alt=""></div>
+      <div v-for="image in imageList" :key="image" @click="showImgFull" class="gallery-item">
+        <img :src="image" alt="">
+      </div>
     </div>
+    <!-- <img v-for="image in imageList" :key="image" src="../photos/black-and-white/1.jpg" alt="marche pas"> -->
     <!-- <el-dialog top="13px" :visible.sync="dialogIsVisible">
       <app-picture-detail :imgUrl="currentPictureUrl" />
     </el-dialog> -->
@@ -19,6 +22,36 @@
 </template>
 
 <script>
+  import picture_1 from '../photos/black-and-white/1.jpg';
+  import picture_2 from '../photos/black-and-white/2.jpg';
+  import picture_3 from '../photos/black-and-white/3.jpg';
+  import picture_4 from '../photos/black-and-white/4.jpg';
+  import picture_5 from '../photos/black-and-white/5.jpg';
+  import picture_6 from '../photos/black-and-white/6.jpg';
+  import picture_7 from '../photos/black-and-white/7.jpg';
+  import picture_8 from '../photos/black-and-white/8.jpg';
+  import picture_9 from '../photos/black-and-white/9.jpg';
+  import picture_10 from '../photos/black-and-white/10.jpg';
+  import picture_11 from '../photos/black-and-white/11.jpg';
+  import picture_12 from '../photos/black-and-white/12.jpg';
+  import picture_13 from '../photos/black-and-white/13.jpg';
+  import picture_14 from '../photos/black-and-white/14.jpg';
+  import picture_15 from '../photos/black-and-white/15.jpg';
+  import picture_16 from '../photos/black-and-white/16.jpg';
+  import picture_17 from '../photos/black-and-white/17.jpg';
+  import picture_18 from '../photos/black-and-white/18.jpg';
+  import picture_19 from '../photos/black-and-white/19.jpg';
+  import picture_20 from '../photos/black-and-white/20.jpg';
+  import picture_21 from '../photos/black-and-white/21.jpg';
+  import picture_22 from '../photos/black-and-white/22.jpg';
+  import picture_23 from '../photos/black-and-white/23.jpg';
+  import picture_24 from '../photos/black-and-white/24.jpg';
+  import picture_25 from '../photos/black-and-white/25.jpg';
+  import picture_26 from '../photos/black-and-white/26.jpg';
+  import picture_27 from '../photos/black-and-white/27.jpg';
+  import picture_28 from '../photos/black-and-white/28.jpg';
+  import picture_29 from '../photos/black-and-white/29.jpg';
+
   export default {
     name: 'Galeries',
     data() {
@@ -28,35 +61,36 @@
         columnQuantity: undefined,
         fullImgIsVisible: false,
         imageList: [
-          'https://images.unsplash.com/photo-1565597847806-605e7fc063cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3386&q=80',
-          'https://images.unsplash.com/photo-1563558492234-462b1e226123?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3334&q=80',
-          'https://images.unsplash.com/photo-1555414244-5d86ec19ea34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80',
-          'https://images.unsplash.com/photo-1527821468487-b724210d296a?ixlib=rb-1.2.1&auto=format&fit=crop&w=3300&q=80',
-          'https://images.unsplash.com/photo-1546138823-07da5db6c7fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=3400&q=80',
-          'https://images.unsplash.com/photo-1518835633655-f1e358a1d685?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3412&q=80', 
-          'https://images.unsplash.com/photo-1553323855-cc1abf1930d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2765&q=80',
-          'https://images.unsplash.com/photo-1501890664351-4ef399c1524f?ixlib=rb-1.2.1&auto=format&fit=crop&w=3289&q=80',
-          'https://images.unsplash.com/photo-1528783848474-fe2140874d1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3064&q=80',
-          'https://images.unsplash.com/photo-1521296382126-7f742828640b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3310&q=80',
-          'https://images.unsplash.com/photo-1527765519142-eb16ebaa1be6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80',
-          'https://images.unsplash.com/photo-1513171920216-2640b288471b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1709&q=80',
-          'https://images.unsplash.com/photo-1532746091757-009cbbf267a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3333&q=80',
-          'https://images.unsplash.com/photo-1521446370169-0f10e8a09f8a?ixlib=rb-1.2.1&auto=format&fit=crop&w=3302&q=80',
-          'https://images.unsplash.com/photo-1462558073967-9fd054c339d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80',
-          'https://images.unsplash.com/photo-1496115965489-21be7e6e59a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3334&q=80',
-          'https://images.unsplash.com/photo-1467454815259-9176a7e143af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80',
-          'https://images.unsplash.com/photo-1477477384939-312ffc1177bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80',
-          'https://images.unsplash.com/photo-1466232373731-46205f0b668e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2304&q=80',
-          'https://images.unsplash.com/photo-1554867459-f8e06014810a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2976&q=80',
-          'https://images.unsplash.com/photo-1523191717306-8311d268647c?ixlib=rb-1.2.1&auto=format&fit=crop&w=3090&q=80',
-          'https://images.unsplash.com/photo-1505116778535-d63c51911367?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3296&q=80',
-          'https://images.unsplash.com/photo-1539250398789-c396f53b8bcd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3264&q=80',
-          'https://images.unsplash.com/photo-1524544774-328b1e40a132?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2127&q=80',
-          'https://images.unsplash.com/photo-1508764579556-cbb274b04d63?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80',
-          'https://images.unsplash.com/photo-1552627019-947c3789ffb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=3289&q=80',
-          'https://images.unsplash.com/photo-1555857289-c8d82c1473d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80',
-          'https://images.unsplash.com/photo-1511211933040-aa3ef2529ec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3402&q=80'
-          ],
+          picture_1,
+          picture_2,
+          picture_3,
+          picture_4,
+          picture_5,
+          picture_6,
+          picture_7,
+          picture_8,
+          picture_9,
+          picture_10,
+          picture_11,
+          picture_12,
+          picture_13,
+          picture_14,
+          picture_15,
+          picture_16,
+          picture_17,
+          picture_18,
+          picture_19,
+          picture_20,
+          picture_21,
+          picture_22,
+          picture_23,
+          picture_24,
+          picture_25,
+          picture_26,
+          picture_27,
+          picture_28,
+          picture_29
+        ],
       };
     },
     mounted() {
