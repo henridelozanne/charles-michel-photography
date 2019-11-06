@@ -19,12 +19,17 @@ export default {
 
 <style lang="scss">
 .instagram-img {
-  background: rgb(110, 187, 235);
-  width: 180px;
+  background: rgb(233, 233, 233);
+  width: 140px;
   border-radius: 50%;
   padding: 3px;
+  -webkit-transition: background-color .5s ease-out;
+  -moz-transition: background-color .5s ease-out;
+  -o-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
   &:hover {
     cursor: pointer;
+    background-color: rgb(68, 222, 176);
   }
 }
 </style>
