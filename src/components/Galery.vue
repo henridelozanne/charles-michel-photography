@@ -6,7 +6,7 @@
     <transition name="fade">
       <div v-show="!isLoading">
         <div id="gallery" class="gallery">
-          <div v-for="image in imageList" :key="image" @click="showImgFull" class="gallery-item">
+          <div v-for="image in imageList" :key="image" @click="showImgFull(image)" class="gallery-item">
             <transition name="fade">
               <img :src="image" alt="">
             </transition>
@@ -61,8 +61,8 @@
       this.listenForArrows();
     },
     methods: {
-      showImgFull(e) {
-        this.currentPictureUrl = e.srcElement && e.srcElement.src;
+      showImgFull(image) {
+        this.currentPictureUrl = image;
         this.fullImgIsVisible = true;
       },
       hideImgFull() {
