@@ -6,9 +6,21 @@
     <div class="horizontal-bar"></div>
     <div class="menu-outter-ctn">
       <div class="menu-inner-ctn desktop-view">
-        <div @click="goToPage('galeries')">Galeries</div>
-        <div @click="goToPage('bio')">Bio</div>
-        <div @click="goToPage('contact')">Contact</div>
+        <div>
+          <div class="horizontal-bar"></div>
+          <div class="menu-title" @click="goToPage('galeries')">Galeries</div>
+          <div class="horizontal-bar"></div>
+        </div>
+        <div>
+          <div class="horizontal-bar"></div>
+          <div class="menu-title" @click="goToPage('bio')">Bio</div>
+          <div class="horizontal-bar"></div>
+        </div>
+        <div>
+          <div class="horizontal-bar"></div>
+          <div class="menu-title" @click="goToPage('contact')">Contact</div>
+          <div class="horizontal-bar"></div>
+        </div>
       </div>
       <div class="menu-inner-ctn smartphone-view">
         <i class="el-icon-menu"></i>
@@ -28,7 +40,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .container {
     display: flex;
     flex-direction: column;
@@ -57,7 +69,7 @@
 
   .menu-inner-ctn {
     flex-basis: 400px;
-    width: 280px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,13 +77,23 @@
   }
 
   .menu-inner-ctn div {
-    padding: 5px 25px;
+    width: 100%;
+    text-align: center;
+    -webkit-transition: background-color .5s ease-out;
+    -moz-transition: background-color .5s ease-out;
+    -o-transition: background-color .5s ease-out;
+    transition: background-color .5s ease-out;
+    
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(205, 205, 205);
+      color: rgb(24, 24, 24);
+    }
   }
 
-  .menu-inner-ctn div:hover {
-    cursor: pointer;
-    background: rgb(205, 205, 205);
-    color: rgb(24, 24, 24);
+  .menu-inner-ctn .menu-title {
+    padding: 15px 25px;
+    font-size: 1.2em;
   }
 
   .smartphone-view {
