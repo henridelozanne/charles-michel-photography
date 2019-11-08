@@ -17,11 +17,11 @@ const routes = [
   { path: '/', component: BlackAndWhite},
   { path: '/contact', component: Contact },
   { path: '/bio', component: Bio },
-  { path: '/galeries/black-and-white', component: BlackAndWhite },
-  { path: '/galeries/colors', component: Colors },
-  { path: '/galeries/children', component: Children },
-  { path: '/galeries/portraits', component: Portraits },
-  { path: '/galeries/street', component: Street },
+  { path: '/black-and-white', component: BlackAndWhite },
+  { path: '/colors', component: Colors },
+  { path: '/children', component: Children },
+  { path: '/portraits', component: Portraits },
+  { path: '/street', component: Street },
 ];
 
 const router = new VueRouter({

@@ -8,7 +8,39 @@
       <div class="menu-inner-ctn desktop-view">
         <div>
           <div class="horizontal-bar"></div>
-          <div class="menu-title" @click="goToPage('/')">Galeries</div>
+          
+          <el-dropdown trigger="click">
+            <div class="menu-title">Galeries</div>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item >
+                <div @click="goToPage('black-and-white')">
+                  Black and white
+                </div>
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <div @click="goToPage('colors')">
+                  Colors
+                </div>
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <div @click="goToPage('street')">
+                  Street
+                </div>
+              </el-dropdown-item>
+              <el-dropdown-item>
+              <div @click="goToPage('children')">
+                Children
+              </div>
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <div @click="goToPage('portraits')">
+                  Portraits
+                </div>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+
+
           <div class="horizontal-bar"></div>
         </div>
         <div>
@@ -30,8 +62,15 @@
 </template>
 
 <script>
+  import { Dropdown, DropdownMenu, DropdownItem } from 'element-ui';
+
   export default {
     name: 'Menu',
+    components: {
+      'el-dropdown': Dropdown,
+      'el-dropdown-menu': DropdownMenu,
+      'el-dropdown-item': DropdownItem,
+    },
     methods: {
       goToPage(page) {
         this.$router.push(page);
@@ -155,3 +194,28 @@
   }
 </style>
 
+<style lang="scss">
+  .el-dropdown {
+    color: #dedede !important;
+  }
+
+  .el-dropdown-menu {
+    margin-top: -100px !important;
+    margin-left: 270px !important;
+    border-radius: 0 !important;
+    font-family: Palanquin, sans-serif;
+    background: rgb(255, 255, 255) !important;
+    border: unset !important;
+    padding: 0 !important;
+  }
+
+  .el-dropdown-menu__item {
+    color: rgb(24, 24, 24) !important;
+    padding: 10px 30px !important;
+    font-size: 16.8px !important;
+  }
+
+  .popper__arrow {
+    display: none !important;
+  }
+</style>
