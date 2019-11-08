@@ -20,7 +20,6 @@ import picture_10 from '../../photos/black-and-white/10.jpg';
 import picture_11 from '../../photos/black-and-white/11.jpg';
 import picture_12 from '../../photos/black-and-white/12.jpg';
 import picture_13 from '../../photos/black-and-white/13.jpg';
-import picture_14 from '../../photos/black-and-white/14.jpg';
 import picture_15 from '../../photos/black-and-white/15.jpg';
 import picture_16 from '../../photos/black-and-white/16.jpg';
 import picture_17 from '../../photos/black-and-white/17.jpg';
@@ -58,7 +57,6 @@ export default {
           picture_11,
           picture_12,
           picture_13,
-          picture_14,
           picture_15,
           picture_16,
           picture_17,

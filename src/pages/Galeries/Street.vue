@@ -44,6 +44,8 @@ import picture_34 from '../../photos/street/34.jpg';
 import picture_35 from '../../photos/street/35.jpg';
 import picture_36 from '../../photos/street/36.jpg';
 import picture_37 from '../../photos/street/37.jpg';
+import picture_38 from '../../photos/street/38.jpg';
+import picture_39 from '../../photos/street/39.jpg';
 
 export default {
   name: 'Street',
@@ -89,7 +91,9 @@ export default {
           picture_34,
           picture_35,
           picture_36,
-          picture_37
+          picture_37,
+          picture_38,
+          picture_39
         ],
     };
   },

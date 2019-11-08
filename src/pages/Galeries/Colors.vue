@@ -30,6 +30,7 @@ import picture_20 from '../../photos/colors/20.jpg';
 import picture_21 from '../../photos/colors/21.jpg';
 import picture_22 from '../../photos/colors/22.jpg';
 import picture_23 from '../../photos/colors/23.jpg';
+import picture_24 from '../../photos/colors/24.jpg';
 
 export default {
   name: 'Colors',
@@ -61,7 +62,8 @@ export default {
           picture_20,
           picture_21,
           picture_22,
-          picture_23
+          picture_23,
+          picture_24
         ],
     };
   },
