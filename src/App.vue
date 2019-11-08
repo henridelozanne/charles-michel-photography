@@ -65,6 +65,7 @@ body {
 .main {
   width: 82%;
   padding-right: 10px;
+  height: 100vh;
 }
 
 @media screen and (min-width: 769px) {
