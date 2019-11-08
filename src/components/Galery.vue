@@ -12,18 +12,17 @@
             </transition>
           </div>
         </div>
-        <!-- <img v-for="image in imageList" :key="image" src="../photos/black-and-white/1.jpg" alt="marche pas"> -->
-        <!-- <el-dialog top="13px" :visible.sync="dialogIsVisible">
-          <app-picture-detail :imgUrl="currentPictureUrl" />
-        </el-dialog> -->
         <div class="img-ctn" v-if="fullImgIsVisible">
           <div class="img-ctn-inner">
             <i class="arrow el-icon-arrow-left" @click="goLeft"></i>
-            <img class="detail-img" :src="currentPictureUrl" alt="no-img" @click="hideImgFull">
-            <!-- <span class="arrow">A</span> -->
+            <div class="inner-inner" @mouseover="toggleCloseIcon(true)" @mouseleave="toggleCloseIcon(false)">
+              <img class="detail-img" :src="currentPictureUrl" alt="no-img">
+              <transition name="fade-quicker">
+                <i v-if="closeIconIsVisible" class="el-icon-close close-icon" @click="hideImgFull"></i>
+              </transition>
+            </div>
             <i class="arrow el-icon-arrow-right" @click="goRight"></i>
           </div>
-          <!-- <i class="fas fa-chevron-right"></i> -->
         </div>
       </div>
     </transition>
@@ -38,6 +37,7 @@
     },
     data() {
       return {
+        closeIconIsVisible: false,
         dialogIsVisible: false,
         currentPictureUrl: undefined,
         columnQuantity: undefined,
@@ -67,6 +67,7 @@
       },
       hideImgFull() {
         this.fullImgIsVisible = false;
+        this.closeIconIsVisible = false;
       },
       listenForArrows() {
         const that = this;
@@ -144,6 +145,9 @@
         this.currentPictureUrl = e.srcElement && e.srcElement.src;
         this.dialogIsVisible = true;
       },
+      toggleCloseIcon(value) {
+        this.closeIconIsVisible = value;
+      }
     },
   }
 </script>
@@ -229,5 +233,30 @@
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+.fade-quicker-enter-active, .fade-quicker-leave-active {
+  transition: opacity 0.4s;
+}
+.fade-quicker-enter, .fade-quicker-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.close-icon {
+  color: rgb(174, 174, 174);
+  font-size: 2.5em;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  &:hover {
+    color: rgb(222, 222, 222);
+  }
+}
+
+.inner-inner {
+  height: 100%;
+  position: relative;
 }
 </style>
