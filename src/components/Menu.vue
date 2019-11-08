@@ -8,7 +8,7 @@
       <div class="menu-inner-ctn desktop-view">
         <div>
           <div class="horizontal-bar"></div>
-          <div class="menu-title" @click="goToPage('galeries')">Galeries</div>
+          <div class="menu-title" @click="goToPage('/')">Galeries</div>
           <div class="horizontal-bar"></div>
         </div>
         <div>
