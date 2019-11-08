@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container">
+    <img class="charles-picture" src="../website-pictures/charles-michel.jpg" alt="charles-michel">
     <p class="bio-content">
-      <img class="charles-picture" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz0HzRs9GtfLbIhN00Nee6_rWkoy7GEmgRtlfByn56JNCvswsX" alt="charles-michel">
       <br>
       Born in Auxerre, I spent my childhood with my family in Orleans and at the age of 19 I went to Lille to study business.
       <br>
@@ -26,22 +26,27 @@ export default {
 .charles-picture {
   border-radius: 50%;
   border: solid;
-  /* display: inline-block; */
-  float: left;
-  margin: 25px;
+  margin-bottom: 20px;
+  width: 200px;
 }
 
 .bio-content {
-  /* display: inline-block; */
   float: left;
-  shape-outside: circle(50%);
-  /* width: 200px; */
-  height: 200px;
   font-size: 1.1em;
   width: 900px;
+  text-align: justify;
 
   &span {
     margin-bottom: 30px;
   }
+}
+
+.container {
+  height: 100vh;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 </style>
