@@ -185,14 +185,13 @@
 
 .arrow {
   color: rgb(159, 159, 159);
-  // top: 200px;
   margin-left: auto;
   margin-right: auto;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   font-size: 2em;
-  // height: 100vh;
+  font-weight: 900 !important;
 }
 
 .arrow:hover {
