@@ -200,8 +200,6 @@
   }
 
   .el-dropdown-menu {
-    margin-top: -100px !important;
-    margin-left: 270px !important;
     border-radius: 0 !important;
     font-family: Palanquin, sans-serif;
     background: rgb(255, 255, 255) !important;
@@ -213,6 +211,12 @@
     color: rgb(24, 24, 24) !important;
     padding: 10px 30px !important;
     font-size: 16.8px !important;
+    border-bottom: 1px solid rgb(228, 229, 231);
+  }
+
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    background-color: rgb(162, 207, 247) !important;
+    color: rgb(255, 255, 255) !important;
   }
 
   .popper__arrow {
