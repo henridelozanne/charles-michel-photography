@@ -42,8 +42,11 @@
       <el-tooltip content="English" :open-delay="1500">
         <img src="../website-pictures/united-kingdom.png" alt="uk-flag" @click="changeLanguage('english')">
       </el-tooltip>
-      <el-tooltip content="Français" :open-delay="1500">
+      <el-tooltip content="Français" :open-delay="1500" class="france">
         <img src="../website-pictures/france.png" alt="france-flag" @click="changeLanguage('french')">
+      </el-tooltip>
+      <el-tooltip content="Tagalog" :open-delay="1500">
+        <img src="../website-pictures/philippines.png" alt="france-flag" @click="changeLanguage('french')">
       </el-tooltip>
     </div>
   </div>
@@ -109,12 +112,13 @@ export default {
     border-radius: 6px;
     cursor: pointer;
   }
-  img:first-of-type {
-    margin-right: 10px;
-  }
   img:hover {
     border: 2px solid rgb(233, 233, 233);
   }
+}
+
+.france {
+  margin: 0 10px;
 }
 
 .el-tooltip {
