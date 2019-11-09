@@ -12,31 +12,37 @@
           <el-dropdown trigger="click">
             <div class="menu-title gallery">Gallery</div>
             <el-dropdown-menu slot="dropdown">
+              <div class="horizontal-bar"></div>
               <el-dropdown-item >
                 <div @click="goToPage('black-and-white')">
                   Black and white
                 </div>
               </el-dropdown-item>
+              <div class="horizontal-bar"></div>
               <el-dropdown-item>
                 <div @click="goToPage('colors')">
                   Colors
                 </div>
               </el-dropdown-item>
+              <div class="horizontal-bar"></div>
               <el-dropdown-item>
                 <div @click="goToPage('street')">
                   Street
                 </div>
               </el-dropdown-item>
+              <div class="horizontal-bar"></div>
               <el-dropdown-item>
               <div @click="goToPage('children')">
                 Children
               </div>
               </el-dropdown-item>
+              <div class="horizontal-bar"></div>
               <el-dropdown-item>
                 <div @click="goToPage('portraits')">
                   Portraits
                 </div>
               </el-dropdown-item>
+              <div class="horizontal-bar"></div>
             </el-dropdown-menu>
           </el-dropdown>
 
@@ -129,8 +135,9 @@
     
     &:hover {
       cursor: pointer;
-      background: radial-gradient(#242424, rgb(0, 0, 0));
+      background: radial-gradient(#292929, rgb(0, 0, 0));
       color: #f0f0f0;
+      text-shadow: 3px 3px rgb(0, 0, 0);
     }
   }
 
@@ -213,23 +220,32 @@
     color: #dedede !important;
   }
 
+  .el-dropdown-menu .horizontal-bar {
+    height: 6px !important;
+  }
+
   .el-dropdown-menu {
     border-radius: 0 !important;
-    font-family: Palanquin, sans-serif;
-    background: rgb(255, 255, 255) !important;
+    // font-family: Palanquin, sans-serif;
+    font-family: 'caviar dreams';
+    background: #0b0b0b !important;
     border: unset !important;
     padding: 0 !important;
+    border-left: #dedede !important;
+    border-right: #dedede !important;
   }
 
   .el-dropdown-menu__item {
     color: rgb(24, 24, 24) !important;
     padding: 10px 30px !important;
     font-size: 16.8px !important;
-    border-bottom: 1px solid rgb(228, 229, 231);
+    // border-bottom: 1px solid rgb(228, 229, 231);
+    color: #f0f0f0 !important;
   }
 
   .el-dropdown-menu__item:not(.is-disabled):hover {
-    background-color: rgb(162, 207, 247) !important;
+    background: radial-gradient(#292929, rgb(0, 0, 0)) !important;
+    text-shadow: 3px 3px rgb(0, 0, 0);
     color: rgb(255, 255, 255) !important;
   }
 
