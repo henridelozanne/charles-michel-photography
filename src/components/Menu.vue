@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="page-title">
-      <div><span class="bold">CHARLES MICHEL</span><br><span class="photography">PHOTOGRAPHY</span></div>
+      <div><p class="bold michel">CHARLES MICHEL</p><p class="photography">PHOTOGRAPHY</p></div>
     </div>
     <div class="horizontal-bar"></div>
     <div class="menu-outter-ctn">
@@ -10,7 +10,7 @@
           <div class="horizontal-bar"></div>
           
           <el-dropdown trigger="click">
-            <div class="menu-title">Galeries</div>
+            <div class="menu-title gallery">Gallery</div>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item >
                 <div @click="goToPage('black-and-white')">
@@ -45,7 +45,7 @@
         </div>
         <div>
           <div class="horizontal-bar"></div>
-          <div class="menu-title" @click="goToPage('bio')">Bio</div>
+          <div class="menu-title" @click="goToPage('bio')">About me</div>
           <div class="horizontal-bar"></div>
         </div>
         <div>
@@ -80,6 +80,10 @@
 </script>
 
 <style scoped lang="scss">
+  .gallery {
+    font-size: 24px !important;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
@@ -88,14 +92,14 @@
   .page-title {
     flex-basis: 180px;
     text-align: center;
-    color: rgb(240, 240, 240);
+    color: rgb(255, 255, 255);
   }
 
   .horizontal-bar {
     /* border-bottom: 1px solid #393838; */
     width: 100%;
-    height: 1px;
-    background: radial-gradient(#464646, rgb(18, 18, 18));
+    height: 8px;
+    background: radial-gradient(#242424, rgb(0, 0, 0));
   }
 
   .menu-outter-ctn {
@@ -125,14 +129,21 @@
     
     &:hover {
       cursor: pointer;
-      background-color: rgb(205, 205, 205);
-      color: rgb(24, 24, 24);
+      background: radial-gradient(#242424, rgb(0, 0, 0));
+      color: #f0f0f0;
     }
   }
 
   .menu-inner-ctn .menu-title {
     padding: 15px 25px;
-    font-size: 1.2em;
+    font-size: 1.5em;
+    color: #f0f0f0;
+    font-family: 'caviar dreams';
+  }
+
+  .michel {
+    margin-bottom: 10px !important;
+    font-weight: 900 !important;
   }
 
   .smartphone-view {
@@ -151,11 +162,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'caviar dreams';
+    font-size: 1.4em;
   }
 
   .photography {
     font-size: 0.8em;
+    font-style: italic;
+    font-weight: 600;
   }
 
   @media screen and (max-width:768px) {

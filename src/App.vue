@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Modak|Palanquin&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Bitter|Pacifico&display=swap" rel="stylesheet">
 
   </div>
 </template>
@@ -35,7 +36,7 @@ export default {
 <style lang="scss">
 body {
   margin: 0;
-  background: rgb(18, 18, 18);
+  background: rgb(11, 11, 11);
   color: rgb(222, 222, 222);
   scroll-behavior: smooth;
 }
@@ -109,8 +110,9 @@ body {
 
   .menu-side-bar div {
     height: 100%;
-    width: 1px;
-    background: radial-gradient(#464646, rgb(18, 18, 18));
+    width: 8px;
+    background: radial-gradient(#242424, rgb(0, 0, 0));
+
     position: fixed;
   }
 </style>

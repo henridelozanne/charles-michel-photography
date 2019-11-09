@@ -89,7 +89,7 @@ export default {
 }
 
 .bio-content {
-  font-size: 1.1em;
+  font-size: 1.3em;
   width: 70%;
   text-align: justify;
   margin-bottom: 30px;
