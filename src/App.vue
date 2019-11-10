@@ -30,6 +30,9 @@ export default {
   components: {
     'app-menu': Menu,
   },
+  created() {
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  }
 }
 </script>
 
