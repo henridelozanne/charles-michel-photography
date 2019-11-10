@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Contact me</h1>
+    <h1 class="contact-me">Contact me</h1>
     <div class="horizontal-bar"></div>
     <form action="">
       <h2>Charles Michel</h2>
@@ -13,9 +13,11 @@
       <el-input v-model="form.message" type="textarea" class="black-input" placeholder="Message*"></el-input>
       <el-button type="primary" @click="sendMail">Send</el-button>
     </form>
-    <h1 class="follow-me">Follow me</h1>
-    <div class="horizontal-bar"></div>
-    <img class="instagram-img" @click="goToInstagram()" src="http://pluspng.com/img-png/instagram-png-instagram-png-logo-1455.png" width="82" height="86" alt="instagram">
+    <div class="follow-me-container" @click="goToInstagram()" >
+      <h1 class="follow-me">Follow me</h1>
+      <div class="horizontal-bar"></div>
+      <img class="instagram-img" src="http://pluspng.com/img-png/instagram-png-instagram-png-logo-1455.png" alt="instagram">
+    </div>
   </div>
 </template>
 
@@ -63,7 +65,7 @@ textarea {
 </style>
 
 <style lang="scss" scoped>
-h1 {
+.contact-me {
   margin-top: 50px;
 }
 
@@ -78,15 +80,11 @@ h1 {
   margin-bottom: 40px;
 }
 
-.instagram-img {
-  cursor: pointer;
-  width: 86px;
-}
-
 form {
   width: 50%;
   margin: 40px auto 0 auto;
   min-width: 400px;
+  margin-bottom: 150px;
 
 
   .el-input {
@@ -113,9 +111,47 @@ form {
   }
 }
 
-.follow-me {
+.follow-me-container {
+  background: radial-gradient(#eeeeee, rgb(198, 198, 198));
+  margin-bottom: 150px !important;
+  border-radius: 50%;
+  border: 4px solid rgb(79, 72, 211);
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin:auto;
   clear: both;
-  margin-top: 150px;
+  cursor: pointer;
+
+  .follow-me {
+    position: absolute;
+    top: 63px;
+    left: 79px;
+    color: rgb(40, 40, 40);
+    font-family: Palanquin, sans-serif;
+  }
+
+  .horizontal-bar {
+    margin: unset !important;
+    width: 250px !important;
+    position: absolute;
+    top: 150px;
+    left: 25px;
+    height: 4px;
+    background: rgb(62, 62, 62);
+  }
+
+  .instagram-img {
+    position: absolute;
+    bottom: 47px;
+    left: 113px;
+    cursor: pointer;
+    width: 75px;
+  }
+
+  &:hover {
+    border: 4px solid rgb(211, 104, 72);
+  }
 }
 
 .container {
