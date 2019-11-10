@@ -5,6 +5,8 @@ import App from './App.vue';
 // pages
 import Contact from './pages/Contact.vue';
 import Bio from './pages/Bio.vue';
+import SendEmailSuccess from './pages/SendEmailSuccess';
+import SendEmailError from './pages/SendEmailSuccess';
 import BlackAndWhite from './pages/Galeries/BlackAndWhite.vue';
 import Colors from './pages/Galeries/Colors.vue';
 import Childhood from './pages/Galeries/Childhood.vue';
@@ -22,6 +24,8 @@ const routes = [
   { path: '/childhood', component: Childhood },
   { path: '/portraits', component: Portraits },
   { path: '/street', component: Street },
+  { path: '/send-email-success', component: SendEmailSuccess },
+  { path: '/send-email-error', component: SendEmailError },
 ];
 
 const router = new VueRouter({

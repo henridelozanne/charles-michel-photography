@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import emailjs from 'emailjs-com';
 import { Input, Button } from 'element-ui';
 
 export default {
@@ -46,8 +47,28 @@ export default {
       var win = window.open('https://www.instagram.com/charles___michel/?hl=fr', '_blank');
       win.focus();
     },
+    resetForm() {
+      this.form.name = '';
+      this.form.email = '';
+      this.form.phone = '';
+      this.form.subject = '';
+      this.form.message = '';
+    },
     sendMail() {
-      console.log('sendMail called');
+      var templateParams = {
+          message_html: `subject: ${this.form.subject} | message: ${this.form.message}`,
+          from_name: this.form.name,
+          reply_to: `email: ${this.form.email}, phone: ${this.form.phone}`,
+      };
+      const that = this;
+      emailjs.send('gmail', 'template_TctJmAgp', templateParams, 'user_budaC2tozA2cUUxQ2SI7M')
+             .then(function() {
+               that.resetForm();
+               that.$router.push('send-email-success');
+             }, function() {
+               that.resetForm();
+               that.$router.push('send-email-error');
+             });
     },
   },
 }
