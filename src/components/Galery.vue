@@ -55,10 +55,7 @@
       this.setColumnsAndLaunchMasonry()
 
       window.addEventListener('resize', () => {
-        if ((window.innerWidth >= 1085) && (window.innerWidth < 1115)
-            || ((window.innerWidth >= 1385) && (window.innerWidth < 1415))) {
-          this.setColumnsAndLaunchMasonry(true);
-        }
+        this.setColumnsAndLaunchMasonry(true);
       });
 
       this.listenForArrows();
@@ -151,10 +148,27 @@
         }
       },
       setColumnsAndLaunchMasonry(resize = false) {
-        this.setColumnQuantity();
-        if (resize) {
-          this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'), true);
-        } else this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'));
+        const width = window.innerWidth;
+        if (this.columnQuantity === 3) {
+          if (width < 1400) {
+            this.setColumnQuantity();
+            if (resize) {
+              this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'), true);
+            } else this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'));
+          }
+        } else if (this.columnQuantity === 2) {
+          if ((width < 1100) || (width >= 1400)) {
+            this.setColumnQuantity();
+            if (resize) {
+              this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'), true);
+            } else this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'));
+          }
+        } else if (width >= 1100) {
+          this.setColumnQuantity();
+          if (resize) {
+            this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'), true);
+          } else this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'));
+        }
       },
       setColumnQuantity() {
         if (this.columnQuantity !== undefined) {
