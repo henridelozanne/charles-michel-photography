@@ -32,8 +32,8 @@
               </el-dropdown-item>
               <div class="horizontal-bar"></div>
               <el-dropdown-item>
-              <div @click="goToPage('children')">
-                Children
+              <div @click="goToPage('childhood')">
+                Childhood
               </div>
               </el-dropdown-item>
               <div class="horizontal-bar"></div>
@@ -102,7 +102,6 @@
   }
 
   .horizontal-bar {
-    /* border-bottom: 1px solid #393838; */
     width: 100%;
     height: 8px;
     background: radial-gradient(#242424, rgb(0, 0, 0));

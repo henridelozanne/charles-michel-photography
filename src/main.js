@@ -7,7 +7,7 @@ import Contact from './pages/Contact.vue';
 import Bio from './pages/Bio.vue';
 import BlackAndWhite from './pages/Galeries/BlackAndWhite.vue';
 import Colors from './pages/Galeries/Colors.vue';
-import Children from './pages/Galeries/Children.vue';
+import Childhood from './pages/Galeries/Childhood.vue';
 import Portraits from './pages/Galeries/Portraits.vue';
 import Street from './pages/Galeries/Street.vue';
 
@@ -19,7 +19,7 @@ const routes = [
   { path: '/bio', component: Bio },
   { path: '/black-and-white', component: BlackAndWhite },
   { path: '/colors', component: Colors },
-  { path: '/children', component: Children },
+  { path: '/childhood', component: Childhood },
   { path: '/portraits', component: Portraits },
   { path: '/street', component: Street },
 ];
