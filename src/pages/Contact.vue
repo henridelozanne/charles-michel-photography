@@ -4,7 +4,7 @@
     <div class="horizontal-bar"></div>
     <form action="">
       <h2>Charles Michel</h2>
-      <p>07.12.42.33.89</p>
+      <p>+63.92.60.62.65.26</p>
       <p>Manilla, The Philippines</p>
       <el-input v-model="form.name" class="black-input" placeholder="Name*"></el-input>
       <el-input v-model="form.email" class="black-input" placeholder="Email*"></el-input>
@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     goToInstagram() {
-      var win = window.open('https://www.instagram.com/myshutterbag/?hl=fr', '_blank');
+      var win = window.open('https://www.instagram.com/charles___michel/?hl=fr', '_blank');
       win.focus();
     },
     sendMail() {
