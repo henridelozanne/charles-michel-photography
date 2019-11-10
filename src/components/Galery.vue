@@ -41,6 +41,7 @@
         dialogIsVisible: false,
         currentPictureUrl: undefined,
         columnQuantity: undefined,
+        previousColumnQuantity: undefined,
         fullImgIsVisible: false,
         isLoading: true,
       };
@@ -54,8 +55,10 @@
       this.setColumnsAndLaunchMasonry()
 
       window.addEventListener('resize', () => {
-        clearTimeout(resizeId);
-        const resizeId = setTimeout(this.setColumnsAndLaunchMasonry(), 500);
+        if ((window.innerWidth >= 1085) && (window.innerWidth < 1115)
+            || ((window.innerWidth >= 1385) && (window.innerWidth < 1415))) {
+          this.setColumnsAndLaunchMasonry(true);
+        }
       });
 
       this.listenForArrows();
@@ -107,8 +110,27 @@
           this.currentPictureUrl = this.imageList[currentPictureIndex + 1];
         }
       },
-      masonryLayout(containerElem, itemsElems) {
+      masonryLayout(containerElem, itemsElems, resize = false) {
+        if (resize) {
+          const column1 = document.getElementsByClassName('column-1')
+          const column2 = document.getElementsByClassName('column-2')
+          const column3 = document.getElementsByClassName('column-3')
+          if (this.previousColumnQuantity === 3) {
+            containerElem.classList.remove("columns-3");
+            containerElem.removeChild(column1[0]); 
+            containerElem.removeChild(column2[0]); 
+            containerElem.removeChild(column3[0]); 
+          } else if (this.previousColumnQuantity === 2) {
+            containerElem.classList.remove("columns-2");
+            containerElem.removeChild(column1[0]); 
+            containerElem.removeChild(column2[0]); 
+          } else {
+            containerElem.classList.remove("columns-1");
+            containerElem.removeChild(column1[0]); 
+          }
+        }
         containerElem.classList.add('masonry-layout', `columns-${this.columnQuantity}`);
+
         let columnsElements = [];
 
         for (let i = 1; i <= this.columnQuantity; i++) {
@@ -128,11 +150,16 @@
           }
         }
       },
-      setColumnsAndLaunchMasonry() {
+      setColumnsAndLaunchMasonry(resize = false) {
         this.setColumnQuantity();
-        this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'));
+        if (resize) {
+          this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'), true);
+        } else this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'));
       },
       setColumnQuantity() {
+        if (this.columnQuantity !== undefined) {
+          this.previousColumnQuantity = this.columnQuantity;
+        }
         if (window.innerWidth >= 1400) {
           this.columnQuantity = 3;
         } else if ((window.innerWidth >= 1100) && (window.innerWidth < 1400)) {
