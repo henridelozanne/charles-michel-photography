@@ -144,7 +144,7 @@
     padding: 15px 25px;
     font-size: 1.5em;
     color: #f0f0f0;
-    font-family: 'caviar dreams';
+    font-family: 'Raleway', sans-serif;
   }
 
   .michel {
@@ -168,7 +168,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'caviar dreams';
+    font-family: 'Raleway', sans-serif;
     font-size: 1.4em;
   }
 
@@ -226,7 +226,7 @@
   .el-dropdown-menu {
     border-radius: 0 !important;
     // font-family: Palanquin, sans-serif;
-    font-family: 'caviar dreams';
+    font-family: 'Raleway', sans-serif;
     background: #0b0b0b !important;
     border: unset !important;
     padding: 0 !important;
