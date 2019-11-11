@@ -126,11 +126,13 @@ export default {
 <style lang="scss">
 input {
     color: black !important;
+    font-weight: 700 !important;
 }
 
 textarea {
     color: black !important;
     min-height: 200px !important;
+    font-weight: 700 !important;
 }
 </style>
 
@@ -162,8 +164,13 @@ form {
 
     ::placeholder {
       color: rgb(43, 43, 43);
+      font-weight: 700 !important;
       opacity: 1;
       font-family: Palanquin, sans-serif !important;
+    }
+
+    input {
+      color: rgb(43, 43, 43);
     }
   }
 
@@ -172,13 +179,15 @@ form {
 
     ::placeholder {
       color: rgb(43, 43, 43);
+      font-weight: 700 !important;
       opacity: 1;
     }
   }
 
   .el-button {
     float: right;
-    font-family: 'caviar dreams' !important;
+    font-family: 'Raleway', sans-serif !important;
+    font-weight: 900 !important;
   }
 }
 
@@ -231,7 +240,7 @@ form {
 
 .container {
   text-align: center;
-  font-family: 'caviar dreams' !important;
+  font-family: 'Raleway', sans-serif !important;
   margin-bottom: 320px;
 
   img {
