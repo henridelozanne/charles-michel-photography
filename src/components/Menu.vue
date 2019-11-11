@@ -10,36 +10,68 @@
           <div class="horizontal-bar"></div>
           
           <el-dropdown trigger="click">
-            <div class="menu-title gallery">Gallery</div>
+            <div v-if="isEnglish" class="menu-title gallery">Gallery</div>
+            <div v-else-if="isFrench" class="menu-title gallery">Galerie</div>
+            <div v-else-if="isTagalog" class="menu-title gallery">Gallery</div>
             <el-dropdown-menu slot="dropdown">
               <div class="horizontal-bar"></div>
               <el-dropdown-item >
-                <div @click="goToPage('black-and-white')">
+                <div v-if="isEnglish" @click="goToPage('black-and-white')">
+                  Black and white
+                </div>
+                <div v-if="isFrench" @click="goToPage('black-and-white')">
+                  Noir et blanc
+                </div>
+                <div v-if="isTagalog" @click="goToPage('black-and-white')">
                   Black and white
                 </div>
               </el-dropdown-item>
               <div class="horizontal-bar"></div>
               <el-dropdown-item>
-                <div @click="goToPage('colour')">
+                <div v-if="isEnglish" @click="goToPage('colour')">
                   Colour
                 </div>
-              </el-dropdown-item>
-              <div class="horizontal-bar"></div>
-              <el-dropdown-item>
-                <div @click="goToPage('street-life')">
-                  Street life
+                <div v-if="isFrench" @click="goToPage('colour')">
+                  Couleur
+                </div>
+                <div v-if="isTagalog" @click="goToPage('colour')">
+                  Kulay
                 </div>
               </el-dropdown-item>
               <div class="horizontal-bar"></div>
               <el-dropdown-item>
-              <div @click="goToPage('childhood')">
+                <div v-if="isEnglish" @click="goToPage('street-life')">
+                  Street life
+                </div>
+                <div v-if="isFrench" @click="goToPage('street-life')">
+                  Scène de vie
+                </div>
+                <div v-if="isTagalog" @click="goToPage('street-life')">
+                  Buhay kalsada
+                </div>
+              </el-dropdown-item>
+              <div class="horizontal-bar"></div>
+              <el-dropdown-item>
+              <div v-if="isEnglish" @click="goToPage('childhood')">
                 Childhood
+              </div>
+              <div v-if="isFrench" @click="goToPage('childhood')">
+                Enfance
+              </div>
+              <div v-if="isTagalog" @click="goToPage('childhood')">
+                Kabataan
               </div>
               </el-dropdown-item>
               <div class="horizontal-bar"></div>
               <el-dropdown-item>
-                <div @click="goToPage('portrait')">
+                <div v-if="isEnglish" @click="goToPage('portrait')">
                   Portrait
+                </div>
+                <div v-if="isFrench" @click="goToPage('portrait')">
+                  Portrait
+                </div>
+                <div v-if="isTagalog" @click="goToPage('portrait')">
+                  Larawan
                 </div>
               </el-dropdown-item>
               <div class="horizontal-bar"></div>
@@ -51,12 +83,16 @@
         </div>
         <div>
           <div class="horizontal-bar"></div>
-          <div class="menu-title" @click="goToPage('bio')">About me</div>
+          <div v-if="isEnglish" class="menu-title" @click="goToPage('bio')">About me</div>
+          <div v-if="isFrench" class="menu-title" @click="goToPage('bio')">A propos</div>
+          <div v-if="isTagalog" class="menu-title" @click="goToPage('bio')">About me</div>
           <div class="horizontal-bar"></div>
         </div>
         <div>
           <div class="horizontal-bar"></div>
-          <div class="menu-title" @click="goToPage('contact')">Contact</div>
+          <div v-if="isEnglish" class="menu-title" @click="goToPage('contact')">Contact</div>
+          <div v-if="isFrench" class="menu-title" @click="goToPage('contact')">Contact</div>
+          <div v-if="isTagalog" class="menu-title" @click="goToPage('contact')">Contact</div>
           <div class="horizontal-bar"></div>
         </div>
       </div>
@@ -76,6 +112,20 @@
       'el-dropdown': Dropdown,
       'el-dropdown-menu': DropdownMenu,
       'el-dropdown-item': DropdownItem,
+    },
+    props: {
+      appLanguage: { type: String, default: 'english' },
+    },
+    computed: {
+      isEnglish() {
+        return this.appLanguage === 'english';
+      },
+      isFrench() {
+        return this.appLanguage === 'french';
+      },
+      isTagalog() {
+        return this.appLanguage === 'tagalog';
+      },
     },
     methods: {
       goToPage(page) {

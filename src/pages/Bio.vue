@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <img class="charles-picture" src="../website-pictures/charles-michel.jpg" alt="charles-michel">
-    <div class="bio-content" v-if="currentLanguage === 'english'">
+    <div class="bio-content" v-if="isEnglish">
       <p>
         Born in Auxerre, I spent my childhood with my family in Orleans and at the age of 19 I went to Lille to study business.
       </p>
@@ -18,7 +18,7 @@
         My photographic style was still being refined when I arrived in the Philippines. Alone in the streets of Manila I explored the city in every nook and cranny finding myself confronted with the harsh reality of life on the edges. However, at the same time I experienced beautiful meetings there discovering a people of kindness and generosity that I had not seen anywhere else. Very quickly I decided to focus my work on the inhabitants of Manila, on scenes of life and emotion. Manila, which was originally just a place of passage on my way back to France, has become my place of life.
       </p>
     </div>
-    <div class="bio-content" v-if="currentLanguage === 'french'">
+    <div class="bio-content" v-if="isFrench">
       <p>
         Auxerrois de naissance, j’ai vécu toute mon adolescence avec ma famille à Orléans et en 2008 à l’âge de 19 ans je suis parti à Lille pour y faire des études de commerce. 
       </p>
@@ -38,7 +38,7 @@
         Cela fait maintenant plus de deux ans que je suis aux Philippines. Manila qui n’était à l’origine qu’un lieu de passage sur mon chemin de retour en France est devenu mon lieu de vie.
       </p>
     </div>
-    <div class="bio-content" v-if="currentLanguage === 'tagalog'">
+    <div class="bio-content" v-if="isTagalog">
       <p>
         Ipinanganak ako sa Auxere at lumaki sa Orleans kasama ang aking pamilya at kinalaunan nagpunta sa Lille noong ako ay 19 para mag-aral ng Business.
       </p>
@@ -80,6 +80,20 @@ export default {
   components: {
     'el-tooltip': Tooltip,
   },
+  props: {
+    appLanguage: { type: String, default: 'english' },
+  },
+  computed: {
+    isEnglish() {
+      return this.appLanguage === 'english';
+    },
+    isFrench() {
+      return this.appLanguage === 'french';
+    },
+    isTagalog() {
+      return this.appLanguage === 'tagalog';
+    },
+  },
   data() {
     return {
       currentLanguage: 'english',
@@ -88,6 +102,7 @@ export default {
   methods: {
     changeLanguage(language) {
       this.currentLanguage = language;
+      this.$emit('newLanguage', language);
     },
   }
 }

@@ -1,12 +1,12 @@
 <template>
   <div id="app">
       <div class="menu-ctn-ctn">
-        <app-menu class="menu"/>
+        <app-menu class="menu" :appLanguage="appLanguage"/>
       </div>
       <div class="menu-side-bar">
         <div></div>
       </div>
-      <router-view class="main"/>
+      <router-view class="main" @newLanguage="setNewLanguage" :appLanguage="appLanguage"/>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Modak|Palanquin&display=swap" rel="stylesheet">
@@ -29,6 +29,16 @@ export default {
   name: 'app',
   components: {
     'app-menu': Menu,
+  },
+  data() {
+    return {
+      appLanguage: undefined,
+    }
+  },
+  methods: {
+    setNewLanguage(payload) {
+      this.appLanguage = payload;
+    },
   },
   created() {
     // document.addEventListener('contextmenu', event => event.preventDefault());

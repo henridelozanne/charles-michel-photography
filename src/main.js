@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import App from './App.vue';
 
@@ -37,23 +36,3 @@ new Vue({
   render: h => h(App),
   router,
 }).$mount('#app');
-
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
-  state: {
-    language: 'english',
-  },
-  getters: {
-    getLanguage (state) {
-      return state.language;
-    }
-  },
-  mutations: {
-    changeLanguage (state, language) {
-      state.language = language;
-    }
-  }
-})
-
-console.log(store.getters.getLanguage);

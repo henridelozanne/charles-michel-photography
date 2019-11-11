@@ -1,20 +1,27 @@
 <template>
   <div class="container">
-    <h1 class="contact-me">Contact me</h1>
+    <h1 v-if="isEnglish || isTagalog" class="contact-me">Contact me</h1>
+    <h1 v-if="isFrench" class="contact-me">Me contacter</h1>
     <div class="horizontal-bar"></div>
     <form action="">
       <h2>Charles Michel</h2>
       <p>+63.92.60.62.65.26</p>
-      <p>Manilla, The Philippines</p>
-      <el-input v-model="form.name" class="black-input" placeholder="Name*"></el-input>
+      <p v-if="isEnglish">Manila, The Philippines</p>
+      <p v-if="isFrench">Manille, Philippines</p>
+      <p v-if="isTagalog">Manilla, Pilipinas</p>
+      <el-input v-model="form.name" class="black-input" :placeholder="namePlaceholder"></el-input>
       <el-input v-model="form.email" class="black-input" placeholder="Email*"></el-input>
-      <el-input v-model="form.phone" class="black-input" placeholder="Phone"></el-input>
-      <el-input v-model="form.subject" class="black-input" placeholder="Subject"></el-input>
-      <el-input v-model="form.message" type="textarea" class="black-input" placeholder="Message*"></el-input>
-      <el-button class="send-form" @click="sendMail">Send</el-button>
+      <el-input v-model="form.phone" class="black-input" :placeholder="phonePlaceholder"></el-input>
+      <el-input v-model="form.subject" class="black-input" :placeholder="subjectPlaceholder"></el-input>
+      <el-input v-model="form.message" type="textarea" class="black-input" :placeholder="messagePlaceholder"></el-input>
+      <el-button v-if="isEnglish" class="send-form" @click="sendMail">Send</el-button>
+      <el-button v-if="isFrench" class="send-form" @click="sendMail">Envoyer</el-button>
+      <el-button v-if="isTagalog" class="send-form" @click="sendMail">Send</el-button>
     </form>
     <div class="follow-me-container" @click="goToInstagram()" >
-      <h1 class="follow-me">Follow me</h1>
+      <h1 v-if="isEnglish" class="follow-me">Follow me</h1>
+      <h1 v-if="isFrench" class="follow-me">Me suivre</h1>
+      <h1 v-if="isTagalog" class="follow-me">Follow me</h1>
       <div class="horizontal-bar"></div>
       <img class="instagram-img" src="http://www.procop.com/web/wp-content/uploads/2015/07/instagram-glyph-1-png-transparent-logo-2.png" alt="instagram">
     </div>
@@ -30,6 +37,48 @@ export default {
   components: {
     'el-input': Input,
     'el-button': Button,
+  },
+  props: {
+    appLanguage: { type: String, default: 'english' },
+  },
+  computed: {
+    isEnglish() {
+      return this.appLanguage === 'english';
+    },
+    isFrench() {
+      return this.appLanguage === 'french';
+    },
+    isTagalog() {
+      return this.appLanguage === 'tagalog';
+    },
+    namePlaceholder() {
+      if (this.isEnglish) {
+        return 'Name*';
+      } else if (this.isFrench) {
+        return 'Nom*';
+      } else return 'Pangalan*';
+    },
+    phonePlaceholder() {
+      if (this.isEnglish) {
+        return 'Phone';
+      } else if (this.isFrench) {
+        return 'Téléphone';
+      } else return 'Telepono';
+    },
+    subjectPlaceholder() {
+      if (this.isEnglish) {
+        return 'Subject';
+      } else if (this.isFrench) {
+        return 'Objet';
+      } else return 'Subject';
+    },
+    messagePlaceholder() {
+      if (this.isEnglish) {
+        return 'Message';
+      } else if (this.isFrench) {
+        return 'Message';
+      } else return 'Mensahe';
+    },
   },
   data() {
     return {

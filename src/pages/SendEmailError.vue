@@ -2,7 +2,8 @@
   <div class="send-email-ctn">
     <div class="inner-ctn">
       <i class="el-icon-circle-close error-icon"></i>
-      <p>Un problème est survenu lors de l'envoi du mail, veuillez recommencer plus tard</p>
+      <p v-if="isEnglish">An error has occured, please try again later</p>
+      <p v-if="isFrench">Un problème est survenu lors de l'envoi du mail, veuillez recommencer plus tard</p>
     </div>
   </div>
 </template>
@@ -10,6 +11,20 @@
 <script>
 export default {
   name: 'SendEmailSuccess',
+  props: {
+    appLanguage: { type: String, default: 'english' },
+  },
+  computed: {
+    isEnglish() {
+      return this.appLanguage === 'english';
+    },
+    isFrench() {
+      return this.appLanguage === 'french';
+    },
+    isTagalog() {
+      return this.appLanguage === 'tagalog';
+    },
+  },
 }
 </script>
 
@@ -22,6 +37,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Raleway', sans-serif;
 }
 </style>
 
