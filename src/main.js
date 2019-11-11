@@ -6,7 +6,7 @@ import App from './App.vue';
 import Contact from './pages/Contact.vue';
 import Bio from './pages/Bio.vue';
 import SendEmailSuccess from './pages/SendEmailSuccess';
-import SendEmailError from './pages/SendEmailSuccess';
+import SendEmailError from './pages/SendEmailError';
 import BlackAndWhite from './pages/Galeries/BlackAndWhite.vue';
 import Colour from './pages/Galeries/Colour.vue';
 import Childhood from './pages/Galeries/Childhood.vue';

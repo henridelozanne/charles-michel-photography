@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'SendEmailSuccess',
+  name: 'SendEmailError',
   props: {
     appLanguage: { type: String, default: 'english' },
   },
