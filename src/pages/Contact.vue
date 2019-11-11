@@ -11,12 +11,12 @@
       <el-input v-model="form.phone" class="black-input" placeholder="Phone"></el-input>
       <el-input v-model="form.subject" class="black-input" placeholder="Subject"></el-input>
       <el-input v-model="form.message" type="textarea" class="black-input" placeholder="Message*"></el-input>
-      <el-button type="primary" @click="sendMail">Send</el-button>
+      <el-button class="send-form" @click="sendMail">Send</el-button>
     </form>
     <div class="follow-me-container" @click="goToInstagram()" >
       <h1 class="follow-me">Follow me</h1>
       <div class="horizontal-bar"></div>
-      <img class="instagram-img" src="http://pluspng.com/img-png/instagram-png-instagram-png-logo-1455.png" alt="instagram">
+      <img class="instagram-img" src="http://www.procop.com/web/wp-content/uploads/2015/07/instagram-glyph-1-png-transparent-logo-2.png" alt="instagram">
     </div>
   </div>
 </template>
@@ -114,6 +114,7 @@ form {
     ::placeholder {
       color: rgb(43, 43, 43);
       opacity: 1;
+      font-family: Palanquin, sans-serif !important;
     }
   }
 
@@ -136,7 +137,7 @@ form {
   background: radial-gradient(#eeeeee, rgb(198, 198, 198));
   margin-bottom: 150px !important;
   border-radius: 50%;
-  border: 4px solid rgb(79, 72, 211);
+  border: 4px solid rgb(62, 62, 62);
   width: 300px;
   height: 300px;
   position: relative;
@@ -159,7 +160,6 @@ form {
     top: 150px;
     left: 25px;
     height: 4px;
-    background: rgb(62, 62, 62);
   }
 
   .instagram-img {
@@ -170,9 +170,14 @@ form {
     width: 75px;
   }
 
-  &:hover {
-    border: 4px solid rgb(211, 104, 72);
-  }
+  // &:hover {
+  //   border: 4px solid rgb(211, 104, 72);
+  // }
+}
+
+.send-form {
+  background: white;
+  color: rgb(43, 43, 43);
 }
 
 .container {
