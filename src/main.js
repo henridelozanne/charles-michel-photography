@@ -8,10 +8,10 @@ import Bio from './pages/Bio.vue';
 import SendEmailSuccess from './pages/SendEmailSuccess';
 import SendEmailError from './pages/SendEmailSuccess';
 import BlackAndWhite from './pages/Galeries/BlackAndWhite.vue';
-import Colors from './pages/Galeries/Colors.vue';
+import Colour from './pages/Galeries/Colour.vue';
 import Childhood from './pages/Galeries/Childhood.vue';
-import Portraits from './pages/Galeries/Portraits.vue';
-import Street from './pages/Galeries/Street.vue';
+import Portrait from './pages/Galeries/Portrait.vue';
+import StreetLife from './pages/Galeries/StreetLife.vue';
 
 Vue.config.productionTip = false
 
@@ -20,10 +20,10 @@ const routes = [
   { path: '/contact', component: Contact },
   { path: '/bio', component: Bio },
   { path: '/black-and-white', component: BlackAndWhite },
-  { path: '/colors', component: Colors },
+  { path: '/colour', component: Colour },
   { path: '/childhood', component: Childhood },
-  { path: '/portraits', component: Portraits },
-  { path: '/street', component: Street },
+  { path: '/portrait', component: Portrait },
+  { path: '/street-life', component: StreetLife },
   { path: '/send-email-success', component: SendEmailSuccess },
   { path: '/send-email-error', component: SendEmailError },
 ];

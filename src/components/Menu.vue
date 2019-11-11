@@ -20,14 +20,14 @@
               </el-dropdown-item>
               <div class="horizontal-bar"></div>
               <el-dropdown-item>
-                <div @click="goToPage('colors')">
-                  Colors
+                <div @click="goToPage('colour')">
+                  Colour
                 </div>
               </el-dropdown-item>
               <div class="horizontal-bar"></div>
               <el-dropdown-item>
-                <div @click="goToPage('street')">
-                  Street
+                <div @click="goToPage('street-life')">
+                  Street life
                 </div>
               </el-dropdown-item>
               <div class="horizontal-bar"></div>
@@ -38,8 +38,8 @@
               </el-dropdown-item>
               <div class="horizontal-bar"></div>
               <el-dropdown-item>
-                <div @click="goToPage('portraits')">
-                  Portraits
+                <div @click="goToPage('portrait')">
+                  Portrait
                 </div>
               </el-dropdown-item>
               <div class="horizontal-bar"></div>

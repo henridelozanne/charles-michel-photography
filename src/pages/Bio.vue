@@ -49,9 +49,6 @@
         Naggsilbing inspirasyon sa kin ang aking paglalakbay para muling umalis at manirahan sa ibang lugar gaya ng Australia kahit pa kakagraduate ko lang noon. Nanatili ako dito ng halos tatlong taon kung saan nagtrabaho ako bilang bartender at sa isang slaughterhouse, construction at maging sa finance.
       </p>
       <p>
-        Naggsilbing inspirasyon sa kin ang aking paglalakbay para muling umalis at manirahan sa ibang lugar gaya ng Australia kahit pa kakagraduate ko lang noon. Nanatili ako dito ng halos tatlong taon kung saan nagtrabaho ako bilang bartender at sa isang slaughterhouse, construction at maging sa finance.
-      </p>
-      <p>
         Sa Australia din nagsimula ang hilig ko sa photography. Sa loob ng anim na buwan doon, humanap ako ng resources at nagsimulang magensayo sa mga technical aspects, rules of composition at pag-eedit ng mga litrato
       </p>
       <p>
