@@ -40,7 +40,7 @@
         closeIconIsVisible: false,
         dialogIsVisible: false,
         currentPictureUrl: undefined,
-        columnQuantity: undefined,
+        columnQuantity: 'initial',
         previousColumnQuantity: undefined,
         fullImgIsVisible: false,
         isLoading: true,
@@ -52,13 +52,14 @@
       }, 2700);
     },
     mounted() {
-      this.setColumnsAndLaunchMasonry()
+      this.setColumnsAndLaunchMasonry();
 
-      window.addEventListener('resize', () => {
-        this.setColumnsAndLaunchMasonry(true);
-      });
+      window.addEventListener('resize', this.setColumnsAndLaunchMasonryWithTrue);
 
       this.listenForArrows();
+    },
+    beforeDestroy() {
+      window.removeEventListener('resize', this.setColumnsAndLaunchMasonryWithTrue);
     },
     methods: {
       showImgFull(image) {
@@ -135,7 +136,7 @@
           column.classList.add('masonry-column', `column-${i}`);
           containerElem.appendChild(column);
           columnsElements.push(column);
-        }
+        }        
         
         for (let m = 0; m < Math.ceil(itemsElems.length / this.columnQuantity); m++) {
           for (let n = 0; n < this.columnQuantity; n++) {
@@ -146,6 +147,9 @@
             }
           }
         }
+      },
+      setColumnsAndLaunchMasonryWithTrue() {
+        this.setColumnsAndLaunchMasonry(true);
       },
       setColumnsAndLaunchMasonry(resize = false) {
         const width = window.innerWidth;
@@ -163,7 +167,15 @@
               this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'), true);
             } else this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'));
           }
-        } else if (width >= 1100) {
+        } else if (this.columnQuantity === 1) {
+          if (width >= 1100) {
+            this.setColumnQuantity();
+            if (resize) {
+              this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'), true);
+            } else this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'));
+          }
+        } 
+        else if (this.columnQuantity === 'initial') {
           this.setColumnQuantity();
           if (resize) {
             this.masonryLayout(document.getElementById('gallery'), document.querySelectorAll('.gallery-item'), true);
