@@ -65,10 +65,12 @@
       showImgFull(image) {
         this.currentPictureUrl = image;
         this.fullImgIsVisible = true;
+        this.$emit('fullImgIsVisible');
       },
       hideImgFull() {
         this.fullImgIsVisible = false;
         this.closeIconIsVisible = false;
+        this.$emit('fullImgIsNotVisible');
       },
       listenForArrows() {
         const that = this;

@@ -1,103 +1,113 @@
 <template>
-  <div class="container">
-    <div class="page-title">
-      <div><p class="bold michel">CHARLES MICHEL</p><p class="photography">PHOTOGRAPHY</p></div>
-    </div>
-    <div class="horizontal-bar"></div>
-    <div class="menu-outter-ctn">
-      <div class="menu-inner-ctn desktop-view">
-        <div>
-          <div class="horizontal-bar"></div>
-          
-          <el-dropdown trigger="click">
-            <div v-if="isEnglish" class="menu-title gallery">Gallery</div>
-            <div v-else-if="isFrench" class="menu-title gallery">Galerie</div>
-            <div v-else-if="isTagalog" class="menu-title gallery">Gallery</div>
-            <el-dropdown-menu slot="dropdown">
-              <div class="horizontal-bar"></div>
-              <el-dropdown-item >
-                <div v-if="isEnglish" @click="goToPage('black-and-white')">
-                  Black and white
-                </div>
-                <div v-if="isFrench" @click="goToPage('black-and-white')">
-                  Noir et blanc
-                </div>
-                <div v-if="isTagalog" @click="goToPage('black-and-white')">
-                  Black and white
-                </div>
-              </el-dropdown-item>
-              <div class="horizontal-bar"></div>
-              <el-dropdown-item>
-                <div v-if="isEnglish" @click="goToPage('colour')">
-                  Colour
-                </div>
-                <div v-if="isFrench" @click="goToPage('colour')">
-                  Couleur
-                </div>
-                <div v-if="isTagalog" @click="goToPage('colour')">
-                  Kulay
-                </div>
-              </el-dropdown-item>
-              <div class="horizontal-bar"></div>
-              <el-dropdown-item>
-                <div v-if="isEnglish" @click="goToPage('street-life')">
-                  Street life
-                </div>
-                <div v-if="isFrench" @click="goToPage('street-life')">
-                  Scène de vie
-                </div>
-                <div v-if="isTagalog" @click="goToPage('street-life')">
-                  Buhay kalsada
-                </div>
-              </el-dropdown-item>
-              <div class="horizontal-bar"></div>
-              <el-dropdown-item>
-              <div v-if="isEnglish" @click="goToPage('childhood')">
-                Childhood
-              </div>
-              <div v-if="isFrench" @click="goToPage('childhood')">
-                Enfance
-              </div>
-              <div v-if="isTagalog" @click="goToPage('childhood')">
-                Kabataan
-              </div>
-              </el-dropdown-item>
-              <div class="horizontal-bar"></div>
-              <el-dropdown-item>
-                <div v-if="isEnglish" @click="goToPage('portrait')">
-                  Portrait
-                </div>
-                <div v-if="isFrench" @click="goToPage('portrait')">
-                  Portrait
-                </div>
-                <div v-if="isTagalog" @click="goToPage('portrait')">
-                  Larawan
-                </div>
-              </el-dropdown-item>
-              <div class="horizontal-bar"></div>
-            </el-dropdown-menu>
-          </el-dropdown>
+  <div>
+    <div class="container-lg-screen">
+      <div class="page-title">
+        <div><p class="bold michel">CHARLES MICHEL</p><p class="photography">PHOTOGRAPHY</p></div>
+      </div>
 
+      <div class="horizontal-bar"></div>
 
-          <div class="horizontal-bar"></div>
-        </div>
-        <div>
-          <div class="horizontal-bar"></div>
-          <div v-if="isEnglish" class="menu-title" @click="goToPage('bio')">About me</div>
-          <div v-if="isFrench" class="menu-title" @click="goToPage('bio')">A propos</div>
-          <div v-if="isTagalog" class="menu-title" @click="goToPage('bio')">About me</div>
-          <div class="horizontal-bar"></div>
-        </div>
-        <div>
-          <div class="horizontal-bar"></div>
-          <div v-if="isEnglish" class="menu-title" @click="goToPage('contact')">Contact</div>
-          <div v-if="isFrench" class="menu-title" @click="goToPage('contact')">Contact</div>
-          <div v-if="isTagalog" class="menu-title" @click="goToPage('contact')">Contact</div>
-          <div class="horizontal-bar"></div>
+      <div class="menu-outter-ctn">
+        <div class="menu-inner-ctn desktop-view is-not-mobile">
+          <div>
+            <div class="horizontal-bar"></div>
+
+            <el-dropdown trigger="click">
+              <div v-if="isEnglish" class="menu-title gallery">Gallery</div>
+              <div v-else-if="isFrench" class="menu-title gallery">Galerie</div>
+              <div v-else-if="isTagalog" class="menu-title gallery">Gallery</div>
+              <el-dropdown-menu slot="dropdown">
+                <div class="horizontal-bar"></div>
+                <el-dropdown-item >
+                  <div v-if="isEnglish" @click="goToPage('black-and-white')">
+                    Black and white
+                  </div>
+                  <div v-if="isFrench" @click="goToPage('black-and-white')">
+                    Noir et blanc
+                  </div>
+                  <div v-if="isTagalog" @click="goToPage('black-and-white')">
+                    Black and white
+                  </div>
+                </el-dropdown-item>
+                <div class="horizontal-bar"></div>
+                <el-dropdown-item>
+                  <div v-if="isEnglish" @click="goToPage('colour')">
+                    Colour
+                  </div>
+                  <div v-if="isFrench" @click="goToPage('colour')">
+                    Couleur
+                  </div>
+                  <div v-if="isTagalog" @click="goToPage('colour')">
+                    Kulay
+                  </div>
+                </el-dropdown-item>
+                <div class="horizontal-bar"></div>
+                <el-dropdown-item>
+                  <div v-if="isEnglish" @click="goToPage('street-life')">
+                    Street life
+                  </div>
+                  <div v-if="isFrench" @click="goToPage('street-life')">
+                    Scène de vie
+                  </div>
+                  <div v-if="isTagalog" @click="goToPage('street-life')">
+                    Buhay kalsada
+                  </div>
+                </el-dropdown-item>
+                <div class="horizontal-bar"></div>
+                <el-dropdown-item>
+                <div v-if="isEnglish" @click="goToPage('childhood')">
+                  Childhood
+                </div>
+                <div v-if="isFrench" @click="goToPage('childhood')">
+                  Enfance
+                </div>
+                <div v-if="isTagalog" @click="goToPage('childhood')">
+                  Kabataan
+                </div>
+                </el-dropdown-item>
+                <div class="horizontal-bar"></div>
+                <el-dropdown-item>
+                  <div v-if="isEnglish" @click="goToPage('portrait')">
+                    Portrait
+                  </div>
+                  <div v-if="isFrench" @click="goToPage('portrait')">
+                    Portrait
+                  </div>
+                  <div v-if="isTagalog" @click="goToPage('portrait')">
+                    Larawan
+                  </div>
+                </el-dropdown-item>
+                <div class="horizontal-bar"></div>
+              </el-dropdown-menu>
+            </el-dropdown>
+
+            <div class="horizontal-bar"></div>
+          </div>
+          <div>
+            <div class="horizontal-bar"></div>
+
+            <div v-if="isEnglish" class="menu-title" @click="goToPage('bio')">About me</div>
+            <div v-if="isFrench" class="menu-title" @click="goToPage('bio')">A propos</div>
+            <div v-if="isTagalog" class="menu-title" @click="goToPage('bio')">About me</div>
+
+            <div class="horizontal-bar"></div>
+          </div>
+          <div>
+            <div class="horizontal-bar"></div>
+
+            <div v-if="isEnglish" class="menu-title" @click="goToPage('contact')">Contact</div>
+            <div v-if="isFrench" class="menu-title" @click="goToPage('contact')">Contact</div>
+            <div v-if="isTagalog" class="menu-title" @click="goToPage('contact')">Contact</div>
+
+            <div class="horizontal-bar"></div>
+          </div>
         </div>
       </div>
-      <div class="menu-inner-ctn smartphone-view">
-        <i class="el-icon-menu"></i>
+    </div>
+    <div class="container-sm-screen">
+      <span class="page-title">C. MICHEL PHOTOGRAPHY</span>
+      <div class="icon-ctn">
+        <i class="el-icon-menu" @click="openMobileMenu"></i>
       </div>
     </div>
   </div>
@@ -112,6 +122,11 @@
       'el-dropdown': Dropdown,
       'el-dropdown-menu': DropdownMenu,
       'el-dropdown-item': DropdownItem,
+    },
+    data() {
+      return {
+        mobileMenuIsOpened: false,
+      }
     },
     props: {
       appLanguage: { type: String, default: 'english' },
@@ -131,11 +146,46 @@
       goToPage(page) {
         this.$router.push(page);
       },
+      openMobileMenu() {
+        this.$emit('openMobileMenu');
+      },
     },
   }
 </script>
 
 <style scoped lang="scss">
+.icon-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.test {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container-sm-screen {
+  display: none;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px; 
+}
+
+  .container-lg-screen {
+    height: 100vh;
+    position: relative;
+  }
+
+  .el-icon-menu {
+    font-size: 25px !important;
+  }
+
   .gallery {
     font-size: 24px !important;
   }
@@ -143,12 +193,7 @@
   .container {
     display: flex;
     flex-direction: column;
-  }
-
-  .page-title {
-    flex-basis: 180px;
-    text-align: center;
-    color: rgb(255, 255, 255);
+    height: 100%;
   }
 
   .horizontal-bar {
@@ -158,11 +203,15 @@
   }
 
   .menu-outter-ctn {
-    flex-grow: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 123px;
+    bottom: 0;
+    // background-color:blue;/*Development Only*/
   }
 
   .menu-inner-ctn {
@@ -202,24 +251,14 @@
     font-weight: 900 !important;
   }
 
-  .smartphone-view {
-    display: none;
-  }
-
-
-  /* Trouver une meilleure façon de centrer */
-  i {
-    font-size: 1.7em;
-    margin-top: 22px;
-    margin-left: 22px;
-  }
-
   .page-title {
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Raleway', sans-serif;
     font-size: 1.4em;
+    text-align: center;
+    color: rgb(255, 255, 255);
   }
 
   .photography {
@@ -229,8 +268,13 @@
   }
 
   @media screen and (max-width:768px) {
-    .container {
-      flex-direction: row;
+
+    .container-lg-screen {
+      display: none;
+    }
+
+    .container-sm-screen {
+      display: flex; 
     }
 
     .menu-outter-ctn {
@@ -245,18 +289,12 @@
       width: 70px;
       margin-right: 25px;
     }
+  }
 
-    .smartphone-view {
-      display: block;
-    }
-
-    .desktop-view {
+  @media screen and (min-width:768px) {
+    .container-sm-screen {
       display: none;
-    }
-
-    .page-title {
-      font-size: 0.7em;
-    }
+    } 
   }
 
   .bold {
@@ -282,6 +320,7 @@
     padding: 0 !important;
     border-left: #dedede !important;
     border-right: #dedede !important;
+    z-index: 9999 !important;
   }
 
   .el-dropdown-menu__item {

@@ -159,4 +159,11 @@ export default {
 .el-tooltip {
   font-family: Palanquin, sans-serif;
 }
+
+@media screen and (max-width:768px) {
+  .flags {
+    position: relative;
+    margin-bottom: 50px;
+  }
+}
 </style>

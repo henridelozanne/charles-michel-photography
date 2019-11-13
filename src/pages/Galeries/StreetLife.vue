@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-galery :imageList="imageList"/>
+    <app-galery :imageList="imageList" @fullImgIsVisible="fullImgIsVisible" @fullImgIsNotVisible="fullImgIsNotVisible"/>
   </div>
 </template>
 
@@ -51,6 +51,14 @@ export default {
   name: 'StreetLife',
   components: {
     'app-galery': Galery,
+  },
+  methods: {
+    fullImgIsVisible() {
+      this.$emit('fullImgIsVisible');
+    },
+    fullImgIsNotVisible() {
+      this.$emit('fullImgIsNotVisible');
+    },
   },
   data() {
     return {
