@@ -94,7 +94,7 @@ export default {
     },
   },
   created() {
-    document.addEventListener('contextmenu', event => event.preventDefault());
+    // document.addEventListener('contextmenu', event => event.preventDefault());
   }
 }
 </script>
@@ -200,7 +200,7 @@ body {
   .mobile-menu-opened {
     width: 100%;
     height: 100vh;
-    background: black;
+    background: rgba(15, 15, 15, .85);
     z-index: 2000;
     position: fixed;
     display: flex;

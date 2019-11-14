@@ -192,7 +192,7 @@ form {
 }
 
 .follow-me-container {
-  background: radial-gradient(#eeeeee, rgb(198, 198, 198));
+  background: white;
   margin-bottom: 150px !important;
   border-radius: 50%;
   border: 4px solid rgb(62, 62, 62);
@@ -245,6 +245,12 @@ form {
 
   img {
     margin: auto;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .black-input {
+    width: 90%;
   }
 }
 </style>
