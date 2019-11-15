@@ -256,9 +256,18 @@
     justify-content: center;
     align-items: center;
     font-family: 'Raleway', sans-serif;
-    font-size: 1.4em;
+    font-size: 23px;
     text-align: center;
     color: rgb(255, 255, 255);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  // for iPhone 5/SE
+  @media screen and (width:320px) {
+    .page-title {
+      font-size: 19px;
+    }  
   }
 
   .photography {
