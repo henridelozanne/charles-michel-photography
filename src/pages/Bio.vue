@@ -144,6 +144,7 @@ export default {
   right: 10px;
   img {
     width: 40px;
+    height: 27px;
     border-radius: 6px;
     cursor: pointer;
   }
