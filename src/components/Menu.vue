@@ -12,7 +12,7 @@
           <div>
             <div class="horizontal-bar"></div>
 
-            <el-dropdown trigger="click">
+            <el-dropdown>
               <div v-if="isEnglish" class="menu-title gallery">Gallery</div>
               <div v-else-if="isFrench" class="menu-title gallery">Galerie</div>
               <div v-else-if="isTagalog" class="menu-title gallery">Gallery</div>
