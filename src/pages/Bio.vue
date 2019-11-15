@@ -1,5 +1,16 @@
 <template>
   <div class="container">
+    <div class="flags">
+      <el-tooltip content="English" :open-delay="1500">
+        <img src="../website-pictures/united-kingdom.png" alt="uk-flag" @click="changeLanguage('english')">
+      </el-tooltip>
+      <el-tooltip content="Français" :open-delay="1500" class="france">
+        <img src="../website-pictures/france.png" alt="france-flag" @click="changeLanguage('french')">
+      </el-tooltip>
+      <el-tooltip content="Tagalog" :open-delay="1500">
+        <img src="../website-pictures/philippines.png" alt="france-flag" @click="changeLanguage('tagalog')">
+      </el-tooltip>
+    </div>
     <img class="charles-picture" src="../website-pictures/charles-michel.jpg" alt="charles-michel">
     <div class="bio-content" v-if="isEnglish">
       <p>
@@ -58,17 +69,6 @@
         Mula nito, nagsilbing lugar na ng buhay ko ang Manila na noong una ay magsisilbing daan ko lamang dapat pauwi ng France.
       </p>
     </div>
-    <div class="flags">
-      <el-tooltip content="English" :open-delay="1500">
-        <img src="../website-pictures/united-kingdom.png" alt="uk-flag" @click="changeLanguage('english')">
-      </el-tooltip>
-      <el-tooltip content="Français" :open-delay="1500" class="france">
-        <img src="../website-pictures/france.png" alt="france-flag" @click="changeLanguage('french')">
-      </el-tooltip>
-      <el-tooltip content="Tagalog" :open-delay="1500">
-        <img src="../website-pictures/philippines.png" alt="france-flag" @click="changeLanguage('tagalog')">
-      </el-tooltip>
-    </div>
   </div>
 </template>
 
@@ -118,7 +118,7 @@ export default {
 }
 
 .charles-picture {
-  margin-top: 80px;
+  margin-top: 58px;
   border-radius: 50%;
   border: solid;
   margin-bottom: 30px;
@@ -163,7 +163,12 @@ export default {
 @media screen and (max-width:768px) {
   .flags {
     position: relative;
-    margin-bottom: 50px;
+    right: unset;
+    margin-top: 40px;
+  }
+
+  .france {
+    margin: 0 20px;
   }
 }
 </style>
