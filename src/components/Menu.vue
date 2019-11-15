@@ -2,7 +2,7 @@
   <div>
     <div class="container-lg-screen">
       <div class="page-title">
-        <div><p class="bold michel">CHARLES MICHEL</p><p class="photography">PHOTOGRAPHY</p></div>
+        <div class="page-title-inner-ctn"><p class="bold michel">C. MICHEL</p><p class="photography">PHOTOGRAPHY</p></div>
       </div>
 
       <div class="horizontal-bar"></div>
