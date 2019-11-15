@@ -6,17 +6,19 @@
     <form action="">
       <h2>Charles Michel</h2>
       <p>+63.92.60.62.65.26</p>
-      <p v-if="isEnglish">Manila, The Philippines</p>
-      <p v-if="isFrench">Manille, Philippines</p>
-      <p v-if="isTagalog">Manilla, Pilipinas</p>
+      <p v-if="isEnglish" class="manila">Manila, The Philippines</p>
+      <p v-if="isFrench" class="manila">Manille, Philippines</p>
+      <p v-if="isTagalog" class="manila">Manilla, Pilipinas</p>
       <el-input v-model="form.name" class="black-input" :placeholder="namePlaceholder"></el-input>
       <el-input v-model="form.email" class="black-input" placeholder="Email*"></el-input>
       <el-input v-model="form.phone" class="black-input" :placeholder="phonePlaceholder"></el-input>
       <el-input v-model="form.subject" class="black-input" :placeholder="subjectPlaceholder"></el-input>
-      <el-input v-model="form.message" type="textarea" class="black-input" :placeholder="messagePlaceholder"></el-input>
-      <el-button v-if="isEnglish" class="send-form" @click="sendMail">Send</el-button>
-      <el-button v-if="isFrench" class="send-form" @click="sendMail">Envoyer</el-button>
-      <el-button v-if="isTagalog" class="send-form" @click="sendMail">Send</el-button>
+      <el-input v-model="form.message" type="textarea" class="black-input form-textarea" :placeholder="messagePlaceholder"></el-input>
+      <div class="send-btn-ctn">
+        <el-button v-if="isEnglish" class="send-form" @click="sendMail">Send</el-button>
+        <el-button v-if="isFrench" class="send-form" @click="sendMail">Envoyer</el-button>
+        <el-button v-if="isTagalog" class="send-form" @click="sendMail">Send</el-button>
+      </div>
     </form>
     <div class="follow-me-container" @click="goToInstagram()" >
       <h1 v-if="isEnglish" class="follow-me">Follow me</h1>
@@ -227,10 +229,6 @@ form {
     cursor: pointer;
     width: 75px;
   }
-
-  // &:hover {
-  //   border: 4px solid rgb(211, 104, 72);
-  // }
 }
 
 .send-form {
@@ -248,9 +246,63 @@ form {
   }
 }
 
+.manila {
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width:500px) {
+  form {
+    min-width: 388px;
+  }
+}
+
+@media screen and (max-width:380px) {
+  form {
+    min-width: 350px;
+  }
+}
+
+@media screen and (max-width:320px) {
+  form {
+    min-width: 300px;
+  }
+}
+
 @media screen and (max-width:768px) {
   .black-input {
-    width: 90%;
+    width: 75%;
+  }
+
+  .form-textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .send-btn-ctn {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+}
+
+@media screen and (min-width:500px) and (max-width:768px) {
+  .black-input {
+    width: 100%;
+  }
+
+  .send-btn-ctn {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+}
+
+@media screen and (min-width:768px) {
+  form {
+    width: 50%;
   }
 }
 </style>
