@@ -15,9 +15,9 @@
       <el-input v-model="form.subject" class="black-input" :placeholder="subjectPlaceholder"></el-input>
       <el-input v-model="form.message" type="textarea" class="black-input form-textarea" :placeholder="messagePlaceholder"></el-input>
       <div class="send-btn-ctn">
-        <el-button v-if="isEnglish" class="send-form" @click="sendMail">Send</el-button>
-        <el-button v-if="isFrench" class="send-form" @click="sendMail">Envoyer</el-button>
-        <el-button v-if="isTagalog" class="send-form" @click="sendMail">Send</el-button>
+        <el-button v-if="isEnglish" class="send-form" @click="sendMail" icon="el-icon-s-promotion">Send</el-button>
+        <el-button v-if="isFrench" class="send-form" @click="sendMail" icon="el-icon-s-promotion">Envoyer</el-button>
+        <el-button v-if="isTagalog" class="send-form" @click="sendMail" icon="el-icon-s-promotion">Send</el-button>
       </div>
     </form>
     <div class="follow-me-container" @click="goToInstagram()" >
