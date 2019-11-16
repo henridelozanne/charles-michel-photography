@@ -1,13 +1,13 @@
 <template>
   <div id="app">
       <div class="menu-ctn-ctn" :class="{'no-z-index': mobileMenuIsOpened, 'display-none': !showMenu, 'display-flex': showMenu}">
-        <app-menu class="menu" :appLanguage="appLanguage" @openMobileMenu="openMobileMenu"/>
+        <app-menu class="menu" :appLanguage="appLanguage" @openMobileMenu="openMobileMenu" @newLanguage="setNewLanguage"/>
       </div>
       <div class="menu-side-bar">
         <div></div>
       </div>
       <div class="horizontal-bar only-sm-screen"></div>
-      <router-view class="main" @newLanguage="setNewLanguage" :appLanguage="appLanguage" @fullImgIsVisible="fullImgIsVisible" @fullImgIsNotVisible="fullImgIsNotVisible"/>
+      <router-view class="main" :appLanguage="appLanguage" @fullImgIsVisible="fullImgIsVisible" @fullImgIsNotVisible="fullImgIsNotVisible"/>
       <div v-if="mobileMenuIsOpened" class="mobile-menu-opened">
         <i class="el-icon-close close-icon" @click="closeMobileMenu"></i>
         <ul class="mobile-menu-list">

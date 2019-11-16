@@ -1,16 +1,5 @@
 <template>
   <div class="container">
-    <div class="flags">
-      <el-tooltip content="English" :open-delay="1500">
-        <img src="../website-pictures/united-kingdom.png" alt="uk-flag" @click="changeLanguage('english')">
-      </el-tooltip>
-      <el-tooltip content="Français" :open-delay="1500" class="france">
-        <img src="../website-pictures/france.png" alt="france-flag" @click="changeLanguage('french')">
-      </el-tooltip>
-      <el-tooltip content="Tagalog" :open-delay="1500">
-        <img src="../website-pictures/philippines.png" alt="france-flag" @click="changeLanguage('tagalog')">
-      </el-tooltip>
-    </div>
     <img class="charles-picture" src="../website-pictures/charles-michel.jpg" alt="charles-michel">
     <div class="bio-content" v-if="isEnglish">
       <p>
@@ -73,13 +62,8 @@
 </template>
 
 <script>
-import { Tooltip } from 'element-ui';
-
 export default {
   name: 'Bio',
-  components: {
-    'el-tooltip': Tooltip,
-  },
   props: {
     appLanguage: { type: String, default: 'english' },
   },
@@ -99,12 +83,6 @@ export default {
       currentLanguage: 'english',
     };
   },
-  methods: {
-    changeLanguage(language) {
-      this.currentLanguage = language;
-      this.$emit('newLanguage', language);
-    },
-  }
 }
 </script>
 

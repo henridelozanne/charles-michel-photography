@@ -101,6 +101,41 @@
 
             <div class="horizontal-bar"></div>
           </div>
+          <div>
+            <div class="horizontal-bar"></div>
+
+            <el-dropdown>
+              <div v-if="isEnglish" class="menu-title gallery">Language</div>
+              <div v-else-if="isFrench" class="menu-title gallery">Langue</div>
+              <div v-else-if="isTagalog" class="menu-title gallery">Language</div>
+              <el-dropdown-menu slot="dropdown">
+                <div class="horizontal-bar"></div>
+                <el-dropdown-item>
+                  <div class="language-item-ctn" @click="changeLanguage('english')">
+                    <img src="../website-pictures/united-kingdom.png" alt="uk-flag">
+                    <span>English</span>
+                  </div>
+                </el-dropdown-item>
+                <div class="horizontal-bar"></div>
+                <el-dropdown-item>
+                  <div class="language-item-ctn" @click="changeLanguage('french')">
+                    <img src="../website-pictures/france.png" alt="france-flag">
+                    <span>Français</span>
+                  </div>
+                </el-dropdown-item>
+                <div class="horizontal-bar"></div>
+                <el-dropdown-item>
+                  <div class="language-item-ctn" @click="changeLanguage('tagalog')">
+                    <img src="../website-pictures/philippines.png" alt="france-flag">
+                    <span>Tagalog</span>
+                  </div>
+                </el-dropdown-item>
+                <div class="horizontal-bar"></div>
+              </el-dropdown-menu>
+            </el-dropdown>
+
+            <div class="horizontal-bar"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -143,6 +178,10 @@
       },
     },
     methods: {
+      changeLanguage(language) {
+        this.currentLanguage = language;
+        this.$emit('newLanguage', language);
+      },
       goToPage(page) {
         this.$router.push(page);
       },
@@ -348,5 +387,18 @@
 
   .popper__arrow {
     display: none !important;
+  }
+
+  .el-dropdown-menu__item img {
+    width: 35px;
+    height: 20px;
+    border-radius: 2px;
+    margin-right: 15px;
+  }
+
+  .language-item-ctn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 </style>
