@@ -142,7 +142,7 @@
       </div>
     </div>
     <div class="container-sm-screen">
-      <span class="page-title">C. MICHEL PHOTOGRAPHY</span>
+      <span class="page-title" @click="openMobileMenu">C. MICHEL PHOTOGRAPHY</span>
       <div class="icon-ctn">
         <i class="el-icon-menu" @click="openMobileMenu"></i>
       </div>
