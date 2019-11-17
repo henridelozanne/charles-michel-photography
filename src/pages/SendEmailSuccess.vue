@@ -61,5 +61,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 646px;
 }
 </style>

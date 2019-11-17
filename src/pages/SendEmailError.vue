@@ -2,7 +2,7 @@
   <div class="send-email-ctn">
     <div class="inner-ctn">
       <i class="el-icon-circle-close error-icon"></i>
-      <p v-if="isEnglish">An error has occured, please try again later</p>
+      <p v-if="isEnglish || isTagalog">An error has occured, please try again later</p>
       <p v-if="isFrench">Un problème est survenu lors de l'envoi du mail, veuillez recommencer plus tard</p>
     </div>
   </div>
@@ -38,6 +38,7 @@ export default {
   justify-content: center;
   align-items: center;
   font-family: 'Raleway', sans-serif;
+  max-width: 646px;
 }
 </style>
 
