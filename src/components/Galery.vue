@@ -14,14 +14,15 @@
         </div>
         <div class="img-ctn" v-if="fullImgIsVisible">
           <div class="img-ctn-inner">
-            <i class="arrow el-icon-arrow-left" @click="goLeft"></i>
-            <div class="inner-inner" @mouseover="toggleCloseIcon(true)" @mouseleave="toggleCloseIcon(false)">
-              <img class="detail-img" :src="currentPictureUrl" alt="no-img">
+            <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-left" @click="goLeft"></i>
+            <div class="inner-inner" id="inner-inner" @mouseover="toggleCloseIcon(true)" @mouseleave="toggleCloseIcon(false)">
+              <img class="full-screen-picture" :src="currentPictureUrl" alt="no-img" id="full-screen-picture" @click="hideImgFull">
               <transition name="fade-quicker">
-                <i v-if="closeIconIsVisible" class="el-icon-close close-icon" @click="hideImgFull"></i>
+                <!-- <i v-if="closeIconIsVisible" class="el-icon-close close-icon" @click="hideImgFull"></i> -->
+                <i v-if="false" class="el-icon-close close-icon" @click="hideImgFull"></i>
               </transition>
             </div>
-            <i class="arrow el-icon-arrow-right" @click="goRight"></i>
+            <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-right" @click="goRight"></i>
           </div>
         </div>
       </div>
@@ -44,6 +45,7 @@
         previousColumnQuantity: undefined,
         fullImgIsVisible: false,
         isLoading: true,
+        arrowsAreVisible: true,
       };
     },
     created() {
@@ -60,6 +62,15 @@
     },
     beforeDestroy() {
       window.removeEventListener('resize', this.setColumnsAndLaunchMasonryWithTrue);
+    },
+    watch: {
+      fullImgIsVisible() {
+        if (window.innerWidth < 768) {
+          this.arrowsAreVisible = false;
+        } else {
+          this.arrowsAreVisible = true;
+        }   
+      },
     },
     methods: {
       showImgFull(image) {
@@ -216,8 +227,9 @@
   height: 100vh;
 }
 
-.detail-img {
-  height: 100%;
+.full-screen-picture {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .img-ctn {
@@ -303,7 +315,18 @@
 }
 
 .inner-inner {
-  height: 100%;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
 }
 </style>
