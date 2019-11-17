@@ -282,17 +282,10 @@
   100% { transform: rotate(360deg); }
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 1s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-
 .fade-quicker-enter-active, .fade-quicker-leave-active {
   transition: opacity 0.4s;
 }
-.fade-quicker-enter, .fade-quicker-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-quicker-enter, .fade-quicker-leave-to {
   opacity: 0;
 }
 

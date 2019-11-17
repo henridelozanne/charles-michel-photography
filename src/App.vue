@@ -10,26 +10,50 @@
       <router-view class="main" :appLanguage="appLanguage" @fullImgIsVisible="fullImgIsVisible" @fullImgIsNotVisible="fullImgIsNotVisible"/>
       <div v-if="mobileMenuIsOpened" class="mobile-menu-opened">
         <i class="el-icon-close close-icon" @click="closeMobileMenu"></i>
-        <ul class="mobile-menu-list">
-          <li v-if="isEnglish || isTagalog" @click="goToPage('black-and-white')">Black and white</li>
-          <li v-else @click="goToPage('black-and-white')">Noir et blanc</li>
-          <li v-if="isEnglish" @click="goToPage('colour')">Colour</li>
-          <li v-if="isFrench" @click="goToPage('colour')">Couleur</li>
-          <li v-if="isTagalog" @click="goToPage('colour')">Kulay</li>
-          <li v-if="isEnglish" @click="goToPage('street-life')">Street life</li>
-          <li v-if="isFrench" @click="goToPage('street-life')">Scène de vie</li>
-          <li v-if="isTagalog" @click="goToPage('street-life')">Buhay kalsada</li>
-          <li v-if="isEnglish" @click="goToPage('childhood')">Childhood</li>
-          <li v-if="isFrench" @click="goToPage('childhood')">Enfance</li>
-          <li v-if="isTagalog" @click="goToPage('childhood')">Kabataan</li>
-          <li v-if="isEnglish" @click="goToPage('portrait')">Portrait</li>
-          <li v-if="isFrench" @click="goToPage('portrait')">Portrait</li>
-          <li v-if="isTagalog" @click="goToPage('portrait')">Larawan</li>
-          <li v-if="isEnglish" class="about-me" @click="goToPage('bio')">About me</li>
-          <li v-if="isFrench" class="about-me" @click="goToPage('bio')">A propos</li>
-          <li v-if="isTagalog" class="about-me" @click="goToPage('bio')">About me</li>
-          <li @click="goToPage('contact')">Contact</li>
-        </ul>
+        <transition name="fade" mode="out-in">
+          <ul class="mobile-menu-list" v-if="!languageMenuIsVisible" key="1">
+            <li v-if="isEnglish || isTagalog" @click="goToPage('black-and-white')">Black and white</li>
+            <li v-else @click="goToPage('black-and-white')">Noir et blanc</li>
+            <li v-if="isEnglish" @click="goToPage('colour')">Colour</li>
+            <li v-if="isFrench" @click="goToPage('colour')">Couleur</li>
+            <li v-if="isTagalog" @click="goToPage('colour')">Kulay</li>
+            <li v-if="isEnglish" @click="goToPage('street-life')">Street life</li>
+            <li v-if="isFrench" @click="goToPage('street-life')">Scène de vie</li>
+            <li v-if="isTagalog" @click="goToPage('street-life')">Buhay kalsada</li>
+            <li v-if="isEnglish" @click="goToPage('childhood')">Childhood</li>
+            <li v-if="isFrench" @click="goToPage('childhood')">Enfance</li>
+            <li v-if="isTagalog" @click="goToPage('childhood')">Kabataan</li>
+            <li v-if="isEnglish" @click="goToPage('portrait')">Portrait</li>
+            <li v-if="isFrench" @click="goToPage('portrait')">Portrait</li>
+            <li v-if="isTagalog" @click="goToPage('portrait')">Larawan</li>
+            <li v-if="isEnglish" class="about-me" @click="goToPage('bio')">About me</li>
+            <li v-if="isFrench" class="about-me" @click="goToPage('bio')">A propos</li>
+            <li v-if="isTagalog" class="about-me" @click="goToPage('bio')">About me</li>
+            <li @click="goToPage('contact')">Contact</li>
+            <li v-if="isEnglish || isTagalog" @click="toggleMenuLanguage">Language</li>
+            <li v-if="isFrench" @click="toggleMenuLanguage">Langue</li>
+          </ul>
+        
+          <ul v-if="languageMenuIsVisible" key="2" class="mobile-menu-list language-list">
+            <li class="language-ctn" @click="setNewLanguage('english')">
+              <img src="./website-pictures/united-kingdom.png" alt="uk-flag">
+              <span>English</span>
+            </li>
+            <li class="language-ctn" @click="setNewLanguage('french')">
+              <img src="./website-pictures/france.png" alt="france-flag">
+              <span>Français</span>
+            </li>
+            <li class="language-ctn" @click="setNewLanguage('tagalog')">
+              <img src="./website-pictures/philippines.png" alt="uk-flag">
+              <span>Tagalog</span>
+            </li>
+            <li class="language-ctn back-ctn" @click="toggleMenuLanguage">
+              <i class="el-icon-back"></i>
+              <span v-if="isFrench">Retour</span>
+              <span v-else>Back</span>
+            </li>
+          </ul>
+        </transition>
       </div>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
@@ -57,6 +81,7 @@ export default {
   data() {
     return {
       appLanguage: 'english',
+      languageMenuIsVisible: false,
       mobileMenuIsOpened: false,
       showMenu: true,
     }
@@ -75,6 +100,10 @@ export default {
   methods: {
     closeMobileMenu() {
       this.mobileMenuIsOpened = false;
+      this.languageMenuIsVisible = false;
+    },
+    toggleMenuLanguage() {
+      this.languageMenuIsVisible = !this.languageMenuIsVisible;
     },
     goToPage(page) {
       this.$router.push(page);
@@ -143,6 +172,13 @@ body {
   width: 82%;
   padding-right: 10px;
   height: 100vh;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 300ms;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -234,5 +270,38 @@ body {
 
 .about-me {
   margin-top: 35px;
+}
+
+.language-list {
+  padding-left: 0;
+
+  img {
+    width: 30px;
+    height: 20px;
+    border-radius: 2px;
+    margin-right: 15px;
+  }
+
+  li:not(:first-child) {
+    margin-top: 10px; 
+  }
+}
+
+.language-ctn {
+  display: flex;
+  align-items: center;
+
+  span {
+    padding-bottom: 4px;
+  }
+}
+
+.back-ctn {
+  justify-content: center;
+  font-size: 25px !important;
+  margin-top: 25px !important;
+  i {
+    margin-right: 10px;
+  }
 }
 </style>

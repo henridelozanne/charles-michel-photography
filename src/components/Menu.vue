@@ -2,7 +2,9 @@
   <div>
     <div class="container-lg-screen">
       <div class="page-title">
-        <div class="page-title-inner-ctn"><p class="bold michel">C. MICHEL</p><p class="photography">PHOTOGRAPHY</p></div>
+        <div class="page-title-inner-ctn">
+          <img class="website-logo" src="../website-pictures/website-logo.jpeg" alt="">
+        </div>
       </div>
 
       <div class="horizontal-bar"></div>
@@ -250,7 +252,6 @@
     position: absolute;
     top: 123px;
     bottom: 0;
-    // background-color:blue;/*Development Only*/
   }
 
   .menu-inner-ctn {
@@ -361,7 +362,6 @@
 
   .el-dropdown-menu {
     border-radius: 0 !important;
-    // font-family: Palanquin, sans-serif;
     font-family: 'Raleway', sans-serif;
     background: #0b0b0b !important;
     border: unset !important;
@@ -375,7 +375,6 @@
     color: rgb(24, 24, 24) !important;
     padding: 10px 30px !important;
     font-size: 16.8px !important;
-    // border-bottom: 1px solid rgb(228, 229, 231);
     color: #f0f0f0 !important;
   }
 
@@ -400,5 +399,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+  }
+
+  .website-logo {
+    width: 200px;
   }
 </style>
