@@ -115,6 +115,12 @@ export default {
   }
 }
 
+@media screen and (max-width:768px) {
+  .bio-content {
+    width: 85%;
+  }
+}
+
 .flags {
   display: flex;
   position: absolute;
