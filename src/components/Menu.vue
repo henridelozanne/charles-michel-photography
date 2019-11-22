@@ -281,7 +281,7 @@
 
   .menu-inner-ctn .menu-title {
     padding: 15px 25px;
-    font-size: 1.5em;
+    font-size: 22px !important;
     color: #f0f0f0;
     font-family: 'Raleway', sans-serif;
   }
