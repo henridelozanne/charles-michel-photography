@@ -12,20 +12,37 @@
         <i class="el-icon-close close-icon" @click="closeMobileMenu"></i>
         <transition name="fade" mode="out-in">
           <ul class="mobile-menu-list" v-if="!languageMenuIsVisible" key="1">
-            <li v-if="isEnglish || isTagalog" @click="goToPage('black-and-white')">Black and white</li>
-            <li v-else @click="goToPage('black-and-white')">Noir et blanc</li>
-            <li v-if="isEnglish" @click="goToPage('colour')">Colour</li>
-            <li v-if="isFrench" @click="goToPage('colour')">Couleur</li>
-            <li v-if="isTagalog" @click="goToPage('colour')">Kulay</li>
-            <li v-if="isEnglish" @click="goToPage('street-life')">Street life</li>
-            <li v-if="isFrench" @click="goToPage('street-life')">Scène de vie</li>
-            <li v-if="isTagalog" @click="goToPage('street-life')">Buhay kalsada</li>
-            <li v-if="isEnglish" @click="goToPage('childhood')">Childhood</li>
-            <li v-if="isFrench" @click="goToPage('childhood')">Enfance</li>
-            <li v-if="isTagalog" @click="goToPage('childhood')">Kabataan</li>
-            <li v-if="isEnglish" @click="goToPage('portrait')">Portrait</li>
-            <li v-if="isFrench" @click="goToPage('portrait')">Portrait</li>
-            <li v-if="isTagalog" @click="goToPage('portrait')">Larawan</li>
+            <li v-if="isFrench" @click="toggleMenuActive('childhood')">Enfance</li>
+            <li v-if="isEnglish" @click="toggleMenuActive('childhood')">Childhood</li>
+            <li v-if="isTagalog" @click="toggleMenuActive('childhood')">Buhay kalsada</li>
+              <ul v-show="activeChildhood">
+                <li v-if="isFrench" class="color-submenu" @click="goToPage('childhood-black-and-white')">Noir et blanc</li>
+                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('childhood-black-and-white')">Black and white</li>
+                <li v-if="isFrench" class="color-submenu" @click="goToPage('childhood-colour')">Couleur</li>
+                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('childhood-colour')">Colour</li>
+              </ul>
+
+            <li v-if="isFrench" @click="toggleMenuActive('street-life')">Scène de vie</li>
+            <li v-if="isEnglish" @click="toggleMenuActive('street-life')">Street life</li>
+            <li v-if="isTagalog" @click="toggleMenuActive('street-life')">Kulay</li>
+              <ul v-show="activeStreetLife">
+                <li v-if="isFrench" class="color-submenu" @click="goToPage('street-life-black-and-white')">Noir et blanc</li>
+                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('street-life-black-and-white')">Black and white</li>
+                <li v-if="isFrench" class="color-submenu" @click="goToPage('street-life-colour')">Couleur</li>
+                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('street-life-colour')">Colour</li>
+              </ul>
+
+            <li v-if="isFrench" @click="toggleMenuActive('people-at-work')">Métiers</li>
+            <li v-if="isEnglish" @click="toggleMenuActive('people-at-work')">People at work</li>
+            <li v-if="isTagalog" @click="toggleMenuActive('people-at-work')">People at work</li>
+              <ul v-show="activePeopleAtWork">
+                <li v-if="isFrench" class="color-submenu" @click="goToPage('people-at-work-black-and-white')">Noir et blanc</li>
+                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('people-at-work-black-and-white')">Black and white</li>
+                <li v-if="isFrench" class="color-submenu" @click="goToPage('people-at-work-colour')">Couleur</li>
+                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('people-at-work-colour')">Colour</li>
+              </ul>
+
+
             <li v-if="isEnglish" class="about-me" @click="goToPage('bio')">About me</li>
             <li v-if="isFrench" class="about-me" @click="goToPage('bio')">A propos</li>
             <li v-if="isTagalog" class="about-me" @click="goToPage('bio')">About me</li>
@@ -81,6 +98,9 @@ export default {
   data() {
     return {
       appLanguage: 'english',
+      activeChildhood: false,
+      activeStreetLife: false,
+      activePeopleAtWork: false,
       languageMenuIsVisible: false,
       mobileMenuIsOpened: false,
       showMenu: true,
@@ -101,9 +121,27 @@ export default {
     closeMobileMenu() {
       this.mobileMenuIsOpened = false;
       this.languageMenuIsVisible = false;
+      this.activeChildhood = false;
+      this.activeStreetLife = false;
+      this.activePeopleAtWork = false;
     },
     toggleMenuLanguage() {
       this.languageMenuIsVisible = !this.languageMenuIsVisible;
+    },
+    toggleMenuActive(clickedMenu) {
+      if (clickedMenu === 'childhood') {
+        this.activeStreetLife = false;
+        this.activePeopleAtWork = false;
+        this.activeChildhood = !this.activeChildhood;
+      } else if (clickedMenu === 'street-life') {
+        this.activeChildhood = false;
+        this.activePeopleAtWork = false;
+        this.activeStreetLife = !this.activeStreetLife;
+      } else if (clickedMenu === 'people-at-work') {
+        this.activeChildhood = false;
+        this.activeStreetLife = false;
+        this.activePeopleAtWork = !this.activePeopleAtWork;
+      }
     },
     goToPage(page) {
       this.$router.push(page);
@@ -202,6 +240,26 @@ body {
     width: 100%;
     padding-left: 10px;
     margin-top: 70px;
+  }
+}
+
+.color-submenu {
+  font-size: 25px !important;
+  height: 0;
+  opacity: 0%;
+  color: black;
+  animation: increaseheight .2s linear forwards;
+}
+
+@keyframes increaseheight {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 40px;
+    opacity: 100%;
+    color: rgb(222, 222, 222);
   }
 }
 
