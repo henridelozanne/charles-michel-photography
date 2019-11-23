@@ -14,127 +14,140 @@
           <div>
             <div class="horizontal-bar"></div>
 
-            <el-dropdown>
-              <div v-if="isEnglish" class="menu-title gallery">Gallery</div>
-              <div v-else-if="isFrench" class="menu-title gallery">Galerie</div>
-              <div v-else-if="isTagalog" class="menu-title gallery">Gallery</div>
-              <el-dropdown-menu slot="dropdown">
-                <div class="horizontal-bar"></div>
-                <el-dropdown-item >
-                  <div v-if="isEnglish" @click="goToPage('black-and-white')">
-                    Black and white
-                  </div>
-                  <div v-if="isFrench" @click="goToPage('black-and-white')">
-                    Noir et blanc
-                  </div>
-                  <div v-if="isTagalog" @click="goToPage('black-and-white')">
-                    Black and white
-                  </div>
-                </el-dropdown-item>
-                <div class="horizontal-bar"></div>
-                <el-dropdown-item>
-                  <div v-if="isEnglish" @click="goToPage('colour')">
-                    Colour
-                  </div>
-                  <div v-if="isFrench" @click="goToPage('colour')">
-                    Couleur
-                  </div>
-                  <div v-if="isTagalog" @click="goToPage('colour')">
-                    Kulay
-                  </div>
-                </el-dropdown-item>
-                <div class="horizontal-bar"></div>
-                <el-dropdown-item>
-                  <div v-if="isEnglish" @click="goToPage('street-life')">
-                    Street life
-                  </div>
-                  <div v-if="isFrench" @click="goToPage('street-life')">
-                    Scène de vie
-                  </div>
-                  <div v-if="isTagalog" @click="goToPage('street-life')">
-                    Buhay kalsada
-                  </div>
-                </el-dropdown-item>
-                <div class="horizontal-bar"></div>
-                <el-dropdown-item>
-                <div v-if="isEnglish" @click="goToPage('childhood')">
-                  Childhood
-                </div>
-                <div v-if="isFrench" @click="goToPage('childhood')">
-                  Enfance
-                </div>
-                <div v-if="isTagalog" @click="goToPage('childhood')">
-                  Kabataan
-                </div>
-                </el-dropdown-item>
-                <div class="horizontal-bar"></div>
-                <el-dropdown-item>
-                  <div v-if="isEnglish" @click="goToPage('portrait')">
-                    Portrait
-                  </div>
-                  <div v-if="isFrench" @click="goToPage('portrait')">
-                    Portrait
-                  </div>
-                  <div v-if="isTagalog" @click="goToPage('portrait')">
-                    Larawan
-                  </div>
-                </el-dropdown-item>
-                <div class="horizontal-bar"></div>
-              </el-dropdown-menu>
-            </el-dropdown>
+            <bp-dropdown :trigger="'hover'" align="right" :close-on-click="false" :x="-30" :y="0">
+              <template v-if="isEnglish || isTagalog" slot="btn">Gallery</template>
+              <template v-else-if="isFrench" slot="btn">Galerie</template>
+              <template slot="body">
+                <ul>
+                  <div class="horizontal-bar"></div>
+                  <li>
+                    <bp-dropdown :trigger="'hover'" :role="'sublist'" :align="'right'" :x="-30" :y="0" class="bp-dropdown-second">
+                      <template v-if="isEnglish" slot="btn">Childhood</template>
+                      <template v-else-if="isFrench" slot="btn">Enfance</template>
+                      <template v-else slot="btn">Buhay kalsada</template>
+                      <template slot="body">
+                        <ul v-if="isEnglish || isTagalog">
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Black and white</li>
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Colour</li>
+                          <div class="horizontal-bar"></div>
+                        </ul>
+                        <ul v-else-if="isFrench">
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Noir et blanc</li>
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Couleur</li>
+                          <div class="horizontal-bar"></div>
+                        </ul>
+                      </template>
+                    </bp-dropdown>
+                  </li>
+                  <div class="horizontal-bar"></div>
+                  <li>
+                    <bp-dropdown :trigger="'hover'" :role="'sublist'" :align="'right'" :x="-30" :y="0" class="bp-dropdown-second">
+                      <template v-if="isEnglish" slot="btn">Street life</template>
+                      <template v-else-if="isFrench" slot="btn">Scène de vie</template>
+                      <template v-else slot="btn">Kulay</template>
+                      <template slot="body">
+                        <ul v-if="isEnglish || isTagalog">
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Black and white</li>
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Colour</li>
+                          <div class="horizontal-bar"></div>
+                        </ul>
+                        <ul v-else-if="isFrench">
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Noir et blanc</li>
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Couleur</li>
+                          <div class="horizontal-bar"></div>
+                        </ul>
+                      </template>
+                    </bp-dropdown>
+                  </li>
+                  <div class="horizontal-bar"></div>
+                  <li>
+                    <bp-dropdown :trigger="'hover'" :role="'sublist'" :align="'right'" :x="-30" :y="0" class="bp-dropdown-second">
+                      <template v-if="isEnglish || isTagalog" slot="btn">People at work</template>
+                      <template v-else slot="btn">Métiers</template>
+                      <template slot="body">
+                        <ul v-if="isEnglish || isTagalog">
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Black and white</li>
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Colour</li>
+                          <div class="horizontal-bar"></div>
+                        </ul>
+                        <ul v-else-if="isFrench">
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Noir et blanc</li>
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding">Couleur</li>
+                          <div class="horizontal-bar"></div>
+                        </ul>
+                      </template>
+                    </bp-dropdown>
+                  </li>
+                  <div class="horizontal-bar"></div>
+                </ul>
+              </template>
+            </bp-dropdown>
 
             <div class="horizontal-bar"></div>
           </div>
           <div>
             <div class="horizontal-bar"></div>
 
-            <div v-if="isEnglish" class="menu-title" @click="goToPage('bio')">About me</div>
-            <div v-if="isFrench" class="menu-title" @click="goToPage('bio')">A propos</div>
-            <div v-if="isTagalog" class="menu-title" @click="goToPage('bio')">About me</div>
+            <div v-if="isEnglish" class="menu-title special-highlight" @click="goToPage('bio')">About me</div>
+            <div v-if="isFrench" class="menu-title special-highlight" @click="goToPage('bio')">A propos</div>
+            <div v-if="isTagalog" class="menu-title special-highlight" @click="goToPage('bio')">About me</div>
 
             <div class="horizontal-bar"></div>
           </div>
           <div>
             <div class="horizontal-bar"></div>
 
-            <div v-if="isEnglish" class="menu-title" @click="goToPage('contact')">Contact</div>
-            <div v-if="isFrench" class="menu-title" @click="goToPage('contact')">Contact</div>
-            <div v-if="isTagalog" class="menu-title" @click="goToPage('contact')">Contact</div>
+            <div v-if="isEnglish" class="menu-title special-highlight" @click="goToPage('contact')">Contact</div>
+            <div v-if="isFrench" class="menu-title special-highlight" @click="goToPage('contact')">Contact</div>
+            <div v-if="isTagalog" class="menu-title special-highlight" @click="goToPage('contact')">Contact</div>
 
             <div class="horizontal-bar"></div>
           </div>
           <div>
             <div class="horizontal-bar"></div>
 
-            <el-dropdown>
-              <div v-if="isEnglish" class="menu-title gallery">Language</div>
-              <div v-else-if="isFrench" class="menu-title gallery">Langue</div>
-              <div v-else-if="isTagalog" class="menu-title gallery">Language</div>
-              <el-dropdown-menu slot="dropdown">
-                <div class="horizontal-bar"></div>
-                <el-dropdown-item>
-                  <div class="language-item-ctn" @click="changeLanguage('english')">
-                    <img src="../website-pictures/united-kingdom.png" alt="uk-flag">
-                    <span>English</span>
-                  </div>
-                </el-dropdown-item>
-                <div class="horizontal-bar"></div>
-                <el-dropdown-item>
-                  <div class="language-item-ctn" @click="changeLanguage('french')">
-                    <img src="../website-pictures/france.png" alt="france-flag">
-                    <span>Français</span>
-                  </div>
-                </el-dropdown-item>
-                <div class="horizontal-bar"></div>
-                <el-dropdown-item>
-                  <div class="language-item-ctn" @click="changeLanguage('tagalog')">
-                    <img src="../website-pictures/philippines.png" alt="france-flag">
-                    <span>Tagalog</span>
-                  </div>
-                </el-dropdown-item>
-                <div class="horizontal-bar"></div>
-              </el-dropdown-menu>
-            </el-dropdown>
+            <bp-dropdown :trigger="'hover'" align="right" :close-on-click="false" :x="-30" :y="0">
+              <template v-if="isEnglish || isTagalog" slot="btn">Language</template>
+              <template v-else-if="isFrench" slot="btn">Langue</template>
+              <template slot="body">
+                <ul>
+                  <div class="horizontal-bar"></div>
+                  <li>
+                    <div class="language-item-ctn" @click="changeLanguage('english')">
+                      <img src="../website-pictures/united-kingdom.png" alt="uk-flag">
+                      <span>English</span>
+                    </div>
+                  </li>
+                  <div class="horizontal-bar"></div>
+                  <li>
+                    <div class="language-item-ctn" @click="changeLanguage('french')">
+                      <img src="../website-pictures/france.png" alt="france-flag">
+                      <span>Français</span>
+                    </div>
+                  </li>
+                  <div class="horizontal-bar"></div>
+                  <li>
+                    <div class="language-item-ctn" @click="changeLanguage('tagalog')">
+                      <img src="../website-pictures/philippines.png" alt="philippines-flag">
+                      <span>Tagalog</span>
+                    </div>
+                  </li>
+                  <div class="horizontal-bar"></div>
+                </ul>
+              </template>
+            </bp-dropdown>
 
             <div class="horizontal-bar"></div>
           </div>
@@ -151,14 +164,15 @@
 </template>
 
 <script>
-  import { Dropdown, DropdownMenu, DropdownItem } from 'element-ui';
+
+  import Vue from 'vue';
+  import Dropdown from 'bp-vuejs-dropdown';
+  Vue.use(Dropdown)
 
   export default {
     name: 'Menu',
     components: {
-      'el-dropdown': Dropdown,
-      'el-dropdown-menu': DropdownMenu,
-      'el-dropdown-item': DropdownItem,
+      'bp-dropdown': Dropdown,
     },
     data() {
       return {
@@ -273,7 +287,6 @@
     
     &:hover {
       cursor: pointer;
-      background: radial-gradient(#292929, rgb(0, 0, 0));
       color: #f0f0f0;
       text-shadow: 3px 3px rgb(0, 0, 0);
     }
@@ -352,6 +365,69 @@
 </style>
 
 <style lang="scss">
+  .bp-dropdown-second span {
+    padding: 15px 45px;
+  }
+
+  .colour-dd-item {
+    padding: 15px 45px;
+  }
+
+  .bp-dropdown__btn {
+    border: unset;
+    height: 56px;
+    font-size: 22px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: Raleway, sans-serif;
+
+    svg {
+      display: none;
+    }
+  }
+
+  .bp-dropdown__btn--active {
+    background: radial-gradient(#292929, rgb(0, 0, 0)) !important;
+    text-shadow: 3px 3px rgb(0, 0, 0);
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .bp-dropdown__body {
+    background: #0b0b0b;
+    padding: 0;
+    min-width: 0 !important;
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      font-family: Raleway, sans-serif;
+      color: rgb(255, 255, 255);
+
+      &:hover {
+        background: radial-gradient(#292929, rgb(0, 0, 0)) !important;
+        text-shadow: 3px 3px rgb(0, 0, 0);
+        color: rgb(255, 255, 255) !important;
+      }
+    }
+
+    svg {
+      display: none;
+    }
+  }
+
+  .bp-dropdown__sub--active:hover {
+    background: unset !important;
+  }
+
+  .smaller-padding {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   .el-dropdown {
     color: #dedede !important;
   }
@@ -378,12 +454,6 @@
     color: #f0f0f0 !important;
   }
 
-  .el-dropdown-menu__item:not(.is-disabled):hover {
-    background: radial-gradient(#292929, rgb(0, 0, 0)) !important;
-    text-shadow: 3px 3px rgb(0, 0, 0);
-    color: rgb(255, 255, 255) !important;
-  }
-
   .popper__arrow {
     display: none !important;
   }
@@ -399,6 +469,14 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding: 15px 25px;
+
+    img {
+      width: 35px;
+      height: 20px;
+      border-radius: 2px;
+      margin-right: 15px;
+    }
   }
 
   .website-logo {
