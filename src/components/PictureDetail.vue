@@ -3,43 +3,16 @@
     <div class="detail-top">
       <img class="detail-img" :src="imgUrl" alt="no-img" @click="launchFullScreen">
     </div>
-    <!-- <div class="detail-bottom">
-      <img src="https://cdn.shopify.com/s/files/1/0116/0042/9115/products/nls-prints-iceland-2014-12_6598-04-frame-matte_1200x.jpg?v=1561046822" alt="">
-      <img src="https://cdn.shopify.com/s/files/1/0116/0042/9115/products/nls-prints-iceland-2014-12_6598-01-frame-matte_1200x.jpg?v=1561046822" alt="">
-      <img src="https://cdn.shopify.com/s/files/1/0116/0042/9115/products/nls-prints-iceland-2014-12_6598-05-frame_1200x.jpg?v=1561046822" alt="">
-    </div> -->
-    <!-- <img v-show="showFullScreen" @click="showFullScreen = false" :src="imgUrl" alt="" class="fullscreen-img"> -->
   </div>
 </template>
 
 <script>
-import { Select, Option, Button } from 'element-ui';
 
 export default {
   name: 'PictureDetail',
   props: [ 'imgUrl' ],
-  components: {
-    'el-button': Button,
-    'el-select': Select,
-    'el-option': Option,
-  },
   data() {
     return {
-      formatOptions: [
-        {
-          value: '40 x 60 CM',
-          label: '40 x 60 CM',
-        },
-        {
-          value: '50 x 75 CM',
-          label: '50 x 75 CM',
-        },
-        {
-          value: '60 x 90 CM',
-          label: '60 x 90 CM',
-        },
-      ],
-      formatSelected: '',
       showFullScreen: false,
     };
   },

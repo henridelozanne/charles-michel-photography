@@ -18,7 +18,6 @@
             <div class="inner-inner" id="inner-inner" @mouseover="toggleCloseIcon(true)" @mouseleave="toggleCloseIcon(false)">
               <img class="full-screen-picture" :src="currentPictureUrl" alt="no-img" id="full-screen-picture" @click="hideImgFull">
               <transition name="fade-quicker">
-                <!-- <i v-if="closeIconIsVisible" class="el-icon-close close-icon" @click="hideImgFull"></i> -->
                 <i v-if="false" class="el-icon-close close-icon" @click="hideImgFull"></i>
               </transition>
             </div>
