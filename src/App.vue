@@ -12,22 +12,20 @@
         <i class="el-icon-close close-icon" @click="closeMobileMenu"></i>
         <transition name="fade" mode="out-in">
           <ul class="mobile-menu-list" v-if="!languageMenuIsVisible" key="1">
-            <li v-if="isFrench" @click="toggleMenuActive('childhood')">Enfance</li>
-            <li v-if="isEnglish" @click="toggleMenuActive('childhood')">Childhood</li>
-            <li v-if="isTagalog" @click="toggleMenuActive('childhood')">Buhay kalsada</li>
-              <ul v-show="activeChildhood">
-                <li v-if="isFrench" class="color-submenu" @click="goToPage('childhood-black-and-white')">Noir et blanc</li>
-                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('childhood-black-and-white')">Black and white</li>
-                <li v-if="isFrench" class="color-submenu" @click="goToPage('childhood-colour')">Couleur</li>
-                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('childhood-colour')">Colour</li>
+            <li @click="toggleMenuActive('portraits')">Portraits</li>
+              <ul v-show="activePortraits">
+                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('portraits-bw')">Black and white</li>
+                <li v-else class="color-submenu" @click="goToPage('portraits-bw')">Noir et blanc</li>
+                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('portraits-colour')">Colour</li>
+                <li v-else class="color-submenu" @click="goToPage('portraits-colour')">Couleur</li>
               </ul>
 
             <li v-if="isFrench" @click="toggleMenuActive('street-life')">Scène de vie</li>
             <li v-if="isEnglish" @click="toggleMenuActive('street-life')">Street life</li>
             <li v-if="isTagalog" @click="toggleMenuActive('street-life')">Kulay</li>
               <ul v-show="activeStreetLife">
-                <li v-if="isFrench" class="color-submenu" @click="goToPage('street-life-black-and-white')">Noir et blanc</li>
-                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('street-life-black-and-white')">Black and white</li>
+                <li v-if="isFrench" class="color-submenu" @click="goToPage('street-life-bw')">Noir et blanc</li>
+                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('street-life-bw')">Black and white</li>
                 <li v-if="isFrench" class="color-submenu" @click="goToPage('street-life-colour')">Couleur</li>
                 <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('street-life-colour')">Colour</li>
               </ul>
@@ -36,8 +34,8 @@
             <li v-if="isEnglish" @click="toggleMenuActive('people-at-work')">People at work</li>
             <li v-if="isTagalog" @click="toggleMenuActive('people-at-work')">People at work</li>
               <ul v-show="activePeopleAtWork">
-                <li v-if="isFrench" class="color-submenu" @click="goToPage('people-at-work-black-and-white')">Noir et blanc</li>
-                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('people-at-work-black-and-white')">Black and white</li>
+                <li v-if="isFrench" class="color-submenu" @click="goToPage('people-at-work-bw')">Noir et blanc</li>
+                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('people-at-work-bw')">Black and white</li>
                 <li v-if="isFrench" class="color-submenu" @click="goToPage('people-at-work-colour')">Couleur</li>
                 <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('people-at-work-colour')">Colour</li>
               </ul>
@@ -98,7 +96,7 @@ export default {
   data() {
     return {
       appLanguage: 'english',
-      activeChildhood: false,
+      activePortraits: false,
       activeStreetLife: false,
       activePeopleAtWork: false,
       languageMenuIsVisible: false,
@@ -121,7 +119,7 @@ export default {
     closeMobileMenu() {
       this.mobileMenuIsOpened = false;
       this.languageMenuIsVisible = false;
-      this.activeChildhood = false;
+      this.activePortraits = false;
       this.activeStreetLife = false;
       this.activePeopleAtWork = false;
     },
@@ -129,16 +127,16 @@ export default {
       this.languageMenuIsVisible = !this.languageMenuIsVisible;
     },
     toggleMenuActive(clickedMenu) {
-      if (clickedMenu === 'childhood') {
+      if (clickedMenu === 'portraits') {
         this.activeStreetLife = false;
         this.activePeopleAtWork = false;
-        this.activeChildhood = !this.activeChildhood;
+        this.activePortraits = !this.activePortraits;
       } else if (clickedMenu === 'street-life') {
-        this.activeChildhood = false;
+        this.activePortraits = false;
         this.activePeopleAtWork = false;
         this.activeStreetLife = !this.activeStreetLife;
       } else if (clickedMenu === 'people-at-work') {
-        this.activeChildhood = false;
+        this.activePortraits = false;
         this.activeStreetLife = false;
         this.activePeopleAtWork = !this.activePeopleAtWork;
       }
@@ -246,7 +244,6 @@ body {
 .color-submenu {
   font-size: 25px !important;
   height: 0;
-  opacity: 0%;
   color: black;
   animation: increaseheight .1s linear forwards;
 }
@@ -258,7 +255,6 @@ body {
 
   100% {
     height: 40px;
-    opacity: 100%;
     color: rgb(222, 222, 222);
   }
 }
