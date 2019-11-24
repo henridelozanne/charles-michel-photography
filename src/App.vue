@@ -144,6 +144,9 @@ export default {
     goToPage(page) {
       this.$router.push(page);
       this.mobileMenuIsOpened = false;
+      this.activePortraits = false;
+      this.activeStreetLife = false;
+      this.activePeopleAtWork = false;
     },
     openMobileMenu() {
       this.mobileMenuIsOpened = true;
