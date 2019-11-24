@@ -248,7 +248,7 @@ body {
   height: 0;
   opacity: 0%;
   color: black;
-  animation: increaseheight .2s linear forwards;
+  animation: increaseheight .1s linear forwards;
 }
 
 @keyframes increaseheight {
