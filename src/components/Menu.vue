@@ -18,31 +18,7 @@
               <template v-if="isEnglish || isTagalog" slot="btn">Gallery</template>
               <template v-else-if="isFrench" slot="btn">Galerie</template>
               <template slot="body">
-                <ul>
-                  <div class="horizontal-bar"></div>
-                  <li>
-                    <bp-dropdown :trigger="'hover'" :role="'sublist'" :align="'right'" :x="-30" :y="0" class="bp-dropdown-second">
-                      <template v-if="isEnglish" slot="btn">Childhood</template>
-                      <template v-else-if="isFrench" slot="btn">Enfance</template>
-                      <template v-else slot="btn">Buhay kalsada</template>
-                      <template slot="body">
-                        <ul v-if="isEnglish || isTagalog">
-                          <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Black and white</li>
-                          <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Colour</li>
-                          <div class="horizontal-bar"></div>
-                        </ul>
-                        <ul v-else-if="isFrench">
-                          <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Noir et blanc</li>
-                          <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Couleur</li>
-                          <div class="horizontal-bar"></div>
-                        </ul>
-                      </template>
-                    </bp-dropdown>
-                  </li>
+                <ul>                  
                   <div class="horizontal-bar"></div>
                   <li>
                     <bp-dropdown :trigger="'hover'" :role="'sublist'" :align="'right'" :x="-30" :y="0" class="bp-dropdown-second">
@@ -52,16 +28,38 @@
                       <template slot="body">
                         <ul v-if="isEnglish || isTagalog">
                           <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Black and white</li>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('street-life-bw')">Black and white</li>
                           <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Colour</li>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('street-life-colour')">Colour</li>
                           <div class="horizontal-bar"></div>
                         </ul>
                         <ul v-else-if="isFrench">
                           <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Noir et blanc</li>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('street-life-bw')">Noir et blanc</li>
                           <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Couleur</li>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('street-life-colour')">Couleur</li>
+                          <div class="horizontal-bar"></div>
+                        </ul>
+                      </template>
+                    </bp-dropdown>
+                  </li>
+                  <div class="horizontal-bar"></div>
+                  <li>
+                    <bp-dropdown :trigger="'hover'" :role="'sublist'" :align="'right'" :x="-30" :y="0" class="bp-dropdown-second">
+                      <template slot="btn">Portraits</template>
+                      <template slot="body">
+                        <ul v-if="isEnglish || isTagalog">
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('portraits-bw')">Black and white</li>
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('portraits-colour')">Colour</li>
+                          <div class="horizontal-bar"></div>
+                        </ul>
+                        <ul v-else-if="isFrench">
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('portraits-bw')">Noir et blanc</li>
+                          <div class="horizontal-bar"></div>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('portraits-colour')">Couleur</li>
                           <div class="horizontal-bar"></div>
                         </ul>
                       </template>
@@ -75,16 +73,16 @@
                       <template slot="body">
                         <ul v-if="isEnglish || isTagalog">
                           <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Black and white</li>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('people-at-work-bw')">Black and white</li>
                           <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Colour</li>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('people-at-work-colour')">Colour</li>
                           <div class="horizontal-bar"></div>
                         </ul>
                         <ul v-else-if="isFrench">
                           <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Noir et blanc</li>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('people-at-work-bw')">Noir et blanc</li>
                           <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding">Couleur</li>
+                          <li class="colour-dd-item smaller-padding" @click="goToPage('people-at-work-colour')">Couleur</li>
                           <div class="horizontal-bar"></div>
                         </ul>
                       </template>
