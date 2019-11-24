@@ -50,7 +50,7 @@
     created() {
       setTimeout(() => {
         this.isLoading = false;
-      }, 2700);
+      }, 3000);
     },
     mounted() {
       this.setColumnsAndLaunchMasonry();
