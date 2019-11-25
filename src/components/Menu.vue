@@ -149,6 +149,15 @@
 
             <div class="horizontal-bar"></div>
           </div>
+
+          <div>
+            <div class="horizontal-bar"></div>
+
+            <div v-if="isEnglish || isTagalog" class="menu-title special-highlight" @click="goToInstagram">Follow me</div>
+            <div v-if="isFrench" class="menu-title special-highlight" @click="goToInstagram">Me suivre</div>
+
+            <div class="horizontal-bar"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -179,6 +188,7 @@
     },
     props: {
       appLanguage: { type: String, default: 'english' },
+      goToInstagram: { type: Function, default: () => {} },
     },
     computed: {
       isEnglish() {
@@ -237,6 +247,10 @@
 
   .el-icon-menu {
     font-size: 25px !important;
+  }
+
+  .desktop-view {
+    min-height: 450px;
   }
 
   .gallery {
@@ -415,6 +429,12 @@
     svg {
       display: none;
     }
+  }
+
+  .special-highlight:hover {
+    background: radial-gradient(#292929, rgb(0, 0, 0)) !important;
+    text-shadow: 3px 3px rgb(0, 0, 0);
+    color: rgb(255, 255, 255) !important;
   }
 
   .bp-dropdown__sub--active:hover {

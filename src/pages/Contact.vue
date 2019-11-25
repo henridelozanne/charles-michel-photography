@@ -20,13 +20,6 @@
         <el-button v-if="isTagalog" class="send-form" @click="sendMail">Send</el-button>
       </div>
     </form>
-    <div class="follow-me-container" @click="goToInstagram()" >
-      <h1 v-if="isEnglish" class="follow-me">Follow me</h1>
-      <h1 v-if="isFrench" class="follow-me">Me suivre</h1>
-      <h1 v-if="isTagalog" class="follow-me">Follow me</h1>
-      <div class="horizontal-bar"></div>
-      <img class="instagram-img" src="http://www.procop.com/web/wp-content/uploads/2015/07/instagram-glyph-1-png-transparent-logo-2.png" alt="instagram">
-    </div>
   </div>
 </template>
 
@@ -94,10 +87,6 @@ export default {
     };
   },
   methods: {
-    goToInstagram() {
-      var win = window.open('https://www.instagram.com/charles___michel/?hl=fr', '_blank');
-      win.focus();
-    },
     resetForm() {
       this.form.name = '';
       this.form.email = '';
@@ -158,8 +147,6 @@ form {
   width: 50%;
   margin: 40px auto 0 auto;
   min-width: 400px;
-  margin-bottom: 150px;
-
 
   .el-input {
     margin-bottom: 20px;
@@ -193,44 +180,6 @@ form {
   }
 }
 
-.follow-me-container {
-  background: white;
-  margin-bottom: 150px !important;
-  border-radius: 50%;
-  border: 4px solid rgb(62, 62, 62);
-  width: 300px;
-  height: 300px;
-  position: relative;
-  margin:auto;
-  clear: both;
-  cursor: pointer;
-
-  .follow-me {
-    position: absolute;
-    top: 63px;
-    left: 79px;
-    color: rgb(40, 40, 40);
-    font-family: Palanquin, sans-serif;
-  }
-
-  .horizontal-bar {
-    margin: unset !important;
-    width: 250px !important;
-    position: absolute;
-    top: 150px;
-    left: 21px;
-    height: 4px;
-  }
-
-  .instagram-img {
-    position: absolute;
-    bottom: 47px;
-    left: 113px;
-    cursor: pointer;
-    width: 75px;
-  }
-}
-
 .send-form {
   background: white;
   color: rgb(43, 43, 43);
@@ -239,7 +188,6 @@ form {
 .container {
   text-align: center;
   font-family: 'Raleway', sans-serif !important;
-  margin-bottom: 320px;
 
   img {
     margin: auto;

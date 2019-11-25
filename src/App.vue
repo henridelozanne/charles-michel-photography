@@ -1,7 +1,8 @@
 <template>
   <div id="app">
       <div class="menu-ctn-ctn" :class="{'no-z-index': mobileMenuIsOpened, 'display-none': !showMenu, 'display-flex': showMenu}">
-        <app-menu class="menu" :appLanguage="appLanguage" @openMobileMenu="openMobileMenu" @newLanguage="setNewLanguage"/>
+        <app-menu class="menu" :appLanguage="appLanguage" @openMobileMenu="openMobileMenu"
+                  @newLanguage="setNewLanguage" :goToInstagram="goToInstagram"/>
       </div>
       <div class="menu-side-bar">
         <div></div>
@@ -46,7 +47,9 @@
             <li v-if="isTagalog" class="about-me" @click="goToPage('bio')">About me</li>
             <li @click="goToPage('contact')">Contact</li>
             <li v-if="isEnglish || isTagalog" @click="toggleMenuLanguage">Language</li>
-            <li v-if="isFrench" @click="toggleMenuLanguage">Langue</li>
+            <li v-else @click="toggleMenuLanguage">Langue</li>
+            <li v-if="isEnglish || isTagalog" @click="goToInstagram">Follow me</li>
+            <li v-else @click="goToInstagram">Me suivre</li>
           </ul>
         
           <ul v-if="languageMenuIsVisible" key="2" class="mobile-menu-list language-list">
@@ -122,6 +125,10 @@ export default {
       this.activePortraits = false;
       this.activeStreetLife = false;
       this.activePeopleAtWork = false;
+    },
+    goToInstagram() {
+      var win = window.open('https://www.instagram.com/charlesmichel_photography/?hl=fr', '_blank');
+      win.focus();
     },
     toggleMenuLanguage() {
       this.languageMenuIsVisible = !this.languageMenuIsVisible;
