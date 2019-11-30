@@ -54,15 +54,15 @@
         
           <ul v-if="languageMenuIsVisible" key="2" class="mobile-menu-list language-list">
             <li class="language-ctn" @click="setNewLanguage('english')">
-              <img src="./website-pictures/united-kingdom.png" alt="uk-flag">
+              <img src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141158/Website%20assets/united-kingdom_q8nc2a.png" alt="uk-flag">
               <span>English</span>
             </li>
             <li class="language-ctn" @click="setNewLanguage('french')">
-              <img src="./website-pictures/france.png" alt="france-flag">
+              <img src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141157/Website%20assets/france_lfxmkn.png" alt="france-flag">
               <span>Français</span>
             </li>
             <li class="language-ctn" @click="setNewLanguage('tagalog')">
-              <img src="./website-pictures/philippines.png" alt="uk-flag">
+              <img src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141158/Website%20assets/philippines_nwfsbu.png" alt="uk-flag">
               <span>Tagalog</span>
             </li>
             <li class="language-ctn back-ctn" @click="toggleMenuLanguage">

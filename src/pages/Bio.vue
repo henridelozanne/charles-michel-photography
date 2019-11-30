@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <img class="charles-picture" src="../website-pictures/charles-michel.jpg" alt="charles-michel">
+    <img class="charles-picture"
+         src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141159/Website%20assets/charles-michel_gavkej.jpg"
+         alt="charles-michel">
     <div class="bio-content" v-if="isEnglish">
       <p>
         Born in Auxerre, I spent my childhood with my family in Orleans and at the age of 19 I went to Lille to study business.

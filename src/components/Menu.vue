@@ -3,7 +3,7 @@
     <div class="container-lg-screen">
       <div class="page-title">
         <div class="page-title-inner-ctn">
-          <img class="website-logo" src="../website-pictures/website-logo.jpeg" alt="">
+          <img class="website-logo" src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141158/Website%20assets/website-logo_p2d3nb.png" alt="">
         </div>
       </div>
 
@@ -124,21 +124,21 @@
                   <div class="horizontal-bar"></div>
                   <li>
                     <div class="language-item-ctn" @click="changeLanguage('english')">
-                      <img src="../website-pictures/united-kingdom.png" alt="uk-flag">
+                      <img src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141158/Website%20assets/united-kingdom_q8nc2a.png" alt="uk-flag">
                       <span>English</span>
                     </div>
                   </li>
                   <div class="horizontal-bar"></div>
                   <li>
                     <div class="language-item-ctn" @click="changeLanguage('french')">
-                      <img src="../website-pictures/france.png" alt="france-flag">
+                      <img src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141157/Website%20assets/france_lfxmkn.png" alt="france-flag">
                       <span>Français</span>
                     </div>
                   </li>
                   <div class="horizontal-bar"></div>
                   <li>
                     <div class="language-item-ctn" @click="changeLanguage('tagalog')">
-                      <img src="../website-pictures/philippines.png" alt="philippines-flag">
+                      <img src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141158/Website%20assets/philippines_nwfsbu.png" alt="philippines-flag">
                       <span>Tagalog</span>
                     </div>
                   </li>
