@@ -12,7 +12,7 @@
             </transition>
           </div>
         </div>
-        <div class="img-ctn" v-if="fullImgIsVisible">
+        <div class="img-ctn disable-save" v-if="fullImgIsVisible">
           <div class="img-ctn-inner">
             <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-left" @click="goLeft"></i>
             <div class="inner-inner" id="inner-inner" @mouseover="toggleCloseIcon(true)" @mouseleave="toggleCloseIcon(false)">
@@ -327,5 +327,11 @@
 
 .full-width {
   width: 100%;
+}
+
+.disable-save {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
 }
 </style>

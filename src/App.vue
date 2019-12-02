@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" oncontextmenu="return false;">
       <div class="menu-ctn-ctn" :class="{'no-z-index': mobileMenuIsOpened, 'display-none': !showMenu, 'display-flex': showMenu}">
         <app-menu class="menu" :appLanguage="appLanguage" @openMobileMenu="openMobileMenu"
                   @newLanguage="setNewLanguage" :goToInstagram="goToInstagram"/>
@@ -169,7 +169,14 @@ export default {
     },
   },
   created() {
-    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('contextmenu', event => {
+      event.preventDefault();
+    });
+    
+    window.addEventListener("contextmenu", 
+      function(e) {
+        e.stopPropagation();
+    }, true);
   }
 }
 </script>

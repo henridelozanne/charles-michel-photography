@@ -95,20 +95,22 @@ export default {
       this.form.message = '';
     },
     sendMail() {
-      var templateParams = {
-          message_html: `subject: ${this.form.subject} | message: ${this.form.message}`,
+      const templateParams = {
+          message_html: `Objet: ${this.form.subject} \n Message: ${this.form.message}`,
           from_name: this.form.name,
-          reply_to: `email: ${this.form.email}, phone: ${this.form.phone}`,
+          reply_to: `Email: ${this.form.email} \n Téléphone: ${this.form.phone}`,
       };
       const that = this;
-      emailjs.send('gmail', 'template_TctJmAgp', templateParams, 'user_budaC2tozA2cUUxQ2SI7M')
-             .then(function() {
-               that.resetForm();
-               that.$router.push('send-email-success');
-             }, function() {
-               that.resetForm();
-               that.$router.push('send-email-error');
-             });
+
+      emailjs
+        .send('default_service', 'cmp_email_template', templateParams, 'user_budaC2tozA2cUUxQ2SI7M')
+        .then(function() {
+          that.resetForm();
+          that.$router.push('send-email-success');
+        }, function() {
+          that.resetForm();
+          that.$router.push('send-email-error');
+        });
     },
   },
 }
