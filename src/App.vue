@@ -169,14 +169,18 @@ export default {
     },
   },
   created() {
-    document.addEventListener('contextmenu', event => {
-      event.preventDefault();
-    });
-    
-    window.addEventListener("contextmenu", 
-      function(e) {
-        e.stopPropagation();
-    }, true);
+    if (window.innerWidth < 1100) {
+      // mobile & tablet
+      window.addEventListener("contextmenu", 
+        function(e) {
+          e.stopPropagation();
+      }, true);
+    } else {
+      // desktop
+      document.addEventListener('contextmenu', event => {
+        event.preventDefault();
+      });
+    }
   }
 }
 </script>
