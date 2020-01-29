@@ -1,6 +1,6 @@
 <template>
   <div id="app" oncontextmenu="return false;">
-      <div class="menu-ctn-ctn" :class="{'no-z-index': mobileMenuIsOpened, 'display-none': !showMenu, 'display-flex': showMenu}">
+      <!-- <div class="menu-ctn-ctn" :class="{'no-z-index': mobileMenuIsOpened, 'display-none': !showMenu, 'display-flex': showMenu}">
         <app-menu class="menu" :appLanguage="appLanguage" @openMobileMenu="openMobileMenu"
                   @newLanguage="setNewLanguage" :goToInstagram="goToInstagram"/>
       </div>
@@ -72,7 +72,15 @@
             </li>
           </ul>
         </transition>
-      </div>
+      </div> -->
+      <h1 class="testing test-1">inf à 768px</h1>
+      <h1 class="testing test-2">entre 768 et 900</h1>
+      <h1 class="testing test-3">entre 900 et 1000</h1>
+      <h1 class="testing test-4">entre 1000 et 1100</h1>
+      <h1 class="testing test-5">entre 1100 et 1200</h1>
+      <h1 class="testing test-6">entre 1200 et 1300</h1>
+      <h1 class="testing test-7">entre 1300 et 1400</h1>
+      <h1 class="testing test-8">+ 1400</h1>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Modak|Palanquin&display=swap" rel="stylesheet">
@@ -186,6 +194,61 @@ export default {
 </script>
 
 <style lang="scss">
+.testing {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .test-1 {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+  .test-2 {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1000px) {
+  .test-3 {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1100px) {
+  .test-4 {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1200px) {
+  .test-5 {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+  .test-6 {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1400px) {
+  .test-7 {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .test-8 {
+    display: block;
+  }
+}
+
+
+
+
 body {
   margin: 0;
   background: rgb(11, 11, 11);
