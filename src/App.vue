@@ -75,6 +75,8 @@
       </div> -->
       <h1 class="testing test-1">inf à 768px</h1>
       <h1 class="testing test-2">entre 768 et 900</h1>
+      <h1 class="testing test-980-large">entre 978 et 982</h1>
+      <h1 class="testing test-980-pile">pile 980</h1>
       <h1 class="testing test-3">entre 900 et 1000</h1>
       <h1 class="testing test-4">entre 1000 et 1100</h1>
       <h1 class="testing test-5">entre 1100 et 1200</h1>
@@ -210,11 +212,25 @@ export default {
   }
 }
 
-@media screen and (min-width: 900px) and (max-width: 1000px) {
-  .test-3 {
+@media screen and (min-width: 978px) and (max-width: 982px) {
+  .test-980-large {
     display: block;
   }
 }
+
+@media screen and (min-width: 980px) and (max-width: 980px) {
+  .test-980-pile {
+    display: block;
+  }
+}
+
+
+
+// @media screen and (min-width: 900px) and (max-width: 1000px) {
+//   .test-3 {
+//     display: block;
+//   }
+// }
 
 @media screen and (min-width: 1000px) and (max-width: 1100px) {
   .test-4 {
