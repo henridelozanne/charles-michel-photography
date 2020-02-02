@@ -13,16 +13,16 @@
           </div>
         </div>
         <div class="img-ctn" v-if="fullImgIsVisible">
-          <div class="img-ctn-inner">
-            <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-left" @click="goLeft"></i>
-            <div class="inner-inner" id="inner-inner" @mouseover="toggleCloseIcon(true)" @mouseleave="toggleCloseIcon(false)">
-              <img class="full-screen-picture" :src="currentPictureUrl" alt="no-img" id="full-screen-picture" @click="hideImgFull" oncontextmenu="return false;">
+          <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-left" @click="goLeft"></i>
+          <div class="inner-inner" id="inner-inner" @mouseover="toggleCloseIcon(true)" @mouseleave="toggleCloseIcon(false)">
+            <img class="full-screen-picture" :src="currentPictureUrl" alt="no-img" id="full-screen-picture" @click="hideImgFull" oncontextmenu="return false;">
+            <div class="layer" :style="{ height: imgHeight + 'px' }">
               <transition name="fade-quicker">
-                <i v-if="false" class="el-icon-close close-icon" @click="hideImgFull"></i>
+                <i v-if="closeIconIsVisible && imgHeightIsReady" class="el-icon-close close-icon" @click="hideImgFull"></i>
               </transition>
             </div>
-            <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-right" @click="goRight"></i>
           </div>
+          <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-right" @click="goRight"></i>
         </div>
       </div>
     </transition>
@@ -44,7 +44,9 @@
         previousColumnQuantity: undefined,
         fullImgIsVisible: false,
         isLoading: true,
+        imgHeightIsReady: false,
         arrowsAreVisible: true,
+        imgHeight: undefined,
       };
     },
     created() {
@@ -72,14 +74,23 @@
       },
     },
     methods: {
+      getImgHeight() {
+        this.imgHeight = document.getElementById('full-screen-picture').height;
+      },
       showImgFull(image) {
         this.currentPictureUrl = image;
         this.fullImgIsVisible = true;
         this.$emit('fullImgIsVisible');
+        const that = this;
+        setTimeout(() => {
+          this.getImgHeight();
+          that.imgHeightIsReady = true;
+        }, 2300);
       },
       hideImgFull() {
         this.fullImgIsVisible = false;
         this.closeIconIsVisible = false;
+        this.imgHeightIsReady = false;
         this.$emit('fullImgIsNotVisible');
       },
       listenForArrows() {
@@ -239,9 +250,6 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.95);
-}
-
-.img-ctn-inner {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -294,7 +302,7 @@
 }
 
 .fade-quicker-enter-active, .fade-quicker-leave-active {
-  transition: opacity 0.4s;
+  transition: opacity 0.7s;
 }
 .fade-quicker-enter, .fade-quicker-leave-to {
   opacity: 0;
@@ -314,11 +322,14 @@
 }
 
 .inner-inner {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.layer {
+  position: relative;
 }
 
 .full-height {
