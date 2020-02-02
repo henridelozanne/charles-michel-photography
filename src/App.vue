@@ -1,6 +1,6 @@
 <template>
-  <div id="app" oncontextmenu="return false;">
-      <!-- <div class="menu-ctn-ctn" :class="{'no-z-index': mobileMenuIsOpened, 'display-none': !showMenu, 'display-flex': showMenu}">
+  <div id="app">
+      <div class="menu-ctn-ctn" :class="{'no-z-index': mobileMenuIsOpened, 'display-none': !showMenu, 'display-flex': showMenu}">
         <app-menu class="menu" :appLanguage="appLanguage" @openMobileMenu="openMobileMenu"
                   @newLanguage="setNewLanguage" :goToInstagram="goToInstagram"/>
       </div>
@@ -72,8 +72,8 @@
             </li>
           </ul>
         </transition>
-      </div> -->
-      <h1 class="testing test-1">inf à 768px</h1>
+      </div>
+      <!-- <h1 class="testing test-1">inf à 768px</h1>
       <h1 class="testing test-2">entre 768 et 900</h1>
       <h1 class="testing test-980-large">entre 978 et 982</h1>
       <h1 class="testing test-980-pile">pile 980</h1>
@@ -82,7 +82,7 @@
       <h1 class="testing test-5">entre 1100 et 1200</h1>
       <h1 class="testing test-6">entre 1200 et 1300</h1>
       <h1 class="testing test-7">entre 1300 et 1400</h1>
-      <h1 class="testing test-8">+ 1400</h1>
+      <h1 class="testing test-8">+ 1400</h1> -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Modak|Palanquin&display=swap" rel="stylesheet">
@@ -178,20 +178,6 @@ export default {
       this.showMenu = true;
     },
   },
-  created() {
-    if (window.innerWidth < 1100) {
-      // mobile & tablet
-      window.addEventListener("contextmenu", 
-        function(e) {
-          e.stopPropagation();
-      }, true);
-    } else {
-      // desktop
-      document.addEventListener('contextmenu', event => {
-        event.preventDefault();
-      });
-    }
-  }
 }
 </script>
 

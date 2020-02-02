@@ -12,11 +12,11 @@
             </transition>
           </div>
         </div>
-        <div class="img-ctn disable-save" v-if="fullImgIsVisible">
+        <div class="img-ctn" v-if="fullImgIsVisible">
           <div class="img-ctn-inner">
             <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-left" @click="goLeft"></i>
             <div class="inner-inner" id="inner-inner" @mouseover="toggleCloseIcon(true)" @mouseleave="toggleCloseIcon(false)">
-              <img class="full-screen-picture" :src="currentPictureUrl" alt="no-img" id="full-screen-picture" @click="hideImgFull">
+              <img class="full-screen-picture" :src="currentPictureUrl" alt="no-img" id="full-screen-picture" @click="hideImgFull" oncontextmenu="return false;">
               <transition name="fade-quicker">
                 <i v-if="false" class="el-icon-close close-icon" @click="hideImgFull"></i>
               </transition>
@@ -327,11 +327,5 @@
 
 .full-width {
   width: 100%;
-}
-
-.disable-save {
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  pointer-events: none;
 }
 </style>

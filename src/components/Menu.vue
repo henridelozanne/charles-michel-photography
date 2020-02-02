@@ -13,10 +13,6 @@
         <div class="menu-inner-ctn desktop-view is-not-mobile">
           <div>
             <div class="horizontal-bar"></div>
-
-            <h1 style="background: red; color: yellow" v-if="mobileMenuIsVisible">IT IS MOBILE</h1>
-            <h1 style="background: green; color: purple" v-if="!mobileMenuIsVisible">IT IS DESKTOP</h1>
-
             <bp-dropdown :trigger="'hover'" align="right" :close-on-click="false" :x="-30" :y="0">
               <template v-if="isEnglish || isTagalog" slot="btn">Gallery</template>
               <template v-else-if="isFrench" slot="btn">Galerie</template>
