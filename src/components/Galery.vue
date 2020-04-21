@@ -8,14 +8,18 @@
         <div id="gallery" class="gallery">
           <div v-for="image in imageList" :key="image" @click="showImgFull(image)" class="gallery-item">
             <transition name="fade">
-              <img :src="image" alt="">
+              <div oncontextmenu="return false;" class="background-div" :style="`background-image: url(${image})`">
+                <img :src="image" alt="">
+              </div>
             </transition>
           </div>
         </div>
         <div class="img-ctn" v-if="fullImgIsVisible">
           <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-left" @click="goLeft"></i>
           <div class="inner-inner" id="inner-inner" @mouseover="toggleCloseIcon(true)" @mouseleave="toggleCloseIcon(false)">
-            <img class="full-screen-picture" :src="currentPictureUrl" alt="no-img" id="full-screen-picture" @click="hideImgFull" oncontextmenu="return false;">
+            <div oncontextmenu="return false;" class="background-div" :style="`background-image: url(${currentPictureUrl})`">
+              <img class="full-screen-picture" style="visibility: hidden" :src="currentPictureUrl" alt="no-img" id="full-screen-picture" @click="hideImgFull">
+            </div>
             <div class="layer" :style="{ height: imgHeight + 'px' }">
               <transition name="fade-quicker">
                 <i v-if="closeIconIsVisible && imgHeightIsReady" class="el-icon-close close-icon" @click="hideImgFull"></i>
@@ -238,8 +242,8 @@
 }
 
 .full-screen-picture {
+  max-height: 100vh;
   max-width: 100%;
-  max-height: 100%;
 }
 
 .img-ctn {
@@ -266,6 +270,17 @@
   transform: translateY(-50%);
   font-size: 2em;
   font-weight: 900 !important;
+}
+
+.background-div {
+  max-width: 100%;
+  max-height: 100%;
+  height: fit-content;
+  background-size: cover;
+
+  img {
+    visibility: hidden;
+  }
 }
 
 .arrow:hover {
