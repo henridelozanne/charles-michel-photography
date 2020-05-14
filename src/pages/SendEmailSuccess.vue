@@ -2,9 +2,7 @@
   <div class="send-email-ctn">
     <div class="inner-ctn">
       <i class="el-icon-circle-check success-icon"></i>
-      <p v-if="isEnglish">Your email has been sent, thank you</p>
-      <p v-if="isFrench">L'email a bien été envoyé, merci</p>
-      <p v-if="isTagalog">Na-send na ang email, salamat</p>
+      <p>{{ $t('SendEmailSuccess.message') }}</p>
     </div>
   </div>
 </template>
@@ -12,20 +10,6 @@
 <script>
 export default {
   name: 'SendEmailSuccess',
-  props: {
-    appLanguage: { type: String, default: 'english' },
-  },
-  computed: {
-    isEnglish() {
-      return this.appLanguage === 'english';
-    },
-    isFrench() {
-      return this.appLanguage === 'french';
-    },
-    isTagalog() {
-      return this.appLanguage === 'tagalog';
-    },
-  },
 }
 </script>
 

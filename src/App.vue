@@ -1,88 +1,58 @@
 <template>
   <div id="app">
       <div class="menu-ctn-ctn" :class="{'no-z-index': mobileMenuIsOpened, 'display-none': !showMenu, 'display-flex': showMenu}">
-        <app-menu class="menu" :appLanguage="appLanguage" @openMobileMenu="openMobileMenu"
-                  @newLanguage="setNewLanguage" :goToInstagram="goToInstagram"/>
+        <app-menu class="menu" @openMobileMenu="openMobileMenu"
+                  :goToInstagram="goToInstagram"/>
       </div>
       <div class="menu-side-bar">
         <div></div>
       </div>
       <div class="horizontal-bar only-sm-screen"></div>
-      <router-view class="main" :appLanguage="appLanguage" @fullImgIsVisible="fullImgIsVisible" @fullImgIsNotVisible="fullImgIsNotVisible"/>
+      <router-view class="main" @fullImgIsVisible="fullImgIsVisible" @fullImgIsNotVisible="fullImgIsNotVisible"/>
       <div v-if="mobileMenuIsOpened" class="mobile-menu-opened">
         <i class="el-icon-close close-icon" @click="closeMobileMenu"></i>
         <transition name="fade" mode="out-in">
           <ul class="mobile-menu-list" v-if="!languageMenuIsVisible" key="1">
-            <li @click="toggleMenuActive('portraits')">Portraits</li>
+            <li @click="toggleMenuActive('portraits')">{{ $t('App.portraits') }}</li>
               <ul v-show="activePortraits">
-                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('portraits-bw')">Black and white</li>
-                <li v-else class="color-submenu" @click="goToPage('portraits-bw')">Noir et blanc</li>
-                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('portraits-colour')">Colour</li>
-                <li v-else class="color-submenu" @click="goToPage('portraits-colour')">Couleur</li>
+                <li class="color-submenu" @click="goToPage('portraits-bw')">{{ $t('App.blackAndWhite') }}</li>
+                <li class="color-submenu" @click="goToPage('portraits-colour')">{{ $t('App.colour') }}</li>
               </ul>
-
-            <li v-if="isFrench" @click="toggleMenuActive('street-life')">Scène de vie</li>
-            <li v-if="isEnglish" @click="toggleMenuActive('street-life')">Street life</li>
-            <li v-if="isTagalog" @click="toggleMenuActive('street-life')">Kulay</li>
+            <li @click="toggleMenuActive('street-life')">{{ $t('App.streetLife') }}</li>
               <ul v-show="activeStreetLife">
-                <li v-if="isFrench" class="color-submenu" @click="goToPage('street-life-bw')">Noir et blanc</li>
-                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('street-life-bw')">Black and white</li>
-                <li v-if="isFrench" class="color-submenu" @click="goToPage('street-life-colour')">Couleur</li>
-                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('street-life-colour')">Colour</li>
+                <li class="color-submenu" @click="goToPage('street-life-bw')">{{ $t('App.blackAndWhite') }}</li>
+                <li class="color-submenu" @click="goToPage('street-life-colour')">{{ $t('App.colour') }}</li>
               </ul>
-
-            <li v-if="isFrench" @click="toggleMenuActive('people-at-work')">Métiers</li>
-            <li v-if="isEnglish" @click="toggleMenuActive('people-at-work')">People at work</li>
-            <li v-if="isTagalog" @click="toggleMenuActive('people-at-work')">People at work</li>
+            <li @click="toggleMenuActive('people-at-work')">{{ $t('App.peopleAtWork') }}</li>
               <ul v-show="activePeopleAtWork">
-                <li v-if="isFrench" class="color-submenu" @click="goToPage('people-at-work-bw')">Noir et blanc</li>
-                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('people-at-work-bw')">Black and white</li>
-                <li v-if="isFrench" class="color-submenu" @click="goToPage('people-at-work-colour')">Couleur</li>
-                <li v-if="isEnglish || isTagalog" class="color-submenu" @click="goToPage('people-at-work-colour')">Colour</li>
+                <li class="color-submenu" @click="goToPage('people-at-work-bw')">{{ $t('App.blackAndWhite') }}</li>
+                <li class="color-submenu" @click="goToPage('people-at-work-colour')">{{ $t('App.colour') }}</li>
               </ul>
-
-
-            <li v-if="isEnglish" class="about-me" @click="goToPage('bio')">About me</li>
-            <li v-if="isFrench" class="about-me" @click="goToPage('bio')">A propos</li>
-            <li v-if="isTagalog" class="about-me" @click="goToPage('bio')">About me</li>
+            <li class="about-me" @click="goToPage('bio')">{{ $t('App.aboutMe') }}</li>
             <li @click="goToPage('contact')">Contact</li>
-            <li v-if="isEnglish || isTagalog" @click="toggleMenuLanguage">Language</li>
-            <li v-else @click="toggleMenuLanguage">Langue</li>
-            <li v-if="isEnglish || isTagalog" @click="goToInstagram">Follow me</li>
-            <li v-else @click="goToInstagram">Me suivre</li>
+            <li @click="toggleMenuLanguage">{{ $t('App.language') }}</li>
+            <li @click="goToInstagram">{{ $t('App.followMe') }}</li>
           </ul>
-        
           <ul v-if="languageMenuIsVisible" key="2" class="mobile-menu-list language-list">
-            <li class="language-ctn" @click="setNewLanguage('english')">
+            <li class="language-ctn" @click="setLocale('en')">
               <img src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141158/Website%20assets/united-kingdom_q8nc2a.png" alt="uk-flag">
               <span>English</span>
             </li>
-            <li class="language-ctn" @click="setNewLanguage('french')">
+            <li class="language-ctn" @click="setLocale('fr')">
               <img src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141157/Website%20assets/france_lfxmkn.png" alt="france-flag">
               <span>Français</span>
             </li>
-            <li class="language-ctn" @click="setNewLanguage('tagalog')">
+            <li class="language-ctn" @click="setLocale('ta')">
               <img src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141158/Website%20assets/philippines_nwfsbu.png" alt="uk-flag">
               <span>Tagalog</span>
             </li>
             <li class="language-ctn back-ctn" @click="toggleMenuLanguage">
               <i class="el-icon-back"></i>
-              <span v-if="isFrench">Retour</span>
-              <span v-else>Back</span>
+              <span>{{ $t('App.back') }}</span>
             </li>
           </ul>
         </transition>
       </div>
-      <!-- <h1 class="testing test-1">inf à 768px</h1>
-      <h1 class="testing test-2">entre 768 et 900</h1>
-      <h1 class="testing test-980-large">entre 978 et 982</h1>
-      <h1 class="testing test-980-pile">pile 980</h1>
-      <h1 class="testing test-3">entre 900 et 1000</h1>
-      <h1 class="testing test-4">entre 1000 et 1100</h1>
-      <h1 class="testing test-5">entre 1100 et 1200</h1>
-      <h1 class="testing test-6">entre 1200 et 1300</h1>
-      <h1 class="testing test-7">entre 1300 et 1400</h1>
-      <h1 class="testing test-8">+ 1400</h1> -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Modak|Palanquin&display=swap" rel="stylesheet">
@@ -108,7 +78,6 @@ export default {
   },
   data() {
     return {
-      appLanguage: 'english',
       activePortraits: false,
       activeStreetLife: false,
       activePeopleAtWork: false,
@@ -117,18 +86,10 @@ export default {
       showMenu: true,
     }
   },
-  computed: {
-    isEnglish() {
-      return this.appLanguage === 'english';
-    },
-    isFrench() {
-      return this.appLanguage === 'french';
-    },
-    isTagalog() {
-      return this.appLanguage === 'tagalog';
-    },
-  },
   methods: {
+    setLocale(locale) {
+      this.$i18n.locale = locale;
+    },
     closeMobileMenu() {
       this.mobileMenuIsOpened = false;
       this.languageMenuIsVisible = false;
@@ -167,9 +128,6 @@ export default {
     },
     openMobileMenu() {
       this.mobileMenuIsOpened = true;
-    },
-    setNewLanguage(payload) {
-      this.appLanguage = payload;
     },
     fullImgIsVisible() {
       this.showMenu = false;

@@ -2,8 +2,7 @@
   <div class="send-email-ctn">
     <div class="inner-ctn">
       <i class="el-icon-circle-close error-icon"></i>
-      <p v-if="isEnglish || isTagalog">An error has occured, please try again later</p>
-      <p v-if="isFrench">Un problème est survenu lors de l'envoi du mail, veuillez recommencer plus tard</p>
+      <p>{{ $t('SendMailError.message') }}</p>
     </div>
   </div>
 </template>
@@ -11,20 +10,6 @@
 <script>
 export default {
   name: 'SendEmailError',
-  props: {
-    appLanguage: { type: String, default: 'english' },
-  },
-  computed: {
-    isEnglish() {
-      return this.appLanguage === 'english';
-    },
-    isFrench() {
-      return this.appLanguage === 'french';
-    },
-    isTagalog() {
-      return this.appLanguage === 'tagalog';
-    },
-  },
 }
 </script>
 

@@ -1,0 +1,48 @@
+{
+  "Menu": {
+    "aboutMe": "About me",
+    "gallery": "Gallery",
+    "streetLife": "Kulay",
+    "blackAndWhite": "Black and white",
+    "colour": "Colour",
+    "peopleAtWork": "People at work",
+    "portraits": "Portraits",
+    "contact": "Contact",
+    "language": "Language",
+    "followMe": "Follow me"
+  },
+  "Bio": {
+    "p1": "Ipinanganak ako sa Auxere at lumaki sa Orleans kasama ang aking pamilya at kinalaunan nagpunta sa Lille noong ako ay 19 para mag-aral ng Business.",
+    "p2": "Noong 2012, nagdesisyon ako na magbisikleta mula France hanggang iba't ibang parte ng Europe tulad ng Russia hanggang Asia at hanggang makarating ako ng India. Isang taon ang inabot ng aking paglalakbay mula Lille France hanggang Mumbai.",
+    "p3": "Naggsilbing inspirasyon sa kin ang aking paglalakbay para muling umalis at manirahan sa ibang lugar gaya ng Australia kahit pa kakagraduate ko lang noon. Nanatili ako dito ng halos tatlong taon kung saan nagtrabaho ako bilang bartender at sa isang slaughterhouse, construction at maging sa finance.",
+    "p4": "Sa Australia din nagsimula ang hilig ko sa photography. Sa loob ng anim na buwan doon, humanap ako ng resources at nagsimulang magensayo sa mga technical aspects, rules of composition at pag-eedit ng mga litrato",
+    "p5": "Nasa proseso pa ng pagiging maayos ang photography style ko nung dumating ako sa Pilipinas. Sa mag-isang pagtira ko sa Manila ay naisipan kong libutin ito at dito ko natuklasan ang kaawa-awang kalagayan at realidad ng ibang mga tao doon. Pero sa kabila nito, hindi ko malilimot ang kabutihang ipinakita ng mga tao, at ito ay isang bagay na hindi ko pa nakita sa kahit saang lugar. Kaagad akong nagdesisyon na bigyang atensyon ang mga naninirahan sa Manila, sa mga ganap na puno ng buhay at emosyon.",
+    "p6": "Mula nito, nagsilbing lugar na ng buhay ko ang Manila na noong una ay magsisilbing daan ko lamang dapat pauwi ng France."
+  },
+  "Contact": {
+    "contactMe": "Contact me",
+    "manilaPhil": "Manilla, Pilipinas",
+    "send": "Send",
+    "name": "Pangalan*",
+    "phone": "Telepono",
+    "subject": "Subject",
+    "message": "Mensahe*"
+  },
+  "SendEmailError": {
+    "message": "An error has occured, please try again later"
+  },
+  "SendEmailSuccess": {
+    "message": "Na-send na ang email, salamat"
+  },
+  "App": {
+    "portraits": "Portraits",
+    "blackAndWhite": "Black and white",
+    "colour": "Colour",
+    "streetLife": "Kulay",
+    "peopleAtWork": "People at work",
+    "aboutMe": "About me",
+    "language": "Language",
+    "followMe": "Follow me",
+    "back": "Back"
+  }
+}

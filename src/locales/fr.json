@@ -1,0 +1,48 @@
+{
+  "Menu": {
+    "aboutMe": "A propos",
+    "gallery": "Galerie",
+    "streetLife": "Scène de vie",
+    "blackAndWhite": "Noir et blanc",
+    "colour": "Couleur",
+    "peopleAtWork": "Métiers",
+    "portraits": "Portraits",
+    "contact": "Contact",
+    "language": "Langue",
+    "followMe": "Me suivre"
+  },
+  "Bio": {
+    "p1": "Auxerrois de naissance, j’ai vécu toute mon adolescence avec ma famille à Orléans et en 2008 à l’âge de 19 ans je suis parti à Lille pour y faire des études de commerce.",
+    "p2": "En 2012, j’ai décidé d’entamer une tour du monde à vélo de 15 000 kilomètres depuis la France en passant par les pays de l'Est, la Chine, le Vietnam, le Cambodge jusqu'en Inde et ce pendant un an.",
+    "p3": "En 2014, bien que fraîchement diplômé, j’étais encore rempli d’images de mon voyage à vélo et j’ai donc décidé de partir vivre en Australie. Je resterai finalement dans ce pays pendant près de trois ans, et j’y effectuerai tout type de boulot, de barman en passant par un abattoir, la construction et la finance.",
+    "p4": "C’est également en Australie que va se développer ma passion pour la photo. Durant mes 6 derniers mois je vais rechercher des sources et me former sur les aspects techniques, sur les règles de composition et sur l’édition.",
+    "p5": "Mon style photographique va s’affiner lors de mon arrivée aux Philippines. Seul dans les rues de Manille j’explore cette ville dans ses moindres recoins. Je me retrouve confronté à une réalité sur place souvent très dure, mais j’y fais également de belles rencontres. Je découvre un peuple d’une gentillesse et d’une générosité que je n’avais vu nulle part ailleurs. Très rapidement je vais décider d’orienter mon travail sur les habitants, sur des scènes de vie et sur l’émotion.",
+    "p6": "Cela fait maintenant plus de deux ans que je suis aux Philippines. Manila qui n’était à l’origine qu’un lieu de passage sur mon chemin de retour en France est devenu mon lieu de vie."
+  },
+  "Contact": {
+    "contactMe": "Me contacter",
+    "manilaPhil": "Manille, Philippines",
+    "send": "Envoyer",
+    "name": "Nom*",
+    "phone": "Téléphone",
+    "subject": "Objet",
+    "message": "Message*"
+  },
+  "SendEmailError": {
+    "message": "Un problème est survenu lors de l'envoi du mail, veuillez recommencer plus tard"
+  },
+  "SendEmailSuccess": {
+    "message": "L'email a bien été envoyé, merci"
+  },
+  "App": {
+    "portraits": "Portraits",
+    "blackAndWhite": "Noir et blanc",
+    "colour": "Couleur",
+    "streetLife": "Scène de vie",
+    "peopleAtWork": "Métiers",
+    "aboutMe": "A propos",
+    "language": "Langue",
+    "followMe": "Me suivre",
+    "back": "Retour"
+  }
+}

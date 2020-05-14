@@ -13,6 +13,7 @@ import StreetLifeBW from './pages/Galeries/StreetLifeBW.vue';
 import StreetLifeColour from './pages/Galeries/StreetLifeColour.vue';
 import PeopleAtWorkBW from './pages/Galeries/PeopleAtWorkBW.vue';
 import PeopleAtWorkColour from './pages/Galeries/PeopleAtWorkColour.vue';
+import i18n from './i18n';
 
 Vue.config.productionTip = false
 
@@ -41,5 +42,6 @@ const router = new VueRouter({
 
 new Vue({
   render: h => h(App),
-  router,
+  i18n,
+  router
 }).$mount('#app');

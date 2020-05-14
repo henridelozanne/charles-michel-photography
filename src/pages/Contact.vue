@@ -1,23 +1,18 @@
 <template>
   <div class="container">
-    <h1 v-if="isEnglish || isTagalog" class="contact-me">Contact me</h1>
-    <h1 v-if="isFrench" class="contact-me">Me contacter</h1>
+    <h1 class="contact-me">{{ $t('Contact.contactMe') }}</h1>
     <div class="horizontal-bar"></div>
     <form action="">
       <h2>Charles Michel</h2>
       <p>+63.92.60.62.65.26</p>
-      <p v-if="isEnglish" class="manila">Manila, The Philippines</p>
-      <p v-if="isFrench" class="manila">Manille, Philippines</p>
-      <p v-if="isTagalog" class="manila">Manilla, Pilipinas</p>
-      <el-input v-model="form.name" class="black-input" :placeholder="namePlaceholder"></el-input>
+      <p class="manila">{{ $t('Contact.manilaPhil') }}</p>
+      <el-input v-model="form.name" class="black-input" :placeholder="$t('Contact.name')"></el-input>
       <el-input v-model="form.email" class="black-input" placeholder="Email*"></el-input>
-      <el-input v-model="form.phone" class="black-input" :placeholder="phonePlaceholder"></el-input>
-      <el-input v-model="form.subject" class="black-input" :placeholder="subjectPlaceholder"></el-input>
-      <el-input v-model="form.message" type="textarea" class="black-input form-textarea" :placeholder="messagePlaceholder"></el-input>
+      <el-input v-model="form.phone" class="black-input" :placeholder="$t('Contact.phone')"></el-input>
+      <el-input v-model="form.subject" class="black-input" :placeholder="$t('Contact.subject')"></el-input>
+      <el-input v-model="form.message" type="textarea" class="black-input form-textarea" :placeholder="$t('Contact.message')"></el-input>
       <div class="send-btn-ctn">
-        <el-button v-if="isEnglish" class="send-form" @click="sendMail">Send</el-button>
-        <el-button v-if="isFrench" class="send-form" @click="sendMail">Envoyer</el-button>
-        <el-button v-if="isTagalog" class="send-form" @click="sendMail">Send</el-button>
+        <el-button class="send-form" @click="sendMail">{{ $t('Contact.send') }}</el-button>
       </div>
     </form>
   </div>
@@ -32,48 +27,6 @@ export default {
   components: {
     'el-input': Input,
     'el-button': Button,
-  },
-  props: {
-    appLanguage: { type: String, default: 'english' },
-  },
-  computed: {
-    isEnglish() {
-      return this.appLanguage === 'english';
-    },
-    isFrench() {
-      return this.appLanguage === 'french';
-    },
-    isTagalog() {
-      return this.appLanguage === 'tagalog';
-    },
-    namePlaceholder() {
-      if (this.isEnglish) {
-        return 'Name*';
-      } else if (this.isFrench) {
-        return 'Nom*';
-      } else return 'Pangalan*';
-    },
-    phonePlaceholder() {
-      if (this.isEnglish) {
-        return 'Phone';
-      } else if (this.isFrench) {
-        return 'Téléphone';
-      } else return 'Telepono';
-    },
-    subjectPlaceholder() {
-      if (this.isEnglish) {
-        return 'Subject';
-      } else if (this.isFrench) {
-        return 'Objet';
-      } else return 'Subject';
-    },
-    messagePlaceholder() {
-      if (this.isEnglish) {
-        return 'Message*';
-      } else if (this.isFrench) {
-        return 'Message*';
-      } else return 'Mensahe*';
-    },
   },
   data() {
     return {
