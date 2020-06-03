@@ -68,7 +68,7 @@ export default {
       this.activePeopleAtWork = false;
     },
     goToPage(page) {
-      this.$router.push(page);
+      this.$router.push(page).catch(err => {});
       this.closeMobileMenu();
     },
     setLocale(locale) {
