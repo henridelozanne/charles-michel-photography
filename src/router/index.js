@@ -4,7 +4,6 @@ import VueRouter from 'vue-router';
 import Home from '../pages/Home.vue';
 import Contact from '../pages/Contact.vue';
 import Bio from '../pages/Bio.vue';
-import Login from '../pages/Login.vue';
 import SendEmailSuccess from '../pages/SendEmailSuccess';
 import SendEmailError from '../pages/SendEmailError';
 import PortraitsBW from '../pages/Galeries/PortraitsBW.vue';
@@ -13,6 +12,8 @@ import StreetLifeBW from '../pages/Galeries/StreetLifeBW.vue';
 import StreetLifeColour from '../pages/Galeries/StreetLifeColour.vue';
 import PeopleAtWorkBW from '../pages/Galeries/PeopleAtWorkBW.vue';
 import PeopleAtWorkColour from '../pages/Galeries/PeopleAtWorkColour.vue';
+import Login from '../pages/Login.vue';
+import Admin from '../pages/Admin.vue';
 
 Vue.use(VueRouter)
 
@@ -84,6 +85,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login 
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin 
   }
 ];
 

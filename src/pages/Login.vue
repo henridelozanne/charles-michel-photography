@@ -104,7 +104,7 @@
                     :append-icon="passwordIsVisible ? 'mdi-eye' : 'mdi-eye-off'"
                     @click:append="passwordIsVisible = !passwordIsVisible"
                     :type="passwordIsVisible ? 'text' : 'password'"
-                    v-model="signUp.password"
+                    v-model="signUpData.password"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -122,6 +122,8 @@
 </template>
 
 <script>
+import { fb } from '../firebase.js'
+
 export default {
   name: 'Login',
   data() {
@@ -145,7 +147,22 @@ export default {
       console.log('login called');
     },
     signUp() {
-      console.log('signUp called');
+      fb
+        .auth()
+        .createUserWithEmailAndPassword(this.signUpData.email, this.signUpData.password)
+        .then(() => {
+          this.$router.replace('admin');
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if (errorCode == 'auth/weak-password') {
+            alert('The password is too weak.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        });
     },
   }
 };
