@@ -70,14 +70,14 @@ export default {
 </script>
 
 <style lang="scss">
-input {
-    color: black !important;
-    font-weight: 700 !important;
-}
-
 textarea {
     color: black !important;
     min-height: 200px !important;
+    font-weight: 700 !important;
+}
+
+.black-input > input {
+    color: black !important;
     font-weight: 700 !important;
 }
 </style>
