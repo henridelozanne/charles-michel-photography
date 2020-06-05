@@ -59,10 +59,10 @@ export default {
         .send('default_service', 'cmp_email_template', templateParams, 'user_budaC2tozA2cUUxQ2SI7M')
         .then(function() {
           that.resetForm();
-          that.$router.push('send-email-success').catch(err => {});
+          that.$router.push('send-email-success').catch(() => {});
         }, function() {
           that.resetForm();
-          that.$router.push('send-email-error').catch(err => {});
+          that.$router.push('send-email-error').catch(() => {});
         });
     },
   },

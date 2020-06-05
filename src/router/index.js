@@ -19,7 +19,6 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
     component: Home,
     children: [
       {
@@ -27,7 +26,7 @@ const routes = [
         name: 'Home_StreetLifeBW',
         component: StreetLifeBW
       },
-      // galleries
+      // GALLERIES
       { 
         path: '/people-at-work-bw',
         name: 'PeopleAtWorkBW',
@@ -58,8 +57,7 @@ const routes = [
         name: 'StreetLifeColour',
         component: StreetLifeColour 
       },
-
-      // other pages
+      // OTHER PAGES
       { 
         path: '/contact',
         name: 'Contact',

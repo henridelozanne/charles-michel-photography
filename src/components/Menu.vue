@@ -151,7 +151,7 @@
         this.$i18n.locale = locale;
       },
       goToPage(page) {
-        this.$router.push(page).catch(err => {});
+        this.$router.push(page).catch(() => {});
       },
       openMobileMenu() {
         this.$emit('openMobileMenu');
