@@ -107,6 +107,7 @@ export default {
 <style lang="scss">
 .admin {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  color: #2c3e50;
 
   .company-name {
     text-align: center;
@@ -134,6 +135,19 @@ export default {
       text-align: left;
       margin-left: 20px;
     }
+  }
+
+  .justify-content-around {
+    justify-content: space-around;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+    font-weight: 500;
+  }
+
+  ul {
+    list-style-type: unset;
   }
 }
 

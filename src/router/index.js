@@ -14,6 +14,9 @@ import PeopleAtWorkBW from '../pages/Galeries/PeopleAtWorkBW.vue';
 import PeopleAtWorkColour from '../pages/Galeries/PeopleAtWorkColour.vue';
 import Login from '../pages/Login.vue';
 import Admin from '../pages/Admin.vue';
+import Overview from '../pages/Overview.vue';
+import Products from '../pages/Products.vue';
+import Profile from '../pages/Profile.vue';
 
 import { fb } from '../firebase';
 
@@ -93,6 +96,23 @@ const routes = [
     name: 'Admin',
     component: Admin,
     meta: { requiresAuth: true },
+    children: [
+      {
+        path: '/',
+        name: 'AdminOverview',
+        component: Overview
+      },
+      {
+        path: 'products',
+        name: 'Products',
+        component: Products
+      },
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: Profile
+      },
+    ]
   }
 ];
 

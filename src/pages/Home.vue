@@ -54,64 +54,6 @@ export default {
 </style>
 
 <style lang="scss">
-.testing {
-  display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .test-1 {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 900px) {
-  .test-2 {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 978px) and (max-width: 982px) {
-  .test-980-large {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 980px) and (max-width: 980px) {
-  .test-980-pile {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 1000px) and (max-width: 1100px) {
-  .test-4 {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 1100px) and (max-width: 1200px) {
-  .test-5 {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 1200px) and (max-width: 1300px) {
-  .test-6 {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 1300px) and (max-width: 1400px) {
-  .test-7 {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .test-8 {
-    display: block;
-  }
-}
-
 body {
   margin: 0;
   background: rgb(11, 11, 11);
