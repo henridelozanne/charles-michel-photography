@@ -41,6 +41,7 @@
                     :append-icon="passwordIsVisible ? 'mdi-eye' : 'mdi-eye-off'"
                     @click:append="passwordIsVisible = !passwordIsVisible"
                     :type="passwordIsVisible ? 'text' : 'password'"
+                    @keyup.enter="login"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -105,6 +106,7 @@
                     @click:append="passwordIsVisible = !passwordIsVisible"
                     :type="passwordIsVisible ? 'text' : 'password'"
                     v-model="signUpData.password"
+                    @keyup.enter="signUp"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -122,7 +124,7 @@
 </template>
 
 <script>
-import { fb } from '../firebase.js'
+import { fb, db } from '../firebase.js'
 
 export default {
   name: 'Login',
@@ -144,13 +146,38 @@ export default {
   },
   methods: {
     login() {
-      console.log('login called');
+      fb
+        .auth()
+        .signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
+        .then(() => {
+          this.$router.replace('/admin')
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        });
     },
     signUp() {
       fb
         .auth()
         .createUserWithEmailAndPassword(this.signUpData.email, this.signUpData.password)
-        .then(() => {
+        .then((user) => {
+          db.collection('profiles')
+            .doc(user.user.uid)
+            .set({
+              firstName: this.signUpData.firstName,
+              lastName: this.signUpData.lastName,
+            })
+            .then(() => {})
+            .catch((error) => console.log(error));
+
           this.$router.replace('admin');
         })
         .catch((error) => {

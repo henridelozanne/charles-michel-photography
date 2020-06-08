@@ -64,7 +64,7 @@
 <script>
 import '../assets/admin.scss';
 
-import { fb } from '../firebase';
+import { fb, db } from '../firebase';
 
 export default {
   name: "admin",
@@ -86,19 +86,21 @@ export default {
         })
     },
   },
-  // created() {
-  //   const user = fb.auth().currentUser;
-  //   this.email = user.email;
-  //   db.collection('profiles').doc(user.uid)
-  //                 .get()
-  //                 .then(doc => {
-  //                   this.firstName = doc.data().firstName;
-  //                   this.lastName = doc.data().lastName;
-  //                 })
-  //                 .catch((err) => {
-  //                   console.log(err);
-  //                 })
-  // },
+  mounted() {
+    const user = fb.auth().currentUser;
+    if (user) {
+      this.email = user.email;
+      db.collection('profiles').doc(user.uid)
+                    .get()
+                    .then(doc => {
+                      this.firstName = doc.data().firstName;
+                      this.lastName = doc.data().lastName;
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    })
+    }
+  },
 };
 </script>
 

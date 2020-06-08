@@ -15,6 +15,8 @@ import PeopleAtWorkColour from '../pages/Galeries/PeopleAtWorkColour.vue';
 import Login from '../pages/Login.vue';
 import Admin from '../pages/Admin.vue';
 
+import { fb } from '../firebase';
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -89,14 +91,26 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin',
-    component: Admin 
+    component: Admin,
+    meta: { requiresAuth: true },
   }
 ];
 
 const router = new VueRouter({
   routes,
   mode: 'history'
-})
+});
 
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const currentUser = fb.auth().currentUser;
+  if (requiresAuth && !currentUser) {
+    next('/login')
+  } else if (requiresAuth && currentUser) {
+    next()
+  } else {
+    next()
+  }
+})
 
 export default router;
