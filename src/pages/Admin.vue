@@ -64,7 +64,8 @@
 
 <script>
 import '../assets/admin.scss';
-
+import 'bootstrap';
+import 'popper.js'
 import { fb, db } from '../firebase';
 
 export default {

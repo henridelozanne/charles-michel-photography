@@ -10,12 +10,16 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@popperjs/core": "^2.4.1",
+    "bootstrap": "^4.5.0",
     "core-js": "^2.6.11",
     "element-ui": "^2.13.2",
     "emailjs-com": "^2.4.1",
     "express": "^4.17.1",
     "firebase": "^7.15.0",
+    "jquery": "^3.5.1",
     "lodash": "^4.17.15",
+    "popper.js": "^1.16.1",
     "vue": "^2.6.11",
     "vue-i18n": "^8.18.1",
     "vue-router": "^3.3.2",

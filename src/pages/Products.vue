@@ -18,23 +18,39 @@
       <h3 class="product-list-header">Product list</h3>
       <div class="products-table-ctn" v-for="category in productCategories" :key="category">
         <h4 class="d-inline-block products-table-title">{{category}}</h4>
-        <button class="btn btn-primary float-right" @click="addNew">
+        <button class="btn btn-primary float-right" @click="addNew(category)">
           <i class="fa fa-plus add-icon"></i>Add product
         </button>
         <div class="table-responsive products-table">
-          <table class="table">
+          <table class="table table-dark table-striped table-hover table-responsive">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Action</th>
+                <th style="width: 10%">Preview</th>
+                <th style="width: 13%">Title</th>
+                <th style="width: 10%">File name</th>
+                <th style="width: 5%">Ratio</th>
+                <th style="width: 10%">Total pixels</th>
+                <th style="width: 5%">Size</th>
+                <th style="width: 7%">Dimensions (px)</th>
+                <th style="width: 7%">Dimensions (cm)</th>
+                <th style="width: 7%">Dimensions ('')</th>
+                <th style="width: 8%">Price</th>
+                <th style="width: 18%">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="product in products" :key="product.name">
-                <td>{{product.name}}</td>
+              <tr v-for="product in getProductsByCategory(category)" :key="product.name">
+                <td><img :src="product.imageLow" alt="preview-pic" width="65"></td>
+                <td>{{product.title}}</td>
+                <td>{{product.fileName}}</td>
+                <td>{{product.ratio}}</td>
+                <td>{{product.totalPixels}}</td>
+                <td>{{product.size}}</td>
+                <td>{{product.dimensionsPixels}}</td>
+                <td>{{product.dimensionsCentimeters}}</td>
+                <td>{{product.dimensionsInches}}</td>
                 <td>{{product.price}}</td>
-                <td>
+                <td class="d-flex">
                   <button class="btn btn-primary" @click="editProduct(product)">Edit</button>
                   <button class="btn btn-danger delete-btn" @click="deleteProduct(product)">Delete</button>
                 </td>
@@ -45,8 +61,10 @@
       </div>
     </div>
 
-    <!-- <product-form-modal :product="product" :modalType="modalType"
-                        @addProduct="addProduct" @updateProduct="updateProduct" /> -->
+    <product-form-modal :product="activeProduct" :modalType="modalType"
+                        @addProduct="addProduct" @updateProduct="updateProduct"
+                        :addProductCategory="addProductCategory"
+                        :productColBW="productColBW" ref="ProductFormModal"/>
 
   </div>
 </template>
@@ -55,7 +73,7 @@
 import { db } from '../firebase';
 import jQuery from 'jquery'
 // import Swal from 'sweetalert2';
-// import ProductFormModal from '../components/ProductFormModal';
+import ProductFormModal from '../components/ProductFormModal';
 
 // const Toast = Swal.mixin({
 //   toast: true,
@@ -71,16 +89,29 @@ export default {
   },
   data() {
     return {
-      product: {
-        name: undefined,
-        description: undefined,
+      activeProduct: {
+        fileName: undefined,
+        title: undefined,
+        colBW: undefined,
+        ratio: undefined,
+        size: undefined,
         price: undefined,
-        tags:[],
-        images: []
+        totalPixels: undefined,
+        dimensionsPixels: undefined,
+        dimensionsCentimeters: undefined,
+        dimensionsInches: undefined,
+        imageHigh: undefined,
+        imageLow: undefined,
       },
-      activeItem:  undefined,
-      products: [],
-      tag:  undefined,
+      collections: {
+        people_at_work_bw: [],
+        people_at_work_colour: [],
+        portraits_bw: [],
+        portraits_colour: [],
+        street_life_bw: [],
+        street_life_colour: [],
+        landscape_colour: [],
+      },
       modalType:  undefined,
       productCategories: [
         'people_at_work_bw',
@@ -90,39 +121,109 @@ export default {
         'street_life_bw',
         'street_life_colour',
         'landscape_colour'
-      ]
+      ],
+      addProductCategory: undefined,
     }
   },
-  firestore(){
-    return {
-      products: db.collection('products'),
-    }
+  components: {
+    'product-form-modal': ProductFormModal,
   },
-  // components: {
-  //   'product-form-modal': ProductFormModal,
-  // },
+  computed: {
+    productColBW() {
+      if (!this.addProductCategory) return '';
+      else if (this.addProductCategory[this.addProductCategory.length - 1] === 'w') {
+        this.activeProduct.colBW = 'B&W';
+        return 'B&W';
+      } 
+      this.activeProduct.colBW = 'Colour';
+      return 'Colour';
+    },
+  },
+  mounted() {
+    db.collection('people_at_work_bw').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.collections.people_at_work_bw.push(doc.data());
+      });
+    });
+    db.collection('people_at_work_colour').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.collections.people_at_work_colour.push(doc.data());
+      });
+    });
+    db.collection('portraits_bw').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.collections.portraits_bw.push(doc.data());
+      });
+    });
+    db.collection('portraits_colour').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.collections.portraits_colour.push(doc.data());
+      });
+    });
+    db.collection('street_life_bw').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.collections.street_life_bw.push(doc.data());
+      });
+    });
+    db.collection('street_life_colour').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.collections.street_life_colour.push(doc.data());
+      });
+    });
+    db.collection('landscape_colour').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.collections.landscape_colour.push(doc.data());
+      });
+    });
+  },
   methods: {
-    addNew() {
+    addNew(category) {
       this.modalType = 'new';
       this.reset();
+      this.$refs.ProductFormModal.resetData();
+      this.addProductCategory = category;
       jQuery('#product').modal('show');
     },
-    reset() {
-      this.product = {
-        name:null,
-        description:null,
-        price:null,
-        tags:[],
-        images: []
+    getProductsByCategory(category) {
+      switch (category) {
+        case 'people_at_work_bw':
+          return this.collections.people_at_work_bw;
+        case 'people_at_work_colour':
+          return this.collections.people_at_work_colour;
+        case 'portraits_bw':
+          return this.collections.portraits_bw;
+        case 'portraits_colour':
+          return this.collections.portraits_colour;
+        case 'street_life_bw':
+          return this.collections.street_life_bw;
+        case 'street_life_colour':
+          return this.collections.street_life_colour;
+        case 'landscape_colour':
+          return this.collections.landscape_colour;
       }
     },
+    reset() {
+      this.activeProduct = {
+        fileName: undefined,
+        title: undefined,
+        colBW: undefined,
+        ratio: undefined,
+        size: undefined,
+        price: undefined,
+        totalPixels: undefined,
+        dimensionsPixels: undefined,
+        dimensionsCentimeters: undefined,
+        dimensionsInches: undefined,
+        imageHigh: undefined,
+        imageLow: undefined,
+      };
+    },
     addProduct() {
-      this.$firestore.products.add(this.product);
-      Toast.fire({
-        type: 'success',
-        title: 'Product created successfully'
-      })
+      const category = this.addProductCategory;
+      db.collection(category).add(this.activeProduct);
       jQuery('#product').modal('hide');
+
+      this.getProductsByCategory(this.addProductCategory).push(this.activeProduct);
     },
     deleteProduct(product) {
       // Swal.fire({
@@ -145,11 +246,11 @@ export default {
     },
     editProduct(product) {
       this.modalType = 'edit';
-      this.product = product;
+      this.activeProduct = product;
       jQuery('#product').modal('show');
     },
     updateProduct() {
-      this.$firestore.products.doc(this.product.id).update(this.product);
+      this.$firestore.products.doc(this.activeProduct.id).update(this.activeProduct);
       Toast.fire({
         type: 'success',
         title: 'Updated successfully'
@@ -192,7 +293,7 @@ export default {
     .products-table {
       margin-top: 20px;
 
-      td {
+      td, th {
         vertical-align: middle;
       }
 
