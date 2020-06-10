@@ -21,6 +21,7 @@
     "lodash": "^4.17.15",
     "popper.js": "^1.16.1",
     "vue": "^2.6.11",
+    "vue-confirm-dialog": "^1.0.2",
     "vue-i18n": "^8.18.1",
     "vue-router": "^3.3.2",
     "vuetify": "^2.2.11",

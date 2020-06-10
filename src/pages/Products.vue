@@ -52,7 +52,7 @@
                 <td>{{product.price}}</td>
                 <td class="d-flex">
                   <button class="btn btn-primary" @click="editProduct(product, category)">Edit</button>
-                  <button class="btn btn-danger delete-btn" @click="deleteProduct(product)">Delete</button>
+                  <button class="btn btn-danger delete-btn" @click="deleteProduct(product, category)">Delete</button>
                 </td>
               </tr>
             </tbody>
@@ -65,6 +65,8 @@
                         @addProduct="addProduct" @updateProduct="updateProduct"
                         :currentCategory="currentCategory"
                         :productColBW="productColBW" ref="ProductFormModal"/>
+
+    <vue-confirm-dialog />
 
   </div>
 </template>
@@ -239,24 +241,26 @@ export default {
 
       this.getProductsByCategory(this.currentCategory).push(this.activeProduct);
     },
-    deleteProduct(product) {
-      // Swal.fire({
-      //   title: 'Are you sure?',
-      //   text: "You won't be able to revert this!",
-      //   icon: 'warning',
-      //   showCancelButton: true,
-      //   confirmButtonColor: '#3085d6',
-      //   cancelButtonColor: '#d33',
-      //   confirmButtonText: 'Yes, delete it!'
-      // }).then((result) => {
-      //   if (result.value) {
-      //     this.$firestore.products.doc(product.id).delete();
-      //     Toast.fire({
-      //       type: 'success',
-      //       title: 'Deleted successfully'
-      //     })
-      //   }
-      // })
+    deleteProduct(product, category) {
+      this.$confirm(
+        {
+          message: 'Are you sure ?',
+          button: {
+            no: 'No',
+            yes: 'Yes'
+          },
+          callback: confirm => {
+            if (confirm) {
+              db.collection(category).doc(product.id).delete().then(() => {
+                  this.getProductsByCategory(category).splice(product, 1);
+              }).catch((error) => {
+                  // eslint-disable-next-line
+                  console.error("Error removing document: ", error);
+              });
+            }
+          }
+        }
+      )
     },
     editProduct(product, category) {
       this.currentCategory = category;

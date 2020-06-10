@@ -4,8 +4,12 @@ import i18n from './i18n';
 import router from './router'
 import vuetify from './plugins/vuetify';
 import { fb } from './firebase';
+import VueConfirmDialog from 'vue-confirm-dialog';
 
 Vue.config.productionTip = false;
+
+Vue.use(VueConfirmDialog);
+Vue.component('vue-confirm-dialog', VueConfirmDialog.default);
 
 let app = '';
 
