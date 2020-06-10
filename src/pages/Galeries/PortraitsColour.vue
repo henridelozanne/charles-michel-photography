@@ -6,6 +6,7 @@
 
 <script>
 import Galery from '../../components/Galery';
+import { db } from '../../firebase';
 
 export default {
   name: 'PortraitsColour',
@@ -20,14 +21,16 @@ export default {
       this.$emit('fullImgIsNotVisible');
     },
   },
+  mounted() {
+    db.collection('portraits_colour').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.imageList.push(doc.data().imageLow);
+      });
+    });
+  },
   data() {
     return {
-      imageList: [
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574595722/Portraits/couleur/IMG_9872-1WEB2_wb5i12.jpg',
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574595719/Portraits/couleur/IMG_9636-2_ih9aix.jpg',
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574595714/Portraits/couleur/IMG_9275-2_hsbydb.jpg',
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574595712/Portraits/couleur/IMG_6702-2_fzvgxb.jpg'
-        ],
+      imageList: [],
     };
   },
 }

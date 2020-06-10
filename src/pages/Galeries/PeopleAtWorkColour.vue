@@ -6,6 +6,7 @@
 
 <script>
 import Galery from '../../components/Galery';
+import { db } from '../../firebase';
 
 export default {
   name: 'PeopleAtWorkColour',
@@ -20,17 +21,16 @@ export default {
       this.$emit('fullImgIsNotVisible');
     },
   },
+  mounted() {
+    db.collection('people_at_work_colour').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.imageList.push(doc.data().imageLow);
+      });
+    });
+  },
   data() {
     return {
-      imageList: [
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574597147/People%20at%20work/Colour/IMG_4388-1_2_xcssgg.jpg',
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574597138/People%20at%20work/Colour/IMG_7844_x32wvy.jpg',
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574597136/People%20at%20work/Colour/IMG_7836_wdatdr.jpg',
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574597136/People%20at%20work/Colour/IMG_3383_rmsjk1.jpg',
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574597133/People%20at%20work/Colour/IMG_3379_jmgid4.jpg',
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574597132/People%20at%20work/Colour/IMG_2938-2_1_aagzr3.jpg',
-          'https://res.cloudinary.com/charlesmichel-photography/image/upload/v1574597130/People%20at%20work/Colour/IMG_5382-2_oa2i9z.jpg'
-        ],
+      imageList: [],
     };
   },
 }
