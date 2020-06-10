@@ -20,6 +20,7 @@
           </ul>
         <li class="about-me" @click="goToPage('bio')">{{ $t('App.aboutMe') }}</li>
         <li @click="goToPage('contact')">Contact</li>
+        <li @click="goToPage('basket')">{{ $t('App.basket') }}</li>
         <li @click="toggleMenuLanguage">{{ $t('App.language') }}</li>
         <li @click="goToInstagram">{{ $t('App.followMe') }}</li>
       </ul>
