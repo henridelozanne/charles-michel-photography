@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="editLabel">{{addProductCategory | capitalizeAndClean}} / <span class="italic">{{modalTitle}}</span></h4>
+          <h4 class="modal-title" id="editLabel">{{currentCategory | capitalizeAndClean}} / <span class="italic">{{modalTitle}}</span></h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="resetData">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -189,7 +189,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="resetData">Close</button>
-          <button @click="callAddProduct()" type="button" class="btn btn-primary" v-if="modalType === 'new'">Save changes</button>
+          <button @click="callAddProduct()" type="button" class="btn btn-primary" v-if="modalType === 'new'">Create item</button>
           <button @click="callUpdateProduct()" type="button" class="btn btn-primary" v-if="modalType === 'edit'">Apply changes</button>
         </div>
       </div>
@@ -205,7 +205,7 @@ export default {
   props: {
     product: { type: Object, default: () => {}},
     modalType: { type: String, default: 'new'},
-    addProductCategory: { type: String, default: '' },
+    currentCategory: { type: String, default: '' },
     productColBW: { type: String, default: '' },
   },
   computed: {
@@ -261,6 +261,12 @@ export default {
         this.product.dimensionsPixels = `${this.pixels.width}*${this.pixels.height}`;
       } else this.product.dimensionsPixels = undefined;
     },
+    product() {
+      if (this.modalType === "edit") {
+        [this.pixels.width, this.pixels.height] = this.product.dimensionsPixels && this.product.dimensionsPixels.split('*');
+        [this.centimeters.width, this.centimeters.height] = this.product.dimensionsCentimeters && this.product.dimensionsCentimeters.split('*');
+      }
+    }
   },
   data() {
     return {

@@ -51,7 +51,7 @@
                 <td>{{product.dimensionsInches}}</td>
                 <td>{{product.price}}</td>
                 <td class="d-flex">
-                  <button class="btn btn-primary" @click="editProduct(product)">Edit</button>
+                  <button class="btn btn-primary" @click="editProduct(product, category)">Edit</button>
                   <button class="btn btn-danger delete-btn" @click="deleteProduct(product)">Delete</button>
                 </td>
               </tr>
@@ -63,7 +63,7 @@
 
     <product-form-modal :product="activeProduct" :modalType="modalType"
                         @addProduct="addProduct" @updateProduct="updateProduct"
-                        :addProductCategory="addProductCategory"
+                        :currentCategory="currentCategory"
                         :productColBW="productColBW" ref="ProductFormModal"/>
 
   </div>
@@ -122,7 +122,7 @@ export default {
         'street_life_colour',
         'landscape_colour'
       ],
-      addProductCategory: undefined,
+      currentCategory: undefined,
     }
   },
   components: {
@@ -130,8 +130,8 @@ export default {
   },
   computed: {
     productColBW() {
-      if (!this.addProductCategory) return '';
-      else if (this.addProductCategory[this.addProductCategory.length - 1] === 'w') {
+      if (!this.currentCategory) return '';
+      else if (this.currentCategory[this.currentCategory.length - 1] === 'w') {
         this.activeProduct.colBW = 'B&W';
         return 'B&W';
       } 
@@ -142,37 +142,51 @@ export default {
   mounted() {
     db.collection('people_at_work_bw').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        this.collections.people_at_work_bw.push(doc.data());
+        const item = doc.data();
+        item.id = doc.id
+        this.collections.people_at_work_bw.push(item);
       });
     });
     db.collection('people_at_work_colour').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        this.collections.people_at_work_colour.push(doc.data());
+        const item = doc.data();
+        item.id = doc.id
+        this.collections.people_at_work_colour.push(item);
       });
     });
     db.collection('portraits_bw').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        this.collections.portraits_bw.push(doc.data());
+        const item = doc.data();
+        item.id = doc.id
+        this.collections.portraits_bw.push(item);
       });
     });
     db.collection('portraits_colour').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        this.collections.portraits_colour.push(doc.data());
+        const item = doc.data();
+        item.id = doc.id
+        this.collections.portraits_colour.push(item);
       });
     });
     db.collection('street_life_bw').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        this.collections.street_life_bw.push(doc.data());
+        const item = doc.data();
+        item.id = doc.id
+        this.collections.street_life_bw.push(item);
       });
     });
     db.collection('street_life_colour').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        this.collections.street_life_colour.push(doc.data());
+        const item = doc.data();
+        item.id = doc.id
+        this.collections.street_life_colour.push(item);
       });
     });
     db.collection('landscape_colour').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        this.collections.landscape_colour.push(doc.data());
+        const item = doc.data();
+        item.id = doc.id
+        this.collections.landscape_colour.push(item);
       });
     });
   },
@@ -181,7 +195,7 @@ export default {
       this.modalType = 'new';
       this.reset();
       this.$refs.ProductFormModal.resetData();
-      this.addProductCategory = category;
+      this.currentCategory = category;
       jQuery('#product').modal('show');
     },
     getProductsByCategory(category) {
@@ -219,11 +233,11 @@ export default {
       };
     },
     addProduct() {
-      const category = this.addProductCategory;
+      const category = this.currentCategory;
       db.collection(category).add(this.activeProduct);
       jQuery('#product').modal('hide');
 
-      this.getProductsByCategory(this.addProductCategory).push(this.activeProduct);
+      this.getProductsByCategory(this.currentCategory).push(this.activeProduct);
     },
     deleteProduct(product) {
       // Swal.fire({
@@ -244,18 +258,23 @@ export default {
       //   }
       // })
     },
-    editProduct(product) {
+    editProduct(product, category) {
+      this.currentCategory = category;
       this.modalType = 'edit';
       this.activeProduct = product;
       jQuery('#product').modal('show');
     },
     updateProduct() {
-      this.$firestore.products.doc(this.activeProduct.id).update(this.activeProduct);
-      Toast.fire({
-        type: 'success',
-        title: 'Updated successfully'
-      })
-      jQuery('#product').modal('hide');
+      const productToBeUpdated = db.collection(this.currentCategory).doc(this.activeProduct.id);
+      return productToBeUpdated
+        .update(this.activeProduct)
+        .then(() => {
+            jQuery('#product').modal('hide');
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+            console.error("Error updating document: ", error);
+        });
     },
   }
 };
