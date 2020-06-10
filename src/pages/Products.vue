@@ -39,7 +39,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="product in getProductsByCategory(category)" :key="product.name">
+              <tr v-for="product in getProductsByCategory(category)" :key="product.fileName">
                 <td><img :src="product.imageLow" alt="preview-pic" width="65"></td>
                 <td>{{product.title}}</td>
                 <td>{{product.fileName}}</td>
@@ -239,7 +239,17 @@ export default {
       db.collection(category).add(this.activeProduct);
       jQuery('#product').modal('hide');
 
-      this.getProductsByCategory(this.currentCategory).push(this.activeProduct);
+      // Get new item id, add it to object, insert object in displayed category
+      db.collection(this.currentCategory).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const item = doc.data();
+          if (item.fileName === this.activeProduct.fileName) {
+            console.log('item', item);
+            item.id = doc.id;
+            this.getProductsByCategory(this.currentCategory).push(item);
+          }
+        });
+      });
     },
     deleteProduct(product, category) {
       this.$confirm(
@@ -252,7 +262,8 @@ export default {
           callback: confirm => {
             if (confirm) {
               db.collection(category).doc(product.id).delete().then(() => {
-                  this.getProductsByCategory(category).splice(product, 1);
+                  const catToBeUpdated = this.getProductsByCategory(category);
+                  catToBeUpdated.splice(catToBeUpdated.indexOf(product), 1);
               }).catch((error) => {
                   // eslint-disable-next-line
                   console.error("Error removing document: ", error);
