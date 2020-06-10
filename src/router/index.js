@@ -13,12 +13,13 @@ import StreetLifeColour from '../pages/Galeries/StreetLifeColour.vue';
 import PeopleAtWorkBW from '../pages/Galeries/PeopleAtWorkBW.vue';
 import PeopleAtWorkColour from '../pages/Galeries/PeopleAtWorkColour.vue';
 import Login from '../pages/Login.vue';
+import MustBeAdmin from '../pages/MustBeAdmin.vue';
 import Admin from '../pages/Admin.vue';
 import Overview from '../pages/Overview.vue';
 import Products from '../pages/Products.vue';
 import Profile from '../pages/Profile.vue';
 
-import { fb } from '../firebase';
+import { fb, db } from '../firebase';
 
 Vue.use(VueRouter)
 
@@ -92,6 +93,11 @@ const routes = [
     component: Login 
   },
   {
+    path: '/mustbeadmin',
+    name: 'MustBeAdmin',
+    component: MustBeAdmin 
+  },
+  {
     path: '/admin',
     name: 'Admin',
     component: Admin,
@@ -124,12 +130,20 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   const currentUser = fb.auth().currentUser;
-  if (requiresAuth && !currentUser) {
-    next('/login')
-  } else if (requiresAuth && currentUser) {
-    next()
-  } else {
-    next()
+
+  if (!requiresAuth) next()
+  else if (!currentUser) next('/login')
+  else {
+    db.collection('profiles').doc(currentUser.uid)
+                    .get()
+                    .then(doc => {
+                      const isAdmin = doc.data().admin;
+                      if (isAdmin) next();
+                      else next('/mustbeadmin')
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    })
   }
 })
 

@@ -244,7 +244,6 @@ export default {
         querySnapshot.forEach((doc) => {
           const item = doc.data();
           if (item.fileName === this.activeProduct.fileName) {
-            console.log('item', item);
             item.id = doc.id;
             this.getProductsByCategory(this.currentCategory).push(item);
           }
