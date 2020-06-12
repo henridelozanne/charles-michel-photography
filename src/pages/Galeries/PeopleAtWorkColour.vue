@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-galery :imageList="imageList" @fullImgIsVisible="fullImgIsVisible" @fullImgIsNotVisible="fullImgIsNotVisible"/>
+    <app-galery :productList="productList" @fullImgIsVisible="fullImgIsVisible" @fullImgIsNotVisible="fullImgIsNotVisible"/>
   </div>
 </template>
 
@@ -24,13 +24,13 @@ export default {
   mounted() {
     db.collection('people_at_work_colour').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        this.imageList.push(doc.data().imageLow);
+        this.productList.push(doc.data());
       });
     });
   },
   data() {
     return {
-      imageList: [],
+      productList: [],
     };
   },
 }
