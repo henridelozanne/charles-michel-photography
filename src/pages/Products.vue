@@ -130,14 +130,18 @@ export default {
   components: {
     'product-form-modal': ProductFormModal,
   },
+  watch: {
+    productColBW() {
+      if (this.productColBW === 'B&W') this.activeProduct.colBW = 'B&W';
+      else if (this.productColBW === 'Colour') this.activeProduct.colBW = 'Colour';
+    },
+  },
   computed: {
     productColBW() {
       if (!this.currentCategory) return '';
       else if (this.currentCategory[this.currentCategory.length - 1] === 'w') {
-        this.activeProduct.colBW = 'B&W';
         return 'B&W';
       } 
-      this.activeProduct.colBW = 'Colour';
       return 'Colour';
     },
   },

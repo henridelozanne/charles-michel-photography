@@ -76,7 +76,6 @@ export default {
       this.activeProduct = product;
       this.fullImgIsVisible = true;
       this.$emit('fullImgIsVisible');
-      const that = this;
     },
     hideImgFull() {
       this.fullImgIsVisible = false;

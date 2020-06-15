@@ -84,6 +84,7 @@ export default {
           this.$router.replace('/');
         })
         .catch((err) => {
+          // eslint-disable-next-line
           console.log(err);
         })
     },
@@ -99,6 +100,7 @@ export default {
                       this.lastName = doc.data().lastName;
                     })
                     .catch((err) => {
+                      // eslint-disable-next-line
                       console.log(err);
                     })
     }

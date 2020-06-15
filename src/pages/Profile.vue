@@ -148,12 +148,13 @@ export default {
       const auth = fb.auth();          
       auth.sendPasswordResetEmail(auth.currentUser.email)
         .then(() =>  {
-          Toast.fire({
-            type: 'success',
-            title: 'Email sent'
-          })
+          // Toast.fire({
+          //   type: 'success',
+          //   title: 'Email sent'
+          // })
         })
         .catch((error) => {
+            // eslint-disable-next-line
             console.log(error);
         });
     },

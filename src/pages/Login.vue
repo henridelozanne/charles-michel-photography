@@ -161,6 +161,7 @@ export default {
           } else {
             alert(errorMessage);
           }
+          // eslint-disable-next-line
           console.log(error);
         });
     },
@@ -176,6 +177,7 @@ export default {
               lastName: this.signUpData.lastName,
             })
             .then(() => {})
+            // eslint-disable-next-line
             .catch((error) => console.log(error));
 
           this.$router.replace('admin');
@@ -188,6 +190,7 @@ export default {
           } else {
             alert(errorMessage);
           }
+          // eslint-disable-next-line
           console.log(error);
         });
     },

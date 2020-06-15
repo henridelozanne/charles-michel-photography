@@ -308,6 +308,7 @@ export default {
           this.product[`image${imgQuality}`] = undefined;
         })
         .catch((err) => {
+          // eslint-disable-next-line
           console.log('err : ', err);
         })
     },
