@@ -73,6 +73,35 @@
                         class="form-control" id="product-price">
                 </div>
               </div>
+              <div class="row">
+                <div class="col">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="product-shutter">Shut.</label>
+                    </div>
+                    <input type="text" v-model="product.shutter"
+                          class="form-control" id="product-shutter">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="product-aperture">Apert.</label>
+                    </div>
+                    <input type="text" v-model="product.aperture"
+                          class="form-control" id="product-aperture">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="product-iso">ISO</label>
+                    </div>
+                    <input type="text" v-model="product.iso"
+                          class="form-control" id="product-iso">
+                  </div>
+                </div>
+              </div>
               <div class="mt-2 w-100 pl-2 pb-0">
                 <h5>Dimensions</h5>
               </div>
