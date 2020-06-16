@@ -1,11 +1,11 @@
 <template>
   <div id="main-app">
-    <div class="menu-ctn-ctn" :class="{'no-z-index': mobileMenuIsOpened, 'display-none': !showMenu, 'display-flex': showMenu}">
+    <div class="menu-ctn-ctn" :class="{'no-z-index': mobileMenuIsOpened}">
       <app-menu class="menu" @openMobileMenu="openMobileMenu" :goToInstagram="goToInstagram"/>
     </div>
     <div class="menu-side-bar"><div /></div>
     <div class="horizontal-bar only-sm-screen"></div>
-    <router-view class="main" @fullImgIsVisible="fullImgIsVisible" @fullImgIsNotVisible="fullImgIsNotVisible"/>
+    <router-view class="main"/>
     <mobile-menu v-if="mobileMenuIsOpened" @closeMobileMenu="mobileMenuIsOpened = false"
                  :goToInstagram="goToInstagram" />
   </div>
@@ -28,7 +28,6 @@ export default {
       activePeopleAtWork: false,
       languageMenuIsVisible: false,
       mobileMenuIsOpened: false,
-      showMenu: true,
     }
   },
   methods: {
@@ -38,12 +37,6 @@ export default {
     },
     openMobileMenu() {
       this.mobileMenuIsOpened = true;
-    },
-    fullImgIsVisible() {
-      this.showMenu = false;
-    },
-    fullImgIsNotVisible() {
-      this.showMenu = true;
     },
   },
 };
@@ -78,7 +71,6 @@ body {
   min-width: 240px;
   display: flex;
   align-items: center;
-  z-index: 9998;
 }
 
 .no-z-index {
