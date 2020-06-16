@@ -16,6 +16,11 @@
             <div><span class="bold">{{activeProduct.size | capitalize}}</span> &bull; {{activeProduct.dimensionsPixels}} pixels</div>
             <div>{{activeProduct.dimensionsCentimeters}} cm &bull; 300DPI</div>
           </div>
+          <div class="technical-ctn">
+            <div><shutter-svg /><span>{{activeProduct.shutter}}</span></div>
+            <div><aperture-svg /><span>{{activeProduct.aperture}}</span></div>
+            <div><iso-svg /><span>{{activeProduct.iso}}</span></div>
+          </div>
           <div class="buy-ctn">
             <p>Price: <span class="bold">{{activeProduct.price}}$</span></p>
             <button class="buy-btn">Buy</button>
@@ -29,12 +34,21 @@
 </template>
 
 <script>
+import ApertureSvg from './ApertureSvg';
+import IsoSvg from './IsoSvg';
+import ShutterSvg from './ShutterSvg';
+
 export default {
   name: "ProductItem",
   props: {
     arrowsAreVisible: { type: Boolean, default: true },
     activeProduct: { type: Object, default: () => {}},
     fullImgIsVisible: { type: Boolean, default: false },
+  },
+  components: {
+    'aperture-svg': ApertureSvg,
+    'iso-svg': IsoSvg,
+    'shutter-svg': ShutterSvg,
   },
   data() {
     return {
@@ -178,9 +192,28 @@ export default {
           margin: 20px 0;
         }
 
+        .technical-ctn {
+          margin-bottom: 20px;
+
+          >div {
+            display: flex;
+            align-items: center;
+
+            span {
+              margin-left: 10px;
+            }
+          }
+
+          div:not(:last-of-type) {
+            margin-bottom: 4px;
+          }
+        }
+
         .buy-ctn {
           display: flex;
           justify-content: space-between;
+          align-items: center;
+          min-width: 165px;
 
           .buy-btn {
             background: white;
@@ -211,4 +244,32 @@ export default {
     font-weight: 900 !important;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .product-item {
+    min-height: 100%;
+    height: unset;
+    overflow-y: scroll;
+
+    .product-outer-ctn {
+      padding: 0;
+
+      .product-inner-ctn {
+        flex-direction: column;
+
+        .product-info-ctn {
+          width: 100%;
+          margin-left: 0;
+          max-width: unset;
+        }
+
+        .close-icon {
+          right: 0;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
 </style>

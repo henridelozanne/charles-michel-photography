@@ -68,7 +68,9 @@ export default {
         this.arrowsAreVisible = false;
       } else {
         this.arrowsAreVisible = true;
-      }   
+      }
+      if (this.fullImgIsVisible) document.body.style.overflowY = 'hidden';
+      else document.body.style.overflowY = 'auto';
     },
   },
   methods: {
