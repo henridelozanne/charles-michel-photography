@@ -10,8 +10,11 @@
               :src="activeProduct.imageLow" alt="no-img"
               id="full-screen-picture" @click="hideImgFull">
         </div>
-        <div class="product-info-ctn">
-          <p>{{activeProduct.title}}</p>
+        <div class="product-info-ctn" v-if="isLargeScreen || mobileInfoAreVisible">
+          <div class="product-title-ctn">
+            <p>{{activeProduct.title}}</p>
+            <i class="el-icon-close close-mobile-details-icon" v-if="mobileInfoAreVisible" @click="hideMobileInfo"></i>
+          </div>
           <div class="dimensions-ctn">
             <div><span class="bold">{{activeProduct.size | capitalize}}</span> &bull; {{activeProduct.dimensionsPixels}} pixels</div>
             <div>{{activeProduct.dimensionsCentimeters}} cm &bull; 300DPI</div>
@@ -26,7 +29,8 @@
             <button class="buy-btn">Buy</button>
           </div>
         </div>
-        <i class="el-icon-close close-icon" @click="hideImgFull"></i>
+        <i class="el-icon-close close-icon" @click="hideImgFull" v-if="!mobileInfoAreVisible"></i>
+        <info-svg class="info-icon" @showMobileInfo="showMobileInfo" v-if="!mobileInfoAreVisible" />
       </div>
     </div>
     <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-right" @click="goRight"></i>
@@ -37,6 +41,7 @@
 import ApertureSvg from './ApertureSvg';
 import IsoSvg from './IsoSvg';
 import ShutterSvg from './ShutterSvg';
+import InfoSvg from './InfoSvg';
 
 export default {
   name: "ProductItem",
@@ -49,6 +54,7 @@ export default {
     'aperture-svg': ApertureSvg,
     'iso-svg': IsoSvg,
     'shutter-svg': ShutterSvg,
+    'info-svg': InfoSvg,
   },
   data() {
     return {
@@ -56,6 +62,7 @@ export default {
       imgHeight: undefined,
       imgHeightIsReady: false,
       isHorizontal: undefined,
+      mobileInfoAreVisible: false,
     };
   },
   filters: {
@@ -63,6 +70,11 @@ export default {
       if (!value) return '';
       value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+  },
+  computed: {
+    isLargeScreen() {
+      return window.innerWidth > 1024 ;
     },
   },
   mounted() {
@@ -81,6 +93,12 @@ export default {
     }
   },
   methods: {
+    showMobileInfo() {
+      this.mobileInfoAreVisible = true;
+    },
+    hideMobileInfo() {
+      this.mobileInfoAreVisible = false;
+    },
     checkRatio() {
       let width, height;
       [width, height] = this.activeProduct.ratio.split(':');
@@ -175,6 +193,10 @@ export default {
         }
       }
 
+      .info-icon {
+        display: none;
+      }
+
       .product-info-ctn {
         align-self: flex-start;
         background: rgb(19, 19, 19);
@@ -258,16 +280,48 @@ export default {
         flex-direction: column;
 
         .product-info-ctn {
+          position: fixed;
+          top: 0;
+          left: 0;
           width: 100%;
+          height: 100%;
           margin-left: 0;
           max-width: unset;
+          background:rgba(0, 0, 0, 0.8);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .product-title-ctn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .close-mobile-details-icon {
+              border-radius: 50%;
+              border: 1px solid white;
+              padding: 2px;
+              font-size: 0.8em;
+            }
+          }
         }
 
         .close-icon {
           right: 0;
           border-radius: 5px;
         }
+
+        .info-icon {
+          display: block;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+        }
       }
+    }
+
+    .arrow {
+      display: none;
     }
   }
 }
