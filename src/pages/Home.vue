@@ -71,6 +71,7 @@ body {
   min-width: 240px;
   display: flex;
   align-items: center;
+  z-index: 1000;
 }
 
 .no-z-index {
@@ -123,7 +124,8 @@ body {
 }
 
 .color-submenu {
-  font-size: 25px !important;
+  font-size: 1.4em !important;
+  margin-left: 15px;
   height: 0;
   color: black;
   animation: increaseheight .1s linear forwards;

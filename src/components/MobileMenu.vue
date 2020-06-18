@@ -3,6 +3,7 @@
     <i class="el-icon-close close-icon" @click="closeMobileMenu"></i>
     <transition name="fade" mode="out-in">
       <ul class="mobile-menu-list" v-if="!languageMenuIsVisible" key="1">
+        <li @click="goToPage('/')">Home</li>
         <li @click="toggleMenuActive('portraits')">{{ $t('App.portraits') }}</li>
           <ul v-show="activePortraits">
             <li class="color-submenu" @click="goToPage('portraits-bw')">{{ $t('App.blackAndWhite') }}</li>
@@ -123,7 +124,7 @@ export default {
 }
 
 .mobile-menu-list li {
-  font-size: 30px;
+  font-size: 1.7em;
   cursor:pointer;
 }
 

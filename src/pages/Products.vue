@@ -59,12 +59,41 @@
           </table>
         </div>
       </div>
+
+      <div class="products-table-ctn">
+        <h4 class="d-inline-block products-table-title">Homepage pictures</h4>
+        <button class="btn btn-primary float-right" @click="addHomePicture">
+          <i class="fa fa-plus add-icon"></i>Add picture
+        </button>
+        <div class="products-table">
+          <table class="table table-striped table-hover table-responsive">
+            <thead>
+              <tr>
+                <th style="width: 33%">Preview</th>
+                <th style="width: 33%">Galery</th>
+                <th style="width: 33%">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="product in getProductsByCategory('homepage_pictures')" :key="product.id">
+                <td><img :src="product.image" alt="preview-pic" width="65"></td>
+                <td>{{product.galery}}</td>
+                <td class="d-flex">
+                  <button class="btn btn-danger delete-btn" @click="deleteProduct(product, 'homepage_pictures')">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <product-form-modal :product="activeProduct" :modalType="modalType"
                         @addProduct="addProduct" @updateProduct="updateProduct"
                         :currentCategory="currentCategory"
                         :productColBW="productColBW" ref="ProductFormModal"/>
+
+    <homepage-picture-form-modal :homepageItem="homepageItem" @setGaleryPicture="setGaleryPicture" />
 
     <vue-confirm-dialog />
 
@@ -76,6 +105,7 @@ import { db } from '../firebase';
 import jQuery from 'jquery'
 // import Swal from 'sweetalert2';
 import ProductFormModal from '../components/ProductFormModal';
+import HomepagePictureFormModal from '../components/HomepagePictureFormModal';
 
 // const Toast = Swal.mixin({
 //   toast: true,
@@ -108,6 +138,10 @@ export default {
         imageHigh: undefined,
         imageLow: undefined,
       },
+      homepageItem: {
+        galery: undefined,
+        image: undefined,
+      },
       collections: {
         people_at_work_bw: [],
         people_at_work_colour: [],
@@ -116,6 +150,7 @@ export default {
         street_life_bw: [],
         street_life_colour: [],
         landscape_colour: [],
+        homepage_pictures: []
       },
       modalType:  undefined,
       productCategories: [
@@ -125,13 +160,14 @@ export default {
         'portraits_colour',
         'street_life_bw',
         'street_life_colour',
-        'landscape_colour'
+        'landscape_colour',
       ],
       currentCategory: undefined,
     }
   },
   components: {
     'product-form-modal': ProductFormModal,
+    'homepage-picture-form-modal': HomepagePictureFormModal,
   },
   watch: {
     productColBW() {
@@ -198,6 +234,13 @@ export default {
         this.collections.landscape_colour.push(item);
       });
     });
+    db.collection('homepage_pictures').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const item = doc.data();
+        item.id = doc.id
+        this.collections.homepage_pictures.push(item);
+      });
+    });
   },
   methods: {
     addNew(category) {
@@ -206,6 +249,9 @@ export default {
       this.$refs.ProductFormModal.resetData();
       this.currentCategory = category;
       jQuery('#product').modal('show');
+    },
+    addHomePicture() {
+      jQuery('#homepage-pics').modal('show');
     },
     getProductsByCategory(category) {
       switch (category) {
@@ -223,6 +269,8 @@ export default {
           return this.collections.street_life_colour;
         case 'landscape_colour':
           return this.collections.landscape_colour;
+        case 'homepage_pictures':
+          return this.collections.homepage_pictures;
       }
     },
     reset() {
@@ -259,6 +307,10 @@ export default {
           }
         });
       });
+    },
+    setGaleryPicture() {
+      db.collection('homepage_pictures').add(this.homepageItem);
+      jQuery('#homepage-pics').modal('hide');
     },
     deleteProduct(product, category) {
       this.$confirm(

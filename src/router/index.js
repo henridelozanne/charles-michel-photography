@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from '../pages/Home.vue';
+import Homepage from '../pages/Homepage.vue';
 import Contact from '../pages/Contact.vue';
 import Basket from '../pages/Basket.vue';
 import Bio from '../pages/Bio.vue';
@@ -31,8 +32,8 @@ const routes = [
     children: [
       {
         path: '/',
-        name: 'Home_StreetLifeBW',
-        component: StreetLifeBW
+        name: 'Homepage',
+        component: Homepage
       },
       // GALLERIES
       { 
