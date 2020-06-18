@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container-lg-screen">
-      <div class="page-title">
+      <div class="page-title" @click="goToPage('/')">
         <div class="page-title-inner-ctn">
           <img class="website-logo" src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141158/Website%20assets/website-logo_p2d3nb.png" alt="">
         </div>
@@ -275,6 +275,7 @@
     color: rgb(255, 255, 255);
     white-space: nowrap;
     text-overflow: ellipsis;
+    cursor: pointer;
   }
 
   // for iPhone 5/SE
