@@ -3,12 +3,15 @@
     <i v-if="arrowsAreVisible" class="arrow el-icon-arrow-left" @click="goLeft"></i>
     <div class="product-outer-ctn" id="product-outer-ctn"
          @mouseover="toggleCloseIcon(true)" @mouseleave="toggleCloseIcon(false)">
-      <div class="product-inner-ctn">  
-        <div class="img-ctn" :class="isHorizontal ? 'horizontal' : 'vertical'"
-            oncontextmenu="return false;" :style="`background-image: url(${activeProduct.imageLow})`">
-          <img class="full-screen-picture" style="visibility: hidden"
-              :src="activeProduct.imageLow" alt="no-img"
-              id="full-screen-picture" @click="hideImgFull">
+      <div class="product-inner-ctn">
+        <div :style="`background-image: url(${activeProduct.imageLow}); background-size: cover`">
+          <div class="img-ctn watermark"
+               :class="[ isHorizontal ? 'horizontal' : 'vertical', watermarkFormat ]"
+               oncontextmenu="return false;">
+            <img class="full-screen-picture" style="visibility: hidden"
+                :src="activeProduct.imageLow" alt="no-img"
+                id="full-screen-picture" @click="hideImgFull">
+          </div>
         </div>
         <div class="product-info-ctn" v-if="isLargeScreen || mobileInfoAreVisible">
           <div class="product-title-ctn">
@@ -76,6 +79,20 @@ export default {
     isLargeScreen() {
       return window.innerWidth > 1024 ;
     },
+    watermarkFormat() {
+      switch (this.activeProduct.ratio) {
+        case '1:1':
+          return 'watermark-1_1';
+        case '2:3':
+          return 'watermark-2_3';
+        case '3:2':
+          return 'watermark-3_2';
+        case '3:4':
+          return 'watermark-3_4';
+        case '4:3':
+          return 'watermark-4_3';
+      }
+    }
   },
   mounted() {
     this.checkRatio();
@@ -128,6 +145,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.watermark {
+  background-size: cover;
+}
+
+.watermark-1_1 {
+  background-image: url(../assets/watermarks/watermark_1_1.png);
+}
+
+.watermark-2_3 {
+  background-image: url(../assets/watermarks/watermark_2_3.png);
+}
+
+.watermark-3_2 {
+  background-image: url(../assets/watermarks/watermark_3_2.png);
+}
+
+.watermark-3_4 {
+  background-image: url(../assets/watermarks/watermark_3_4.png);
+}
+
+.watermark-4_3 {
+  background-image: url(../assets/watermarks/watermark_4_3.png);
+}
+
 .product-item {
   position: fixed;
   top: 0;
