@@ -184,7 +184,6 @@ export default {
 
   .product-outer-ctn {
     height: 100%;
-    background: rgba(72, 72, 72, 0.5);
     padding: 15px;
     display: flex;
     align-items: center;
@@ -221,8 +220,7 @@ export default {
       .close-icon {
         color: rgb(174, 174, 174);
         background: rgba(72, 72, 72, 0.5);
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
+        border-radius: 5px;
         width: 20px;
         position: absolute;
         top: 0;
@@ -241,7 +239,6 @@ export default {
 
       .product-info-ctn {
         align-self: flex-start;
-        background: rgb(19, 19, 19);
         padding: 30px;
         margin-left: 15px;
         width: 30%;
