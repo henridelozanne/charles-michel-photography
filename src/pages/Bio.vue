@@ -4,6 +4,7 @@
          src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141159/Website%20assets/charles-michel_gavkej.jpg"
          alt="charles-michel">
     <div class="bio-content">
+      <p>test</p>
       <p>{{ $t('Bio.p1') }}</p>
       <p>{{ $t('Bio.p2') }}</p>
       <p>{{ $t('Bio.p3') }}</p>
