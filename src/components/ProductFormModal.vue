@@ -191,8 +191,9 @@
               </div>
               <div>
                 <div class="image-ctn">
-                  <label for="product_image">High quality</label>
-                  <input type="file" @click="setQuality('High')" @change="uploadImage" class="form-control">
+                  <label for="product_image_high">High quality</label>
+                  <input type="file" @click="setQuality('High')" @change="uploadImage" class="form-control"
+                         id="product_image_high">
                 </div>
                 <div class="text-left" v-if="imageHighIsLoaded">
                   <div class="image-thumb-ctn">
@@ -203,8 +204,9 @@
               </div>
               <div>
                 <div class="image-ctn">
-                  <label for="product_image">Low quality</label>
-                  <input type="file" @click="setQuality('Low')" @change="uploadImage" class="form-control">
+                  <label for="product_image_low">Low quality</label>
+                  <input type="file" @click="setQuality('Low')" @change="uploadImage" class="form-control"
+                         id="product_image_low">
                 </div>
                 <div class="text-left" v-if="imageLowIsLoaded">
                   <div class="image-thumb-ctn">
@@ -355,6 +357,8 @@ export default {
         height: undefined,
       };
       this.currentQuality = undefined;
+      document.getElementById("product_image_high").value = '';
+      document.getElementById("product_image_low").value = '';
     },
     setQuality(quality) {
       this.currentQuality = quality;
