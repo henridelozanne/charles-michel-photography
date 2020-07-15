@@ -244,6 +244,7 @@ export default {
         width: 30%;
         max-width: 260px;
         height: 100%;
+        border: 1px solid rgb(104, 104, 104);
 
         .bold {
           font-weight: bold;
