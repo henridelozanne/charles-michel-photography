@@ -1,10 +1,13 @@
 <template>
   <div class="homepage">
-    <div v-for="category in categories" :key="category.title"
-         class="homepage-item-ctn" :style="`background-image: url('${category.image}')`">
-      <router-link :to="category.link">
-        <img class="item-img" :src="category.image" :alt="category.title">
-        <span class="item-title">{{category.title}}</span>
+    <div v-for="category in categories" :key="category.title" class="homepage-item-outer-ctn">
+      <div class="homepage-item-ctn" :style="`background-image: url('${category.image}')`">
+        <router-link :to="category.link">
+          <img class="item-img" :src="category.image" :alt="category.title">
+        </router-link>
+      </div>
+      <router-link :to="category.link" class="category-link">
+        <p class="item-title">{{category.title}}</p>
       </router-link>
     </div>
   </div>
@@ -80,23 +83,28 @@ export default {
   align-items: center;
   margin: auto 20px;
 
-  .homepage-item-ctn {
-    position: relative;
-    height: fit-content;
-    background-size: cover;
+  .homepage-item-outer-ctn {
+    .homepage-item-ctn {
+      position: relative;
+      height: fit-content;
+      background-size: cover;
 
-    .item-img {
-      visibility: hidden;
+      .item-img {
+        visibility: hidden;
+      }
     }
 
-    .item-title {
-      position: absolute;
-      left: 0;
-      bottom: 10%;
-      width: 100%;
-      padding: 10px 0 10px 10%;
-      background: rgba(0, 0, 0, 0.4);
-      color: white;
+    .category-link {
+      text-decoration: none;
+
+      .item-title {
+        text-align: center;
+        width: 100%;
+        color: white;
+        margin-top: 15px;
+        font-weight: 500;
+        font-size: 22px;
+      }
     }
   }
 }
