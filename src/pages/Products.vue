@@ -26,8 +26,9 @@
             <thead>
               <tr>
                 <th style="width: 10%">Preview</th>
+                <th style="width: 5%">Index</th>
                 <th style="width: 13%">Title</th>
-                <th style="width: 10%">File name</th>
+                <th style="width: 5%">File name</th>
                 <th style="width: 5%">Ratio</th>
                 <th style="width: 10%">Total pixels</th>
                 <th style="width: 5%">Size</th>
@@ -41,6 +42,7 @@
             <tbody>
               <tr v-for="product in getProductsByCategory(category)" :key="product.fileName">
                 <td><img :src="product.imageLow" alt="preview-pic" width="65"></td>
+                <td>{{product.index || '❌'}}</td>
                 <td>{{product.title}}</td>
                 <td>{{product.fileName}}</td>
                 <td>{{product.ratio}}</td>
@@ -122,6 +124,7 @@ export default {
   data() {
     return {
       activeProduct: {
+        index: undefined,
         fileName: undefined,
         title: undefined,
         colBW: undefined,
@@ -253,28 +256,40 @@ export default {
     addHomePicture() {
       jQuery('#homepage-pics').modal('show');
     },
+    sortGallery(arrayToBeSorted) {
+      function compare(a, b) {
+        if ( a.index < b.index ){
+          return -1;
+        } else if ( a.index > b.index ){
+          return 1;
+        }
+        return 0;
+      };
+      return arrayToBeSorted.sort(compare);
+    },
     getProductsByCategory(category) {
       switch (category) {
         case 'people_at_work_bw':
-          return this.collections.people_at_work_bw;
+          return this.sortGallery(this.collections.people_at_work_bw);
         case 'people_at_work_colour':
-          return this.collections.people_at_work_colour;
+          return this.sortGallery(this.collections.people_at_work_colour);
         case 'portraits_bw':
-          return this.collections.portraits_bw;
+          return this.sortGallery(this.collections.portraits_bw);
         case 'portraits_colour':
-          return this.collections.portraits_colour;
+          return this.sortGallery(this.collections.portraits_colour);
         case 'street_life_bw':
-          return this.collections.street_life_bw;
+          return this.sortGallery(this.collections.street_life_bw);
         case 'street_life_colour':
-          return this.collections.street_life_colour;
+          return this.sortGallery(this.collections.street_life_colour);
         case 'landscape_colour':
-          return this.collections.landscape_colour;
+          return this.sortGallery(this.collections.landscape_colour);
         case 'homepage_pictures':
-          return this.collections.homepage_pictures;
+          return this.sortGallery(this.collections.homepage_pictures);
       }
     },
     reset() {
       this.activeProduct = {
+        index: undefined,
         fileName: undefined,
         title: undefined,
         colBW: undefined,

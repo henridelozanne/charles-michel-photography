@@ -17,6 +17,15 @@
               <div style="padding: 15px 10px">
                 <div class="input-group">
                   <div class="input-group-prepend">
+                    <label class="input-group-text" for="product-index">Index</label>
+                  </div>
+                  <input type="number" v-model="product.index"
+                        class="form-control" id="product-index">
+                </div>
+              </div>
+              <div style="padding: 15px 10px">
+                <div class="input-group">
+                  <div class="input-group-prepend">
                     <label class="input-group-text" for="product-file-name">File name</label>
                   </div>
                   <input type="text" v-model="product.fileName"

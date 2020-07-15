@@ -6,7 +6,7 @@
     <transition name="fade">
       <div v-show="!isLoading">
         <div id="gallery" class="gallery">
-          <div v-for="product in productList" :key="product.fileName" @click="showImgFull(product)" class="gallery-item">
+          <div v-for="product in orderedList" :key="product.fileName" @click="showImgFull(product)" class="gallery-item">
             <transition name="fade">
               <div oncontextmenu="return false;" class="background-div" :style="`background-image: url(${product.imageLow})`">
                 <img :src="product.imageLow" alt="">
@@ -35,6 +35,19 @@ export default {
   },
   components: {
     'product-item': ProductItem,
+  },
+  computed: {
+    orderedList() {
+      function compare(a, b) {
+        if ( a.index < b.index ){
+          return -1;
+        } else if ( a.index > b.index ){
+          return 1;
+        }
+        return 0;
+      };
+      return this.productList.sort(compare);
+    },
   },
   data() {
     return {
