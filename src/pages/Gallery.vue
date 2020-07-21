@@ -2,7 +2,9 @@
   <div class="gallery">
     <div class="gallery-nav">
       <div class="container">
-        <img class="website-white-logo" src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1595342632/Website%20assets/Logo_blanc_pw4wgh.png" alt="website-logo-white">
+        <router-link to="/">
+          <img class="website-white-logo" src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1595342632/Website%20assets/Logo_blanc_pw4wgh.png" alt="website-logo-white">
+        </router-link>
         <router-link to="/" class="go-back-container">
           <goBackSvg />
           <h2>{{ $t('Gallery.backToMainSite')}}</h2>
