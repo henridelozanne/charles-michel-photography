@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body" style="padding: 10px 25px">
           <div class="row d-flex" >
-            <div style="padding: 15px 10px">
+            <!-- <div style="padding: 15px 10px">
               <div class="input-group">
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="galery">Galery</label>
@@ -24,6 +24,13 @@
                   <option value="people_at_work_colour">People at work Colour</option>
                 </select>
               </div>
+            </div> -->
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="product-index">Index</label>
+              </div>
+              <input type="number" v-model="homepageItem.index"
+                    class="form-control" id="product-index">
             </div>
             <div class="w-100 mt-2">
               <h5>Images</h5>
