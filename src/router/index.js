@@ -6,6 +6,7 @@ import Homepage from '../pages/Homepage.vue';
 import Contact from '../pages/Contact.vue';
 import Basket from '../pages/Basket.vue';
 import Bio from '../pages/Bio.vue';
+import Gallery from '../pages/Gallery.vue';
 import SendEmailSuccess from '../pages/SendEmailSuccess';
 import SendEmailError from '../pages/SendEmailError';
 import PortraitsBW from '../pages/Galeries/PortraitsBW.vue';
@@ -93,6 +94,11 @@ const routes = [
         component: SendEmailError 
       },
     ],
+  },
+  {
+    path: '/gallery',
+    name: 'Gallery',
+    component: Gallery
   },
   {
     path: '/login',

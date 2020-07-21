@@ -1,16 +1,16 @@
 {
-  "Menu": {
-    "aboutMe": "About me",
+  "App": {
+    "portraits": "Portraits",
     "basket": "Basket",
-    "gallery": "Gallery",
-    "streetLife": "Kulay",
     "blackAndWhite": "Black and white",
     "colour": "Colour",
+    "streetLife": "Kulay",
     "peopleAtWork": "People at work",
-    "portraits": "Portraits",
-    "contact": "Contact",
+    "aboutMe": "About me",
     "language": "Language",
-    "followMe": "Follow me"
+    "followMe": "Follow me",
+    "back": "Back",
+    "gallery": "Gallery"
   },
   "Basket": {
     "title": "Basket"
@@ -32,22 +32,26 @@
     "subject": "Subject",
     "message": "Mensahe*"
   },
+  "Gallery": {
+    "backToMainSite": "Back to main site"
+  },
+  "Menu": {
+    "aboutMe": "About me",
+    "basket": "Basket",
+    "gallery": "Gallery",
+    "streetLife": "Kulay",
+    "blackAndWhite": "Black and white",
+    "colour": "Colour",
+    "peopleAtWork": "People at work",
+    "portraits": "Portraits",
+    "contact": "Contact",
+    "language": "Language",
+    "followMe": "Follow me"
+  },
   "SendEmailError": {
     "message": "An error has occured, please try again later"
   },
   "SendEmailSuccess": {
     "message": "Na-send na ang email, salamat"
-  },
-  "App": {
-    "portraits": "Portraits",
-    "basket": "Basket",
-    "blackAndWhite": "Black and white",
-    "colour": "Colour",
-    "streetLife": "Kulay",
-    "peopleAtWork": "People at work",
-    "aboutMe": "About me",
-    "language": "Language",
-    "followMe": "Follow me",
-    "back": "Back"
   }
 }

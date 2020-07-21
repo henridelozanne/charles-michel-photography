@@ -3,7 +3,7 @@
     <div class="container-lg-screen">
       <div class="page-title" @click="goToPage('/')">
         <div class="page-title-inner-ctn">
-          <img class="website-logo" src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141158/Website%20assets/website-logo_p2d3nb.png" alt="">
+          <img class="website-logo" src="https://res.cloudinary.com/charlesmichel-photography/image/upload/v1575141158/Website%20assets/website-logo_p2d3nb.png" alt="website-logo">
         </div>
       </div>
       <div class="horizontal-bar"></div>
@@ -11,59 +11,7 @@
         <div class="menu-inner-ctn desktop-view is-not-mobile">
           <div>
             <div class="horizontal-bar"></div>
-            <bp-dropdown :trigger="'hover'" align="right" :close-on-click="false" :x="-30" :y="0">
-              <template slot="btn">{{ $t('Menu.gallery') }}</template>
-              <template slot="body">
-                <ul>                  
-                  <div class="horizontal-bar"></div>
-                  <li>
-                    <bp-dropdown :trigger="'hover'" :role="'sublist'" :align="'right'" :x="-30" :y="0" class="bp-dropdown-second">
-                      <template slot="btn">{{ $t('Menu.streetLife') }}</template>
-                      <template slot="body">
-                        <ul>
-                          <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding" @click="goToPage('street-life-bw')">{{ $t('Menu.blackAndWhite') }}</li>
-                          <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding" @click="goToPage('street-life-colour')">{{ $t('Menu.colour') }}</li>
-                          <div class="horizontal-bar"></div>
-                        </ul>
-                      </template>
-                    </bp-dropdown>
-                  </li>
-                  <div class="horizontal-bar"></div>
-                  <li>
-                    <bp-dropdown :trigger="'hover'" :role="'sublist'" :align="'right'" :x="-30" :y="0" class="bp-dropdown-second">
-                      <template slot="btn">{{ $t('Menu.portraits') }}</template>
-                      <template slot="body">
-                        <ul>
-                          <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding" @click="goToPage('portraits-bw')">{{ $t('Menu.blackAndWhite') }}</li>
-                          <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding" @click="goToPage('portraits-colour')">{{ $t('Menu.colour') }}</li>
-                          <div class="horizontal-bar"></div>
-                        </ul>
-                      </template>
-                    </bp-dropdown>
-                  </li>
-                  <div class="horizontal-bar"></div>
-                  <li>
-                    <bp-dropdown :trigger="'hover'" :role="'sublist'" :align="'right'" :x="-30" :y="0" class="bp-dropdown-second">
-                      <template slot="btn">{{ $t('Menu.peopleAtWork') }}</template>
-                      <template slot="body">
-                        <ul>
-                          <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding" @click="goToPage('people-at-work-bw')">{{ $t('Menu.blackAndWhite') }}</li>
-                          <div class="horizontal-bar"></div>
-                          <li class="colour-dd-item smaller-padding" @click="goToPage('people-at-work-colour')">{{ $t('Menu.colour') }}</li>
-                          <div class="horizontal-bar"></div>
-                        </ul>
-                      </template>
-                    </bp-dropdown>
-                  </li>
-                  <div class="horizontal-bar"></div>
-                </ul>
-              </template>
-            </bp-dropdown>
+            <div class="menu-title special-highlight" @click="goToPage('gallery')">{{ $t('Menu.gallery') }}</div>
             <div class="horizontal-bar"></div>
           </div>
           <div>

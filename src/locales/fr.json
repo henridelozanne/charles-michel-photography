@@ -1,16 +1,16 @@
 {
-  "Menu": {
-    "aboutMe": "A propos",
+  "App": {
+    "portraits": "Portraits",
     "basket": "Panier",
-    "gallery": "Galerie",
-    "streetLife": "Scène de vie",
     "blackAndWhite": "Noir et blanc",
     "colour": "Couleur",
+    "streetLife": "Scène de vie",
     "peopleAtWork": "Métiers",
-    "portraits": "Portraits",
-    "contact": "Contact",
+    "aboutMe": "A propos",
     "language": "Langue",
-    "followMe": "Me suivre"
+    "followMe": "Me suivre",
+    "back": "Retour",
+    "gallery": "Galerie"
   },
   "Basket": {
     "title": "Panier"
@@ -32,22 +32,26 @@
     "subject": "Objet",
     "message": "Message*"
   },
+  "Gallery": {
+    "backToMainSite": "Retour au site principal"
+  },
+  "Menu": {
+    "aboutMe": "A propos",
+    "basket": "Panier",
+    "gallery": "Galerie",
+    "streetLife": "Scène de vie",
+    "blackAndWhite": "Noir et blanc",
+    "colour": "Couleur",
+    "peopleAtWork": "Métiers",
+    "portraits": "Portraits",
+    "contact": "Contact",
+    "language": "Langue",
+    "followMe": "Me suivre"
+  },
   "SendEmailError": {
     "message": "Un problème est survenu lors de l'envoi du mail, veuillez recommencer plus tard"
   },
   "SendEmailSuccess": {
     "message": "L'email a bien été envoyé, merci"
-  },
-  "App": {
-    "portraits": "Portraits",
-    "basket": "Panier",
-    "blackAndWhite": "Noir et blanc",
-    "colour": "Couleur",
-    "streetLife": "Scène de vie",
-    "peopleAtWork": "Métiers",
-    "aboutMe": "A propos",
-    "language": "Langue",
-    "followMe": "Me suivre",
-    "back": "Retour"
   }
 }

@@ -4,22 +4,8 @@
     <transition name="fade" mode="out-in">
       <ul class="mobile-menu-list" v-if="!languageMenuIsVisible" key="1">
         <li @click="goToPage('/')">Home</li>
-        <li @click="toggleMenuActive('portraits')">{{ $t('App.portraits') }}</li>
-          <ul v-show="activePortraits">
-            <li class="color-submenu" @click="goToPage('portraits-bw')">{{ $t('App.blackAndWhite') }}</li>
-            <li class="color-submenu" @click="goToPage('portraits-colour')">{{ $t('App.colour') }}</li>
-          </ul>
-        <li @click="toggleMenuActive('street-life')">{{ $t('App.streetLife') }}</li>
-          <ul v-show="activeStreetLife">
-            <li class="color-submenu" @click="goToPage('street-life-bw')">{{ $t('App.blackAndWhite') }}</li>
-            <li class="color-submenu" @click="goToPage('street-life-colour')">{{ $t('App.colour') }}</li>
-          </ul>
-        <li @click="toggleMenuActive('people-at-work')">{{ $t('App.peopleAtWork') }}</li>
-          <ul v-show="activePeopleAtWork">
-            <li class="color-submenu" @click="goToPage('people-at-work-bw')">{{ $t('App.blackAndWhite') }}</li>
-            <li class="color-submenu" @click="goToPage('people-at-work-colour')">{{ $t('App.colour') }}</li>
-          </ul>
-        <li class="about-me" @click="goToPage('bio')">{{ $t('App.aboutMe') }}</li>
+        <li @click="goToPage('/gallery')">{{ $t('App.gallery') }}</li>
+        <li @click="goToPage('bio')">{{ $t('App.aboutMe') }}</li>
         <li @click="goToPage('contact')">Contact</li>
         <li @click="goToPage('basket')">{{ $t('App.basket') }}</li>
         <li @click="toggleMenuLanguage">{{ $t('App.language') }}</li>
@@ -126,10 +112,6 @@ export default {
 .mobile-menu-list li {
   font-size: 1.7em;
   cursor:pointer;
-}
-
-.about-me {
-  margin-top: 35px;
 }
 
 .language-list {
