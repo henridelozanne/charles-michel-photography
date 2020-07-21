@@ -1,7 +1,6 @@
 {
   "App": {
     "portraits": "Portraits",
-    "basket": "Panier",
     "blackAndWhite": "Noir et blanc",
     "colour": "Couleur",
     "streetLife": "Scène de vie",
@@ -11,9 +10,6 @@
     "followMe": "Me suivre",
     "back": "Retour",
     "gallery": "Galerie"
-  },
-  "Basket": {
-    "title": "Panier"
   },
   "Bio": {
     "p1": "Auxerrois de naissance, j’ai vécu toute mon adolescence avec ma famille à Orléans et en 2008 à l’âge de 19 ans je suis parti à Lille pour y faire des études de commerce.",
@@ -37,7 +33,6 @@
   },
   "Menu": {
     "aboutMe": "A propos",
-    "basket": "Panier",
     "gallery": "Galerie",
     "streetLife": "Scène de vie",
     "blackAndWhite": "Noir et blanc",

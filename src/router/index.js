@@ -4,7 +4,6 @@ import VueRouter from 'vue-router';
 import Home from '../pages/Home.vue';
 import Homepage from '../pages/Homepage.vue';
 import Contact from '../pages/Contact.vue';
-import Basket from '../pages/Basket.vue';
 import Bio from '../pages/Bio.vue';
 import Gallery from '../pages/Gallery.vue';
 import SendEmailSuccess from '../pages/SendEmailSuccess';
@@ -77,11 +76,6 @@ const routes = [
         path: '/bio',
         name: 'Bio',
         component: Bio 
-      },
-      { 
-        path: '/basket',
-        name: 'Basket',
-        component: Basket 
       },
       { 
         path: '/send-email-success',

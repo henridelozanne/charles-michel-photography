@@ -26,11 +26,6 @@
           </div>
           <div>
             <div class="horizontal-bar"></div>
-            <div class="menu-title special-highlight" @click="goToPage('basket')">{{ $t('Menu.basket') }}</div>
-            <div class="horizontal-bar"></div>
-          </div>
-          <div>
-            <div class="horizontal-bar"></div>
             <bp-dropdown :trigger="'hover'" align="right" :close-on-click="false" :x="-30" :y="0">
               <template slot="btn">{{ $t('Menu.language') }}</template>
               <template slot="body">

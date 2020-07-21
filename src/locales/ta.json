@@ -1,7 +1,6 @@
 {
   "App": {
     "portraits": "Portraits",
-    "basket": "Basket",
     "blackAndWhite": "Black and white",
     "colour": "Colour",
     "streetLife": "Kulay",
@@ -11,9 +10,6 @@
     "followMe": "Follow me",
     "back": "Back",
     "gallery": "Gallery"
-  },
-  "Basket": {
-    "title": "Basket"
   },
   "Bio": {
     "p1": "Ipinanganak ako sa Auxere at lumaki sa Orleans kasama ang aking pamilya at kinalaunan nagpunta sa Lille noong ako ay 19 para mag-aral ng Business.",
@@ -37,7 +33,6 @@
   },
   "Menu": {
     "aboutMe": "About me",
-    "basket": "Basket",
     "gallery": "Gallery",
     "streetLife": "Kulay",
     "blackAndWhite": "Black and white",
