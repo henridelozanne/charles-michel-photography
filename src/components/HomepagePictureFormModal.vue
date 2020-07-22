@@ -10,21 +10,6 @@
         </div>
         <div class="modal-body" style="padding: 10px 25px">
           <div class="row d-flex" >
-            <!-- <div style="padding: 15px 10px">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="galery">Galery</label>
-                </div>
-                <select class="form-control" v-model="homepageItem.galery" id="galery">
-                  <option value="street_life_bw">Street life B&W</option>
-                  <option value="street_life_colour">Street life Colour</option>
-                  <option value="portraits_bw">Portraits B&W</option>
-                  <option value="portraits_colour">Portraits Colour</option>
-                  <option value="people_at_work_bw">People at work B&W</option>
-                  <option value="people_at_work_colour">People at work Colour</option>
-                </select>
-              </div>
-            </div> -->
             <div class="input-group">
               <div class="input-group-prepend">
                 <label class="input-group-text" for="product-index">Index</label>
@@ -106,7 +91,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-</style>

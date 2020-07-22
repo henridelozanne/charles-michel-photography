@@ -31,7 +31,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="product in getProductsByCategory('homepage_pictures')" :key="product.id">
+              <tr v-for="product in collections.homepage_pictures" :key="product.id">
                 <td><img :src="product.image" alt="preview-pic" width="65"></td>
                 <td>{{product.index || '❌'}}</td>
                 <td class="d-flex">
@@ -63,119 +63,20 @@ export default {
   },
   data() {
     return {
-      activeProduct: {
-        index: undefined,
-        fileName: undefined,
-        title: undefined,
-        colBW: undefined,
-        ratio: undefined,
-        size: undefined,
-        price: undefined,
-        shutterSpeed: undefined,
-        aperture: undefined,
-        iso: undefined,
-        totalPixels: undefined,
-        dimensionsPixels: undefined,
-        dimensionsCentimeters: undefined,
-        dimensionsInches: undefined,
-        imageHigh: undefined,
-        imageLow: undefined,
-      },
       homepageItem: {
         index: undefined,
         image: undefined,
       },
       collections: {
-        people_at_work_bw: [],
-        people_at_work_colour: [],
-        portraits_bw: [],
-        portraits_colour: [],
-        street_life_bw: [],
-        street_life_colour: [],
-        landscape_colour: [],
         homepage_pictures: []
       },
       modalType:  undefined,
-      productCategories: [
-        'people_at_work_bw',
-        'people_at_work_colour',
-        'portraits_bw',
-        'portraits_colour',
-        'street_life_bw',
-        'street_life_colour',
-        'landscape_colour',
-      ],
-      currentCategory: undefined,
     }
   },
   components: {
     'homepage-picture-form-modal': HomepagePictureFormModal,
   },
-  watch: {
-    productColBW() {
-      if (this.productColBW === 'B&W') this.activeProduct.colBW = 'B&W';
-      else if (this.productColBW === 'Colour') this.activeProduct.colBW = 'Colour';
-    },
-  },
-  computed: {
-    productColBW() {
-      if (!this.currentCategory) return '';
-      else if (this.currentCategory[this.currentCategory.length - 1] === 'w') {
-        return 'B&W';
-      } 
-      return 'Colour';
-    },
-  },
   mounted() {
-    db.collection('people_at_work_bw').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const item = doc.data();
-        item.id = doc.id
-        this.collections.people_at_work_bw.push(item);
-      });
-    });
-    db.collection('people_at_work_colour').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const item = doc.data();
-        item.id = doc.id
-        this.collections.people_at_work_colour.push(item);
-      });
-    });
-    db.collection('portraits_bw').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const item = doc.data();
-        item.id = doc.id
-        this.collections.portraits_bw.push(item);
-      });
-    });
-    db.collection('portraits_colour').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const item = doc.data();
-        item.id = doc.id
-        this.collections.portraits_colour.push(item);
-      });
-    });
-    db.collection('street_life_bw').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const item = doc.data();
-        item.id = doc.id
-        this.collections.street_life_bw.push(item);
-      });
-    });
-    db.collection('street_life_colour').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const item = doc.data();
-        item.id = doc.id
-        this.collections.street_life_colour.push(item);
-      });
-    });
-    db.collection('landscape_colour').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const item = doc.data();
-        item.id = doc.id
-        this.collections.landscape_colour.push(item);
-      });
-    });
     db.collection('homepage_pictures').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const item = doc.data();
@@ -185,13 +86,6 @@ export default {
     });
   },
   methods: {
-    addNew(category) {
-      this.modalType = 'new';
-      this.reset();
-      this.$refs.ProductFormModal.resetData();
-      this.currentCategory = category;
-      jQuery('#product').modal('show');
-    },
     addHomePicture() {
       jQuery('#homepage-pics').modal('show');
     },
@@ -205,62 +99,6 @@ export default {
         return 0;
       };
       return arrayToBeSorted.sort(compare);
-    },
-    getProductsByCategory(category) {
-      switch (category) {
-        case 'people_at_work_bw':
-          return this.sortGallery(this.collections.people_at_work_bw);
-        case 'people_at_work_colour':
-          return this.sortGallery(this.collections.people_at_work_colour);
-        case 'portraits_bw':
-          return this.sortGallery(this.collections.portraits_bw);
-        case 'portraits_colour':
-          return this.sortGallery(this.collections.portraits_colour);
-        case 'street_life_bw':
-          return this.sortGallery(this.collections.street_life_bw);
-        case 'street_life_colour':
-          return this.sortGallery(this.collections.street_life_colour);
-        case 'landscape_colour':
-          return this.sortGallery(this.collections.landscape_colour);
-        case 'homepage_pictures':
-          return this.sortGallery(this.collections.homepage_pictures);
-      }
-    },
-    reset() {
-      this.activeProduct = {
-        index: undefined,
-        fileName: undefined,
-        title: undefined,
-        colBW: undefined,
-        ratio: undefined,
-        size: undefined,
-        price: undefined,
-        shutter: undefined,
-        aperture: undefined,
-        iso: undefined,
-        totalPixels: undefined,
-        dimensionsPixels: undefined,
-        dimensionsCentimeters: undefined,
-        dimensionsInches: undefined,
-        imageHigh: undefined,
-        imageLow: undefined,
-      };
-    },
-    addProduct() {
-      const category = this.currentCategory;
-      db.collection(category).add(this.activeProduct);
-      jQuery('#product').modal('hide');
-
-      // Get new item id, add it to object, insert object in displayed category
-      db.collection(this.currentCategory).get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          const item = doc.data();
-          if (item.fileName === this.activeProduct.fileName) {
-            item.id = doc.id;
-            this.getProductsByCategory(this.currentCategory).push(item);
-          }
-        });
-      });
     },
     setGaleryPicture() {
       db.collection('homepage_pictures').add(this.homepageItem);
@@ -277,8 +115,7 @@ export default {
           callback: confirm => {
             if (confirm) {
               db.collection(category).doc(product.id).delete().then(() => {
-                  const catToBeUpdated = this.getProductsByCategory(category);
-                  catToBeUpdated.splice(catToBeUpdated.indexOf(product), 1);
+                  this.collections.homepage_pictures.splice(catToBeUpdated.indexOf(product), 1);
               }).catch((error) => {
                   // eslint-disable-next-line
                   console.error("Error removing document: ", error);
@@ -287,24 +124,6 @@ export default {
           }
         }
       )
-    },
-    editProduct(product, category) {
-      this.currentCategory = category;
-      this.modalType = 'edit';
-      this.activeProduct = product;
-      jQuery('#product').modal('show');
-    },
-    updateProduct() {
-      const productToBeUpdated = db.collection(this.currentCategory).doc(this.activeProduct.id);
-      return productToBeUpdated
-        .update(this.activeProduct)
-        .then(() => {
-            jQuery('#product').modal('hide');
-        })
-        .catch((error) => {
-          // eslint-disable-next-line
-            console.error("Error updating document: ", error);
-        });
     },
   }
 };

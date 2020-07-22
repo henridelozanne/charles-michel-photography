@@ -124,7 +124,6 @@
 }
 
 .container-sm-screen {
-  // display: none;
   height: 100%;
   display: flex;
   justify-content: space-around;
