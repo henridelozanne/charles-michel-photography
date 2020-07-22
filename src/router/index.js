@@ -8,12 +8,6 @@ import Bio from '../pages/Bio.vue';
 import Gallery from '../pages/Gallery.vue';
 import SendEmailSuccess from '../pages/SendEmailSuccess';
 import SendEmailError from '../pages/SendEmailError';
-import PortraitsBW from '../pages/Galeries/PortraitsBW.vue';
-import PortraitsColour from '../pages/Galeries/PortraitsColour.vue';
-import StreetLifeBW from '../pages/Galeries/StreetLifeBW.vue';
-import StreetLifeColour from '../pages/Galeries/StreetLifeColour.vue';
-import PeopleAtWorkBW from '../pages/Galeries/PeopleAtWorkBW.vue';
-import PeopleAtWorkColour from '../pages/Galeries/PeopleAtWorkColour.vue';
 import Login from '../pages/Login.vue';
 import MustBeAdmin from '../pages/MustBeAdmin.vue';
 import Admin from '../pages/Admin.vue';
@@ -35,38 +29,6 @@ const routes = [
         name: 'Homepage',
         component: Homepage
       },
-      // GALLERIES
-      { 
-        path: '/people-at-work-bw',
-        name: 'PeopleAtWorkBW',
-        component: PeopleAtWorkBW 
-      },
-      { 
-        path: '/people-at-work-colour',
-        name: 'PeopleAtWorkColour',
-        component: PeopleAtWorkColour 
-      },
-      { 
-        path: '/portraits-bw',
-        name: 'PortraitsBW',
-        component: PortraitsBW 
-      },
-      { 
-        path: '/portraits-colour',
-        name: 'PortraitsColour',
-        component: PortraitsColour 
-      },
-      { 
-        path: '/street-life-bw',
-        name: 'StreetLifeBW',
-        component: StreetLifeBW 
-      },
-      { 
-        path: '/street-life-colour',
-        name: 'StreetLifeColour',
-        component: StreetLifeColour 
-      },
-      // OTHER PAGES
       { 
         path: '/contact',
         name: 'Contact',
