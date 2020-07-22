@@ -13,6 +13,8 @@
 import { db } from '../firebase';
 import gsap from "gsap";
 
+let imageInterval;
+
 export default {
   name: 'Homepage',
   data() {
@@ -36,7 +38,7 @@ export default {
   },
   methods: {
     changePicture() {
-      setInterval(() => {
+      imageInterval = setInterval(() => {
         this.fadeOut();
       }, 6300);
     },
@@ -78,6 +80,9 @@ export default {
       this.changePicture();
     }, 1000);
   },
+  beforeDestroy() {
+    clearInterval(imageInterval);
+  }
 };
 </script>
 
