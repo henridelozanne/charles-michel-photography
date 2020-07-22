@@ -1,13 +1,17 @@
 <template>
   <div class="homepage">
     <div class="landing-img-ctn">
-      <img :src="orderedList[currentImgIndex].image" alt="landing-image">
+      <img v-for="image in orderedList" :key="image.index"
+           v-show="currentImgIndex == image.index - 1"
+           class="landing-img" :src="orderedList[currentImgIndex].image"
+           alt="landing-image">
     </div>
   </div>
 </template>
 
 <script>
 import { db } from '../firebase';
+import gsap from "gsap";
 
 export default {
   name: 'Homepage',
@@ -33,9 +37,35 @@ export default {
   methods: {
     changePicture() {
       setInterval(() => {
-        if (this.currentImgIndex !== this.itemList.length - 1) this.currentImgIndex += 1;
-        else this.currentImgIndex = 0;
-      }, 6000);
+        this.fadeOut();
+      }, 6300);
+    },
+    fadeOut() {
+      let tl = gsap.timeline();
+      tl.to(".landing-img", {
+        opacity: 0,
+        duration: .5,
+        onComplete: this.changeIndex
+      });
+      return tl;
+    },
+    changeIndex() {
+      if (this.currentImgIndex !== this.itemList.length - 1) {
+        this.currentImgIndex += 1;
+      } else this.currentImgIndex = 0;
+      this.fadeIn();
+    },
+    fadeIn() {
+      let tl = gsap.timeline();
+      tl.fromTo(".landing-img", {
+        opacity: 0,
+        ease: 'Power2.easeIn'
+      }, {
+        opacity: 1,
+        ease: 'Power2.easeIn',
+        duration: .8,
+      });
+      return tl;
     },
   },
   created() {
