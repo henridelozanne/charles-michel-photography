@@ -1,7 +1,7 @@
 <template>
   <div class="homepage">
     <div class="landing-img-ctn">
-      <img :src="orderedList[0].image" alt="landing-image">
+      <img :src="orderedList[currentImgIndex].image" alt="landing-image">
     </div>
   </div>
 </template>
@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       itemList: [],
+      currentImgIndex: 0,
     };
   },
   computed: {
@@ -29,12 +30,23 @@ export default {
       return this.itemList.sort(compare);
     },
   },
+  methods: {
+    changePicture() {
+      setInterval(() => {
+        if (this.currentImgIndex !== this.itemList.length - 1) this.currentImgIndex += 1;
+        else this.currentImgIndex = 0;
+      }, 6000);
+    },
+  },
   created() {
     db.collection('homepage_pictures').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         this.itemList.push(doc.data());
       });
     });
+    setTimeout(() => {
+      this.changePicture();
+    }, 1000);
   },
 };
 </script>
